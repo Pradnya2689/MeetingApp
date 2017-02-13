@@ -290,10 +290,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
             cell.venueLb.text = dict.childSnapshot(forPath: "mvenue").value as! String?
             
-//            cell.nameLb.text = upcommingMeetingName[indexPath.row]
-//            cell.instructorLb.text = instructorArray[indexPath.row]
-//            cell.dateLb.text = dateArray[indexPath.row]
-//            cell.venueLb.text = venueArray[indexPath.row]
+
             cell.editBtn.isHidden = false
             cell.reportBtn.isHidden = true
             cell.approvalBtn.isHidden = false
@@ -314,7 +311,17 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+         if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
+         let dict = upcommingMeetingName[indexPath.row] as FIRDataSnapshot
+        
+        print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
+         }else{
+            let dict = completedmeetingName[indexPath.row] as FIRDataSnapshot
+            print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
+        }
+    }
     
     
     

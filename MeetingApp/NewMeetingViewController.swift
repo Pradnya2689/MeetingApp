@@ -77,15 +77,24 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     
     func createMeeting() {
         
-        let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: startTimeLb.text!, mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: "2",meetingCode: "1235", maxCount: maxLb.text!,currentCount: "2",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: "0" ,completed: true, key: "")
+        let groceryItemRef = ref.child("Meetings").childByAutoId()
+         let usr = ref.child("Meetings").child(groceryItemRef.key)
+        print("key of tbl \(groceryItemRef.key)")
+        let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: startTimeLb.text!, mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: groceryItemRef.key,meetingCode: fourUniqueDigits, maxCount: maxLb.text!,currentCount: "2",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: "0" ,completed: true, key: "")
+         
+        usr.setValue(meetItem.toAnyObject())
         
-        let groceryItemRef = ref.child("Meetings")
-        
-        groceryItemRef.childByAutoId().setValue(meetItem.toAnyObject())
-        
-        
+       
     }
-
+    var fourUniqueDigits: String {
+        var result = ""
+        repeat {
+            // create a string with up to 4 leading zeros with a random number 0...9999
+            result = String(format:"%04d", arc4random_uniform(10000) )
+            // generate another random number if the set of characters count is less than four
+        } while Set<Character>(result.characters).count < 4
+        return result    // ran 5 times
+    }
     
     func handleTap(gesture: UITapGestureRecognizer){
         nameMeetingLb.resignFirstResponder()

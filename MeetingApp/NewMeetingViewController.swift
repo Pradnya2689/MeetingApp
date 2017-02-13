@@ -22,7 +22,11 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     let check = UIImage(named: "checkBoxEnable")! as UIImage
     let uncheck = UIImage(named: "checkBoxDisable")! as UIImage
     
+    var meetType: String!
+    
     var ref: FIRDatabaseReference!
+    
+    var editMeetingDataArray: FIRDataSnapshot!
     
     @IBOutlet weak var nameMeetingLb: UITextField!
     @IBOutlet weak var venueLb: UITextField!
@@ -35,6 +39,9 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     
     @IBOutlet weak var approveBtn: UIButton!
     @IBOutlet weak var selfSubcribeBtn: UIButton!
+    
+    var meetID : String!
+    
     @IBAction func newMeetingSubmitAction(_ sender: Any) {
         ref = FIRDatabase.database().reference()
         createMeeting()
@@ -46,9 +53,13 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             selfSubcribeBtn.setImage(check, for: .normal)
             approveBtn.setImage(uncheck, for: .normal)
             
+            meetType = "0"
+            
         }else{
             
             selfSubcribeBtn.setImage(uncheck, for: .normal)
+            
+            meetType = ""
         }
     }
     @IBAction func adminApproveAction(_ sender: Any) {
@@ -58,9 +69,13 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             approveBtn.setImage(check, for: .normal)
             selfSubcribeBtn.setImage(uncheck, for: .normal)
             
+            meetType = "1"
+            
         }else{
             
             approveBtn.setImage(uncheck, for: .normal)
+            
+            meetType = ""
         }
     }
     
@@ -71,21 +86,109 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         submitBtn.clipsToBounds = true
         
         
+        if(isCall == "CellEditBtn"){
+            
+            print(editMeetingDataArray)
+            
+//            cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
+//            cell.instructorLb.text = "By \(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
+//            cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
+//            cell.venueLb.text = dict.childSnapshot(forPath: "mvenue").value as! String?
+//            
+            
+            nameMeetingLb.text = editMeetingDataArray.childSnapshot(forPath: "mname").value as! String?
+            venueLb.text = editMeetingDataArray.childSnapshot(forPath: "mvenue").value as! String?
+            instructorNameLB.text = editMeetingDataArray.childSnapshot(forPath: "mInstuctorName").value as! String?
+            instructorIDLb.text = editMeetingDataArray.childSnapshot(forPath: "minstructorID").value as! String?
+            dateLb.text = editMeetingDataArray.childSnapshot(forPath: "mdate").value as! String?
+            maxLb.text = editMeetingDataArray.childSnapshot(forPath: "maxcount").value as! String?
+            endTimeLb.text = editMeetingDataArray.childSnapshot(forPath: "mendtime").value as! String?
+            meetType = editMeetingDataArray.childSnapshot(forPath: "meetingType" ).value as! String?
+              meetID = editMeetingDataArray.childSnapshot(forPath: "meetingID" ).value as! String?
+            
+            if(meetType == "0"){
+                selfSubcribeBtn.setImage(check, for: .normal)
+                approveBtn.setImage(uncheck, for: .normal)
+            }else{
+                selfSubcribeBtn.setImage(uncheck, for: .normal)
+                approveBtn.setImage(check, for: .normal)
+            }
+            
+        }else{
+            
+        }
+        
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(gesture:)))
         self.view.addGestureRecognizer(tapGesture)
     }
     
     func createMeeting() {
         
+          if(isCall == "CellEditBtn"){
+          //  let groceryItemRef = ref.child("Meetings").childByAutoId()
+            let usr = ref.child("Meetings").child(meetID)
+           // print("key of tbl \(groceryItemRef.key)")
+            let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: "", mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: meetID,meetingCode: fourUniqueDigits, maxCount: maxLb.text!,currentCount: "",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: meetType ,completed: true, key: "")
+            
+            usr.setValue(meetItem.toAnyObject())
+            var alert = UIAlertController(title: "Meeting is Edited", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                (action) -> Void in
+                
+                
+                self.navigationController!.popViewController(animated: true)
+                
+                
+            }))
+            
+            
+            
+            self.present(alert, animated: true, completion:{
+                //Indicator.sharedInstance.stopActivityIndicator()
+                alert.view.superview?.isUserInteractionEnabled = true
+                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
+            })
+            
+          }else{
         let groceryItemRef = ref.child("Meetings").childByAutoId()
          let usr = ref.child("Meetings").child(groceryItemRef.key)
         print("key of tbl \(groceryItemRef.key)")
-        let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: startTimeLb.text!, mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: groceryItemRef.key,meetingCode: fourUniqueDigits, maxCount: maxLb.text!,currentCount: "",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: "0" ,completed: true, key: "")
+        let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: "", mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: groceryItemRef.key,meetingCode: fourUniqueDigits, maxCount: maxLb.text!,currentCount: "",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: meetType ,completed: true, key: "")
          
         usr.setValue(meetItem.toAnyObject())
+            var alert = UIAlertController(title: "Meeting is Submitted", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                (action) -> Void in
+                
+                
+                self.navigationController!.popViewController(animated: true)
+                
+                
+            }))
+            
+            
+            
+            self.present(alert, animated: true, completion:{
+                //Indicator.sharedInstance.stopActivityIndicator()
+                alert.view.superview?.isUserInteractionEnabled = true
+                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
+            })
+        }
         
        
     }
+    
+    
+    func alertClose(_ gesture: UITapGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     var fourUniqueDigits: String {
         var result = ""
         repeat {
@@ -103,7 +206,6 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         instructorIDLb.resignFirstResponder()
         dateLb.resignFirstResponder()
         maxLb.resignFirstResponder()
-        startTimeLb.resignFirstResponder()
         endTimeLb.resignFirstResponder()
     }
 
@@ -126,14 +228,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             
         }
         
-        if(textField == startTimeLb){
-            
-            timePickerView.datePickerMode = UIDatePickerMode.time
-            startTimeLb.inputView = timePickerView
-            timePickerView.tag = 1
-            timePickerView.addTarget(self, action: #selector(self.onDidChangeTime), for: .valueChanged)
-            //textField.resignFirstResponder()
-        }
+        
         
         if(textField == endTimeLb){
             
@@ -225,7 +320,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             dateFormatter.dateStyle = .short
             dateFormatter.timeStyle = .short
             var strDate = dateFormatter.string(from: sender.date)
-            startTimeLb.text = strDate
+            //startTimeLb.text = strDate
         }
         
         if(sender.tag == 2){

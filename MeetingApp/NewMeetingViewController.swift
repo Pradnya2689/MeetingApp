@@ -80,7 +80,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         let groceryItemRef = ref.child("Meetings").childByAutoId()
          let usr = ref.child("Meetings").child(groceryItemRef.key)
         print("key of tbl \(groceryItemRef.key)")
-        let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: startTimeLb.text!, mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: groceryItemRef.key,meetingCode: fourUniqueDigits, maxCount: maxLb.text!,currentCount: "2",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: "0" ,completed: true, key: "")
+        let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: startTimeLb.text!, mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: groceryItemRef.key,meetingCode: fourUniqueDigits, maxCount: maxLb.text!,currentCount: "",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: "0" ,completed: true, key: "")
          
         usr.setValue(meetItem.toAnyObject())
         
@@ -126,10 +126,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             
         }
         
-        
-        
         if(textField == startTimeLb){
-            
             
             timePickerView.datePickerMode = UIDatePickerMode.time
             startTimeLb.inputView = timePickerView
@@ -210,7 +207,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         
         let formatter = DateFormatter()
         
-        formatter.dateFormat = "MMM dd, yyyy HH:mm a"
+        formatter.dateFormat = "MMM dd, yyyy hh:mm a"
         
         let result = formatter.string(from: sender.date as Date)
        // var strDate = dateFormatter.string(from: sender.date)
@@ -239,7 +236,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             //  dateFormatter.dateFormat = "h:mm a"
             //  let date = dateFormatter.dateFromString(dateAsString)
             
-            dateFormatter.dateFormat = "HH:mm a"
+            dateFormatter.dateFormat = "hh:mm a"
             let date24 = dateFormatter.string(from: sender.date)
             endTimeLb.text = date24
         }

@@ -1,0 +1,6 @@
+framework module Pods_MeetingApp {
+  umbrella header "Pods-MeetingApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

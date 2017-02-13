@@ -1,0 +1,796 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		718DB026045F97DB47A45FA1 /* Pods_MeetingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E23A08BAA3CF27D9F8D3AA9 /* Pods_MeetingApp.framework */; };
+		7BBB0E2FC1506435DEE7ED57 /* Pods_MeetingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF5EF02E23E96962D70F9D9A /* Pods_MeetingAppUITests.framework */; };
+		C07C97B3D7710CF7902D76B9 /* Pods_MeetingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94E603323EFE27B0ECAD8DD /* Pods_MeetingAppTests.framework */; };
+		C3557A871E40BFF4008E1E82 /* AdminMeetingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3557A861E40BFF4008E1E82 /* AdminMeetingsViewController.swift */; };
+		C3557A891E40C956008E1E82 /* AdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3557A881E40C956008E1E82 /* AdminTableViewCell.swift */; };
+		C35661EA1E49C80600B0D912 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35661E91E49C80600B0D912 /* Users.swift */; };
+		C35661EE1E4B1A5C00B0D912 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C35661ED1E4B1A5C00B0D912 /* GoogleService-Info.plist */; };
+		C3580D061E445B260067AA1A /* UserMeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3580D051E445B260067AA1A /* UserMeetingViewController.swift */; };
+		C3580D081E445F750067AA1A /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3580D071E445F750067AA1A /* UserTableViewCell.swift */; };
+		C3580D0A1E44910C0067AA1A /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3580D091E44910C0067AA1A /* FeedbackViewController.swift */; };
+		C3580D0C1E449B5E0067AA1A /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3580D0B1E449B5E0067AA1A /* CommentsViewController.swift */; };
+		C37D87011E40976F00D6462A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37D87001E40976F00D6462A /* AppDelegate.swift */; };
+		C37D87031E40976F00D6462A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37D87021E40976F00D6462A /* ViewController.swift */; };
+		C37D87061E40976F00D6462A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37D87041E40976F00D6462A /* Main.storyboard */; };
+		C37D87091E40976F00D6462A /* MeetingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C37D87071E40976F00D6462A /* MeetingApp.xcdatamodeld */; };
+		C37D870B1E40976F00D6462A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37D870A1E40976F00D6462A /* Assets.xcassets */; };
+		C37D870E1E40976F00D6462A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37D870C1E40976F00D6462A /* LaunchScreen.storyboard */; };
+		C37D87191E40977100D6462A /* MeetingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37D87181E40977100D6462A /* MeetingAppTests.swift */; };
+		C37D87241E40977100D6462A /* MeetingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37D87231E40977100D6462A /* MeetingAppUITests.swift */; };
+		C37F11F81E4D9AFE00581899 /* ApproveListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F11F71E4D9AFE00581899 /* ApproveListViewController.swift */; };
+		C37F11FA1E4DA12400581899 /* ApproveCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F11F91E4DA12400581899 /* ApproveCellTableViewCell.swift */; };
+		C37F11FC1E4DD55D00581899 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F11FB1E4DD55D00581899 /* Meeting.swift */; };
+		C3A027A31E430F590012D39E /* AdminReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A027A21E430F590012D39E /* AdminReportViewController.swift */; };
+		C3A027A71E4341090012D39E /* EmployeeNoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A027A61E4341090012D39E /* EmployeeNoTableViewCell.swift */; };
+		C3D556941E41F737002A09FC /* NewMeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D556931E41F737002A09FC /* NewMeetingViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C37D87151E40977100D6462A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C37D86F51E40976700D6462A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C37D86FC1E40976700D6462A;
+			remoteInfo = MeetingApp;
+		};
+		C37D87201E40977100D6462A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C37D86F51E40976700D6462A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C37D86FC1E40976700D6462A;
+			remoteInfo = MeetingApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02A8EA7C1D96FCA9607FEF2D /* Pods-MeetingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingAppTests/Pods-MeetingAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		0E23A08BAA3CF27D9F8D3AA9 /* Pods_MeetingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		16FF6A1CB12624B6B7240624 /* Pods-MeetingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingApp/Pods-MeetingApp.release.xcconfig"; sourceTree = "<group>"; };
+		A3D2B5FAC6E896898228841B /* Pods-MeetingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingAppUITests/Pods-MeetingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B94E603323EFE27B0ECAD8DD /* Pods_MeetingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDFFB823BC2E21A25049104F /* Pods-MeetingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingApp/Pods-MeetingApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C3557A861E40BFF4008E1E82 /* AdminMeetingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminMeetingsViewController.swift; sourceTree = "<group>"; };
+		C3557A881E40C956008E1E82 /* AdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminTableViewCell.swift; sourceTree = "<group>"; };
+		C35661E61E49A79600B0D912 /* MeetingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetingApp.entitlements; sourceTree = "<group>"; };
+		C35661E91E49C80600B0D912 /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		C35661ED1E4B1A5C00B0D912 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C3580D051E445B260067AA1A /* UserMeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMeetingViewController.swift; sourceTree = "<group>"; };
+		C3580D071E445F750067AA1A /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		C3580D091E44910C0067AA1A /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		C3580D0B1E449B5E0067AA1A /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		C37D86FD1E40976E00D6462A /* MeetingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C37D87001E40976F00D6462A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C37D87021E40976F00D6462A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C37D87051E40976F00D6462A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C37D87081E40976F00D6462A /* MeetingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeetingApp.xcdatamodel; sourceTree = "<group>"; };
+		C37D870A1E40976F00D6462A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C37D870D1E40976F00D6462A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C37D870F1E40976F00D6462A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C37D87141E40977100D6462A /* MeetingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C37D87181E40977100D6462A /* MeetingAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAppTests.swift; sourceTree = "<group>"; };
+		C37D871A1E40977100D6462A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C37D871F1E40977100D6462A /* MeetingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C37D87231E40977100D6462A /* MeetingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAppUITests.swift; sourceTree = "<group>"; };
+		C37D87251E40977100D6462A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C37F11F71E4D9AFE00581899 /* ApproveListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApproveListViewController.swift; sourceTree = "<group>"; };
+		C37F11F91E4DA12400581899 /* ApproveCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApproveCellTableViewCell.swift; sourceTree = "<group>"; };
+		C37F11FB1E4DD55D00581899 /* Meeting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
+		C3A027A21E430F590012D39E /* AdminReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminReportViewController.swift; sourceTree = "<group>"; };
+		C3A027A61E4341090012D39E /* EmployeeNoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeNoTableViewCell.swift; sourceTree = "<group>"; };
+		C3D556931E41F737002A09FC /* NewMeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMeetingViewController.swift; sourceTree = "<group>"; };
+		D049547537CD61B75AB1D378 /* Pods-MeetingAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingAppUITests/Pods-MeetingAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DF5EF02E23E96962D70F9D9A /* Pods_MeetingAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetingAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F192E82EA6CFEA975FA6E8C5 /* Pods-MeetingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingAppTests/Pods-MeetingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C37D86FA1E40976700D6462A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				718DB026045F97DB47A45FA1 /* Pods_MeetingApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C37D87111E40977100D6462A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C07C97B3D7710CF7902D76B9 /* Pods_MeetingAppTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C37D871C1E40977100D6462A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BBB0E2FC1506435DEE7ED57 /* Pods_MeetingAppUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		42A2B7D4673D9AA196E0F508 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E23A08BAA3CF27D9F8D3AA9 /* Pods_MeetingApp.framework */,
+				B94E603323EFE27B0ECAD8DD /* Pods_MeetingAppTests.framework */,
+				DF5EF02E23E96962D70F9D9A /* Pods_MeetingAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C37D86F41E40976600D6462A = {
+			isa = PBXGroup;
+			children = (
+				C37D86FF1E40976E00D6462A /* MeetingApp */,
+				C37D87171E40977100D6462A /* MeetingAppTests */,
+				C37D87221E40977100D6462A /* MeetingAppUITests */,
+				C37D86FE1E40976E00D6462A /* Products */,
+				CB556A66976BE85012A056BE /* Pods */,
+				42A2B7D4673D9AA196E0F508 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C37D86FE1E40976E00D6462A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C37D86FD1E40976E00D6462A /* MeetingApp.app */,
+				C37D87141E40977100D6462A /* MeetingAppTests.xctest */,
+				C37D871F1E40977100D6462A /* MeetingAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C37D86FF1E40976E00D6462A /* MeetingApp */ = {
+			isa = PBXGroup;
+			children = (
+				C35661E61E49A79600B0D912 /* MeetingApp.entitlements */,
+				C37D87001E40976F00D6462A /* AppDelegate.swift */,
+				C37D87021E40976F00D6462A /* ViewController.swift */,
+				C35661E91E49C80600B0D912 /* Users.swift */,
+				C37F11FB1E4DD55D00581899 /* Meeting.swift */,
+				C37D87041E40976F00D6462A /* Main.storyboard */,
+				C37D870A1E40976F00D6462A /* Assets.xcassets */,
+				C37D870C1E40976F00D6462A /* LaunchScreen.storyboard */,
+				C37D870F1E40976F00D6462A /* Info.plist */,
+				C35661ED1E4B1A5C00B0D912 /* GoogleService-Info.plist */,
+				C37D87071E40976F00D6462A /* MeetingApp.xcdatamodeld */,
+				C3557A861E40BFF4008E1E82 /* AdminMeetingsViewController.swift */,
+				C3557A881E40C956008E1E82 /* AdminTableViewCell.swift */,
+				C3D556931E41F737002A09FC /* NewMeetingViewController.swift */,
+				C3A027A21E430F590012D39E /* AdminReportViewController.swift */,
+				C3A027A61E4341090012D39E /* EmployeeNoTableViewCell.swift */,
+				C3580D051E445B260067AA1A /* UserMeetingViewController.swift */,
+				C3580D071E445F750067AA1A /* UserTableViewCell.swift */,
+				C3580D091E44910C0067AA1A /* FeedbackViewController.swift */,
+				C3580D0B1E449B5E0067AA1A /* CommentsViewController.swift */,
+				C37F11F71E4D9AFE00581899 /* ApproveListViewController.swift */,
+				C37F11F91E4DA12400581899 /* ApproveCellTableViewCell.swift */,
+			);
+			path = MeetingApp;
+			sourceTree = "<group>";
+		};
+		C37D87171E40977100D6462A /* MeetingAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				C37D87181E40977100D6462A /* MeetingAppTests.swift */,
+				C37D871A1E40977100D6462A /* Info.plist */,
+			);
+			path = MeetingAppTests;
+			sourceTree = "<group>";
+		};
+		C37D87221E40977100D6462A /* MeetingAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C37D87231E40977100D6462A /* MeetingAppUITests.swift */,
+				C37D87251E40977100D6462A /* Info.plist */,
+			);
+			path = MeetingAppUITests;
+			sourceTree = "<group>";
+		};
+		CB556A66976BE85012A056BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BDFFB823BC2E21A25049104F /* Pods-MeetingApp.debug.xcconfig */,
+				16FF6A1CB12624B6B7240624 /* Pods-MeetingApp.release.xcconfig */,
+				F192E82EA6CFEA975FA6E8C5 /* Pods-MeetingAppTests.debug.xcconfig */,
+				02A8EA7C1D96FCA9607FEF2D /* Pods-MeetingAppTests.release.xcconfig */,
+				A3D2B5FAC6E896898228841B /* Pods-MeetingAppUITests.debug.xcconfig */,
+				D049547537CD61B75AB1D378 /* Pods-MeetingAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C37D86FC1E40976700D6462A /* MeetingApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C37D87281E40977100D6462A /* Build configuration list for PBXNativeTarget "MeetingApp" */;
+			buildPhases = (
+				639ED525EEF55F5A0F108EBE /* [CP] Check Pods Manifest.lock */,
+				C37D86F91E40976700D6462A /* Sources */,
+				C37D86FA1E40976700D6462A /* Frameworks */,
+				C37D86FB1E40976700D6462A /* Resources */,
+				B4544DA9242A49FAFE8DF5B6 /* [CP] Embed Pods Frameworks */,
+				DDB93BDC896B31D2E3FD3355 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeetingApp;
+			productName = MeetingApp;
+			productReference = C37D86FD1E40976E00D6462A /* MeetingApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C37D87131E40977100D6462A /* MeetingAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C37D872B1E40977100D6462A /* Build configuration list for PBXNativeTarget "MeetingAppTests" */;
+			buildPhases = (
+				5D73FAE77A3772561F17631E /* [CP] Check Pods Manifest.lock */,
+				C37D87101E40977100D6462A /* Sources */,
+				C37D87111E40977100D6462A /* Frameworks */,
+				C37D87121E40977100D6462A /* Resources */,
+				BA02F821276DED1A354E3127 /* [CP] Embed Pods Frameworks */,
+				48B6EC08D496E5FE38977076 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C37D87161E40977100D6462A /* PBXTargetDependency */,
+			);
+			name = MeetingAppTests;
+			productName = MeetingAppTests;
+			productReference = C37D87141E40977100D6462A /* MeetingAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C37D871E1E40977100D6462A /* MeetingAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C37D872E1E40977100D6462A /* Build configuration list for PBXNativeTarget "MeetingAppUITests" */;
+			buildPhases = (
+				01EF2100563407E6E6F352D4 /* [CP] Check Pods Manifest.lock */,
+				C37D871B1E40977100D6462A /* Sources */,
+				C37D871C1E40977100D6462A /* Frameworks */,
+				C37D871D1E40977100D6462A /* Resources */,
+				4D4AA73C318CE2301C391A25 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C37D87211E40977100D6462A /* PBXTargetDependency */,
+			);
+			name = MeetingAppUITests;
+			productName = MeetingAppUITests;
+			productReference = C37D871F1E40977100D6462A /* MeetingAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C37D86F51E40976700D6462A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = IngramMicro;
+				TargetAttributes = {
+					C37D86FC1E40976700D6462A = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = A8U8Q2EEBA;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
+					};
+					C37D87131E40977100D6462A = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C37D86FC1E40976700D6462A;
+					};
+					C37D871E1E40977100D6462A = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C37D86FC1E40976700D6462A;
+					};
+				};
+			};
+			buildConfigurationList = C37D86F81E40976700D6462A /* Build configuration list for PBXProject "MeetingApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C37D86F41E40976600D6462A;
+			productRefGroup = C37D86FE1E40976E00D6462A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C37D86FC1E40976700D6462A /* MeetingApp */,
+				C37D87131E40977100D6462A /* MeetingAppTests */,
+				C37D871E1E40977100D6462A /* MeetingAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C37D86FB1E40976700D6462A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C37D870E1E40976F00D6462A /* LaunchScreen.storyboard in Resources */,
+				C35661EE1E4B1A5C00B0D912 /* GoogleService-Info.plist in Resources */,
+				C37D870B1E40976F00D6462A /* Assets.xcassets in Resources */,
+				C37D87061E40976F00D6462A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C37D87121E40977100D6462A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C37D871D1E40977100D6462A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01EF2100563407E6E6F352D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		48B6EC08D496E5FE38977076 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetingAppTests/Pods-MeetingAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D4AA73C318CE2301C391A25 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetingAppUITests/Pods-MeetingAppUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D73FAE77A3772561F17631E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		639ED525EEF55F5A0F108EBE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B4544DA9242A49FAFE8DF5B6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetingApp/Pods-MeetingApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA02F821276DED1A354E3127 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetingAppTests/Pods-MeetingAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDB93BDC896B31D2E3FD3355 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetingApp/Pods-MeetingApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C37D86F91E40976700D6462A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3557A891E40C956008E1E82 /* AdminTableViewCell.swift in Sources */,
+				C37F11FC1E4DD55D00581899 /* Meeting.swift in Sources */,
+				C3A027A31E430F590012D39E /* AdminReportViewController.swift in Sources */,
+				C37F11F81E4D9AFE00581899 /* ApproveListViewController.swift in Sources */,
+				C3580D0A1E44910C0067AA1A /* FeedbackViewController.swift in Sources */,
+				C3557A871E40BFF4008E1E82 /* AdminMeetingsViewController.swift in Sources */,
+				C37D87031E40976F00D6462A /* ViewController.swift in Sources */,
+				C35661EA1E49C80600B0D912 /* Users.swift in Sources */,
+				C3580D081E445F750067AA1A /* UserTableViewCell.swift in Sources */,
+				C37F11FA1E4DA12400581899 /* ApproveCellTableViewCell.swift in Sources */,
+				C3580D061E445B260067AA1A /* UserMeetingViewController.swift in Sources */,
+				C37D87011E40976F00D6462A /* AppDelegate.swift in Sources */,
+				C3580D0C1E449B5E0067AA1A /* CommentsViewController.swift in Sources */,
+				C3A027A71E4341090012D39E /* EmployeeNoTableViewCell.swift in Sources */,
+				C37D87091E40976F00D6462A /* MeetingApp.xcdatamodeld in Sources */,
+				C3D556941E41F737002A09FC /* NewMeetingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C37D87101E40977100D6462A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C37D87191E40977100D6462A /* MeetingAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C37D871B1E40977100D6462A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C37D87241E40977100D6462A /* MeetingAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C37D87161E40977100D6462A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C37D86FC1E40976700D6462A /* MeetingApp */;
+			targetProxy = C37D87151E40977100D6462A /* PBXContainerItemProxy */;
+		};
+		C37D87211E40977100D6462A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C37D86FC1E40976700D6462A /* MeetingApp */;
+			targetProxy = C37D87201E40977100D6462A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C37D87041E40976F00D6462A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C37D87051E40976F00D6462A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C37D870C1E40976F00D6462A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C37D870D1E40976F00D6462A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C37D87261E40977100D6462A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C37D87271E40977100D6462A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C37D87291E40977100D6462A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDFFB823BC2E21A25049104F /* Pods-MeetingApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MeetingApp/MeetingApp.entitlements;
+				DEVELOPMENT_TEAM = A8U8Q2EEBA;
+				INFOPLIST_FILE = MeetingApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.marketplace;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C37D872A1E40977100D6462A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16FF6A1CB12624B6B7240624 /* Pods-MeetingApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MeetingApp/MeetingApp.entitlements;
+				DEVELOPMENT_TEAM = A8U8Q2EEBA;
+				INFOPLIST_FILE = MeetingApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.marketplace;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		C37D872C1E40977100D6462A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F192E82EA6CFEA975FA6E8C5 /* Pods-MeetingAppTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MeetingAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.TEST1.MeetingAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetingApp.app/MeetingApp";
+			};
+			name = Debug;
+		};
+		C37D872D1E40977100D6462A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02A8EA7C1D96FCA9607FEF2D /* Pods-MeetingAppTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MeetingAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.TEST1.MeetingAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetingApp.app/MeetingApp";
+			};
+			name = Release;
+		};
+		C37D872F1E40977100D6462A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3D2B5FAC6E896898228841B /* Pods-MeetingAppUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = MeetingAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.TEST1.MeetingAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = MeetingApp;
+			};
+			name = Debug;
+		};
+		C37D87301E40977100D6462A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D049547537CD61B75AB1D378 /* Pods-MeetingAppUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = MeetingAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.TEST1.MeetingAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = MeetingApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C37D86F81E40976700D6462A /* Build configuration list for PBXProject "MeetingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37D87261E40977100D6462A /* Debug */,
+				C37D87271E40977100D6462A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C37D87281E40977100D6462A /* Build configuration list for PBXNativeTarget "MeetingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37D87291E40977100D6462A /* Debug */,
+				C37D872A1E40977100D6462A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C37D872B1E40977100D6462A /* Build configuration list for PBXNativeTarget "MeetingAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37D872C1E40977100D6462A /* Debug */,
+				C37D872D1E40977100D6462A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C37D872E1E40977100D6462A /* Build configuration list for PBXNativeTarget "MeetingAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37D872F1E40977100D6462A /* Debug */,
+				C37D87301E40977100D6462A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C37D87071E40976F00D6462A /* MeetingApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C37D87081E40976F00D6462A /* MeetingApp.xcdatamodel */,
+			);
+			currentVersion = C37D87081E40976F00D6462A /* MeetingApp.xcdatamodel */;
+			path = MeetingApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C37D86F51E40976700D6462A /* Project object */;
+}

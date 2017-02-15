@@ -78,7 +78,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     func createMeeting() {
         
         let groceryItemRef = ref.child("Meetings").childByAutoId()
-         let usr = ref.child("Meetings").child(groceryItemRef.key)
+        let usr = ref.child("Meetings").child(groceryItemRef.key)
         print("key of tbl \(groceryItemRef.key)")
         let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: startTimeLb.text!, mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: groceryItemRef.key,meetingCode: fourUniqueDigits, maxCount: maxLb.text!,currentCount: "",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: "0" ,completed: true, key: "")
          

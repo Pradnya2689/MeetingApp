@@ -450,7 +450,6 @@
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="feedBackAction:" destination="Jwl-YX-p3b" eventType="touchUpInside" id="ELL-e2-Sxf"/>
                                                                 <action selector="reportActionBtn:" destination="JA9-th-MSu" eventType="touchUpInside" id="wjA-zR-uUC"/>
                                                             </connections>
                                                         </button>

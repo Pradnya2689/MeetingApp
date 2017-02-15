@@ -23,35 +23,35 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     
     
     
-    @IBAction func feedBackAction(_ sender: Any) {
-        
-        var alert = UIAlertController(title: "Enter Meeting Code", message: "", preferredStyle: UIAlertControllerStyle.alert)
-
-        alert.addTextField{
-            (textField) -> Void in
-            
-            self.alertText = alert.textFields![0]
-            self.alertText.delegate = self
-            self.alertText.autocapitalizationType = UITextAutocapitalizationType.words
-        }
-        
-        
-        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: {
-            (action) -> Void in
-            
-            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedBack") as! FeedbackViewController
-            self.navigationController?.pushViewController(secondViewController, animated: true)
-            
-        }))
-        
-        
-        
-        self.present(alert, animated: true, completion:{
-            //Indicator.sharedInstance.stopActivityIndicator()
-            alert.view.superview?.isUserInteractionEnabled = true
-            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
-        })
-    }
+//    @IBAction func feedBackAction(_ sender: Any) {
+//        
+//        var alert = UIAlertController(title: "Enter Meeting Code", message: "", preferredStyle: UIAlertControllerStyle.alert)
+//
+//        alert.addTextField{
+//            (textField) -> Void in
+//            
+//            self.alertText = alert.textFields![0]
+//            self.alertText.delegate = self
+//            self.alertText.autocapitalizationType = UITextAutocapitalizationType.words
+//        }
+//        
+//        
+//        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: {
+//            (action) -> Void in
+//            
+//            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedBack") as! FeedbackViewController
+//            self.navigationController?.pushViewController(secondViewController, animated: true)
+//            
+//        }))
+//        
+//        
+//        
+//        self.present(alert, animated: true, completion:{
+//            //Indicator.sharedInstance.stopActivityIndicator()
+//            alert.view.superview?.isUserInteractionEnabled = true
+//            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
+//        })
+//    }
     
     func alertClose(_ gesture: UITapGestureRecognizer) {
         self.dismiss(animated: true, completion: nil)
@@ -263,10 +263,15 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
             if(subid == "1"){
               cell.feedbackBtn.titleLabel?.text = "Feedback"
+                cell.feedbackBtn.tag = indexPath.row
+                cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
+                
             }else if(subid == "2"){
                 cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
             }else{
                 cell.feedbackBtn.titleLabel?.text = "Feedback"
+                cell.feedbackBtn.tag = indexPath.row
+                cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
             }
             cell.userNameLB.text = dict.childSnapshot(forPath: "mname").value as! String?
             cell.instructLB.text = "By \(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
@@ -317,10 +322,50 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
            
             let sub = ref.child("Subscriptions").child(SubRef.key)
             sub.setValue(subcribe.toAnyObject())
+                
             }
+            
+            
         }
         
         fetchAllData()
+        
+    }
+    
+    
+    func feedbackAction(sender: UIButton){
+        
+        var alert = UIAlertController(title: "Enter Meeting Code", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addTextField{
+            (textField) -> Void in
+            
+            self.alertText = alert.textFields![0]
+            self.alertText.delegate = self
+            self.alertText.autocapitalizationType = UITextAutocapitalizationType.words
+        }
+        
+        
+        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: {
+            (action) -> Void in
+            
+            let dict = self.allmeetingName[sender.tag] as FIRDataSnapshot
+                var meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
+            
+            
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedBack") as! FeedbackViewController
+            secondViewController.meetingID = meetID
+            self.navigationController?.pushViewController(secondViewController, animated: true)
+            
+        }))
+        
+        
+        
+        self.present(alert, animated: true, completion:{
+            //Indicator.sharedInstance.stopActivityIndicator()
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
+        })
         
     }
 

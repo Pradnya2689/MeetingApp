@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import Firebase
 
 class CommentsViewController: UIViewController {
 
     @IBOutlet weak var commentTV1: UITextView!
     @IBOutlet weak var commentTV2: UITextView!
     @IBOutlet weak var submitBTNComment: UIButton!
-    
-    
+    var empID = UserDefaults.standard.value(forKey: "empID") as! String
+    var ansArray = [Int]()
+    var meetId : String!
     
     @IBAction func commentSubmitAction(_ sender: Any) {
+         let sub = ref.child("FeedBacks").childByAutoId()
+        
+        let feedBack = Feedback(comment1: commentTV1.text, comment2: commentTV2.text, contentEffeciency: ansArray[0], encouragedInteraction: ansArray[1], feedbackId: sub.key, learningObjectives: ansArray[2], meetingID: meetId,overallFeedback: ansArray[4], valuableuseOfTime: ansArray[3], key:"",empId:empID)
+        
+       
+        sub.setValue(feedBack.toAnyObject())
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "reportReview") as! AdminReportViewController
         secondViewController.isCalled = "User"
@@ -26,6 +34,10 @@ class CommentsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        navigationItem.hidesBackButton = true
+        
+        print(ansArray)
     }
     
     override func viewWillAppear(_ animated: Bool) {

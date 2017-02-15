@@ -863,6 +863,24 @@
             </objects>
             <point key="canvasLocation" x="2888.8000000000002" y="672.41379310344837"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="2Ib-zy-kCJ">
+            <objects>
+                <viewController id="4A4-gM-vYy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ahP-7R-8og"/>
+                        <viewControllerLayoutGuide type="bottom" id="KfQ-sr-OIi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JxY-UX-WlN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfm-VU-M9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3569" y="707"/>
+        </scene>
         <!--New Meeting View Controller-->
         <scene sceneID="KFu-2O-K44">
             <objects>

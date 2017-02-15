@@ -139,35 +139,6 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             // loop through the children and append them to the new array
             for item in snapshot.children {
                 
-//                let dateAsString =  (item as AnyObject).childSnapshot(forPath: "mstarttime").value as! String
-//                
-//                let calender = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
-//                calender!.locale = NSLocale.current
-//                
-//                //let timeToday = "20:00" as! NSString
-//                let timeToday = dateAsString
-//                let timeArray = timeToday.components(separatedBy: ":")
-//                let timeTodayHours = Int(timeArray[0])
-//                let timeTodayMin = Int(timeArray[1])
-//                let timeTodayDate = calender!.date(bySettingHour: timeTodayHours!, minute: timeTodayMin!, second: 00, of: NSDate() as Date, options: NSCalendar.Options())
-//                
-//                                let dateFormatter = DateFormatter()
-//                                 dateFormatter.timeStyle = .short
-//                               dateFormatter.dateFormat = "HH:mm"
-//                                let dateA = dateFormatter.date(from: dateAsString)
-//                print(dateA)
-//                let now = NSDate()
-//                if now.compare(timeTodayDate!) == .orderedDescending {
-//                    print(" 'timeToday' has passed!!! ")
-//                }
-//                
-//                
-//                switch now.compare(timeTodayDate!) {
-//                case .orderedAscending    :   print("Date A is earlier than date B")
-//                case .orderedDescending    :   print("Date A is later than date B")
-//                case .orderedSame          :   print("The two dates are the same")
-//
-//                }
                
 
                 newItems.append(item as! FIRDataSnapshot)
@@ -294,6 +265,9 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             cell.reportBtn.isHidden = true
             cell.approvalBtn.isHidden = false
             
+            cell.editBtn.tag = indexPath.row
+            cell.editBtn.addTarget(self, action: #selector(editAction), for: .touchUpInside)
+            
             
         }else{
              let dict = completedmeetingName[indexPath.row] as FIRDataSnapshot
@@ -320,6 +294,25 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             let dict = completedmeetingName[indexPath.row] as FIRDataSnapshot
             print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
         }
+    }
+    
+    
+    func editAction(sender: UIButton){
+        
+        print(sender.tag)
+        
+        if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
+            let dict = upcommingMeetingName[sender.tag] as FIRDataSnapshot
+            
+            print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
+            
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "addMeeting") as! NewMeetingViewController
+            secondViewController.isCall = "CellEditBtn"
+           // secondViewController.buttonTag = sender.tag
+            secondViewController.editMeetingDataArray = dict
+            self.navigationController?.pushViewController(secondViewController, animated: true)
+        }
+        
     }
     
     

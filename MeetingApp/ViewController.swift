@@ -28,6 +28,9 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
         if(empIdTextField.text != "" && empIdTextField.text?.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil){
             
+            
+            UserDefaults.standard.set(empIdTextField.text, forKey: "empID")
+            
             ref = FIRDatabase.database().reference()
             //addUser()
         
@@ -36,6 +39,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
         self.navigationController?.pushViewController(secondViewController, animated: true)
+            
             
         }else{
             self.showAlert(Message: "Enter Valid Employee ID")

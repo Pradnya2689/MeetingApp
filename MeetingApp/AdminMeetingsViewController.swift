@@ -139,35 +139,6 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             // loop through the children and append them to the new array
             for item in snapshot.children {
                 
-//                let dateAsString =  (item as AnyObject).childSnapshot(forPath: "mstarttime").value as! String
-//                
-//                let calender = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
-//                calender!.locale = NSLocale.current
-//                
-//                //let timeToday = "20:00" as! NSString
-//                let timeToday = dateAsString
-//                let timeArray = timeToday.components(separatedBy: ":")
-//                let timeTodayHours = Int(timeArray[0])
-//                let timeTodayMin = Int(timeArray[1])
-//                let timeTodayDate = calender!.date(bySettingHour: timeTodayHours!, minute: timeTodayMin!, second: 00, of: NSDate() as Date, options: NSCalendar.Options())
-//                
-//                                let dateFormatter = DateFormatter()
-//                                 dateFormatter.timeStyle = .short
-//                               dateFormatter.dateFormat = "HH:mm"
-//                                let dateA = dateFormatter.date(from: dateAsString)
-//                print(dateA)
-//                let now = NSDate()
-//                if now.compare(timeTodayDate!) == .orderedDescending {
-//                    print(" 'timeToday' has passed!!! ")
-//                }
-//                
-//                
-//                switch now.compare(timeTodayDate!) {
-//                case .orderedAscending    :   print("Date A is earlier than date B")
-//                case .orderedDescending    :   print("Date A is later than date B")
-//                case .orderedSame          :   print("The two dates are the same")
-//
-//                }
                
 
                 newItems.append(item as! FIRDataSnapshot)

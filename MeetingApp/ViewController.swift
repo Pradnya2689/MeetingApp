@@ -28,6 +28,9 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
         if(empIdTextField.text != "" && empIdTextField.text?.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil){
             
+            
+            UserDefaults.standard.set(empIdTextField.text, forKey: "empID")
+            
             ref = FIRDatabase.database().reference()
             //addUser()
         

@@ -158,17 +158,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         filter1.observe(.value, with: {snapshot in
             print(snapshot.value)
             
-//            if let meetings = snapshot.value{
-//                
-//                //  for item in snapshot.children{
-//                if(meetings != nil){
-////                    completedMeetingDict = (meetings as? NSMutableDictionary)!
-//                }
-//               
-//                //   }
-//                
-//                
-//            }
+
             
             var newItems = [FIRDataSnapshot]()
             
@@ -183,42 +173,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             
             
         })
-        
     
-
-        
-        
-//        ref.child("Meetings").observe(.value, with: { snapshot in
-//            print(snapshot.value)
-//            
-//            if let meetings = snapshot.value{
-//            
-//              //  for item in snapshot.children{
-//                    
-//                     self.meetingsArray = (meetings as? NSMutableDictionary)!
-//                //   }
-//                
-//           
-//            }
-//            
-//            var newItems = [FIRDataSnapshot]()
-//            
-//            // loop through the children and append them to the new array
-//            for item in snapshot.children {
-//                newItems.append(item as! FIRDataSnapshot)
-//            }
-//
-//            self.meetingDataArray = newItems as? [FIRDataSnapshot]
-//            print(self.meetingDataArray)
-//            self.adminTableView.reloadData()
-//            
-//            
-////            for item in (self.meetingsArray as? NSDictionary)!{
-////                self.meetingDataArray.add(item)
-////            }
-////            print(self.meetingDataArray)
-//        })
-        
         
 }
 
@@ -268,7 +223,8 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             cell.editBtn.tag = indexPath.row
             cell.editBtn.addTarget(self, action: #selector(editAction), for: .touchUpInside)
             
-            
+            cell.approvalBtn.tag = indexPath.row
+            cell.approvalBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
         }else{
              let dict = completedmeetingName[indexPath.row] as FIRDataSnapshot
             cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
@@ -283,7 +239,18 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         
         return cell
     }
-    
+    func subcribeAction(sender: UIButton){
+        
+        print(sender.tag)
+       // print(empID)
+        if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
+            let dict = upcommingMeetingName[sender.tag] as FIRDataSnapshot
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "approvals") as! ApproveListViewController
+            secondViewController.meetinID = dict.childSnapshot(forPath: "meetingID").value as! String!
+            self.navigationController?.pushViewController(secondViewController, animated: true)
+        }
+        
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
          if(adminMeetingSegCntrl.selectedSegmentIndex == 0){

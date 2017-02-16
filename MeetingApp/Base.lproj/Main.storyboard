@@ -190,9 +190,6 @@
                                                             <state key="normal" title="Approvals">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="approvalAction:" destination="JA9-th-MSu" eventType="touchUpInside" id="Ekt-dM-ZKP"/>
-                                                            </connections>
                                                         </button>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHJ-FD-Ed8">
                                                             <rect key="frame" x="272" y="90" width="70" height="25"/>
@@ -2287,6 +2284,9 @@
                             <constraint firstItem="VGR-LF-5YV" firstAttribute="top" secondItem="vGa-6w-RTP" secondAttribute="bottom" id="ynm-Tt-p9B"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="approvalTable" destination="ghy-yV-zBW" id="YVw-mO-yCI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4si-Fc-reF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

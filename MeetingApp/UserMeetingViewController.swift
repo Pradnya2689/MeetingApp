@@ -293,30 +293,26 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         if(userSegmentCntrl.selectedSegmentIndex == 0){
             let dict = allmeetingName[sender.tag] as FIRDataSnapshot
             if(dict.childSnapshot(forPath: "meetingType").value as! String? == "1"){
-                let SubRef = ref.child("Subscriptions").childByAutoId()
+               // let SubRef = ref.child("Subscriptions").childByAutoId()
                 var meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
-                
+                var key = "\(meetID!)\(empID)"
                 print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
                 
                 
-                let subcribe = Subcription(attendeeId:SubRef.key,empId:empID,isAttended:"0",isSubscribed:"2",meetingId: meetID!,key:"")
+                let subcribe = Subcription(attendeeId:key,empId:empID,isAttended:"0",isSubscribed:"2",meetingId: meetID!,key:"")
                 
                 
-                let sub = ref.child("Subscriptions").child(SubRef.key)
+                let sub = ref.child("Subscriptions").child(key)
                 sub.setValue(subcribe.toAnyObject())
             }else{
             
-             let SubRef = ref.child("Subscriptions").childByAutoId()
-            var meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
-            
+            let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
+            let key = "\(meetID!)\(empID)"
             print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
-            
-            
-            let subcribe = Subcription(attendeeId:SubRef.key,empId:empID,isAttended:"0",isSubscribed:"1",meetingId: meetID!,key:"")
-            
-           
-            let sub = ref.child("Subscriptions").child(SubRef.key)
+            let subcribe = Subcription(attendeeId:key,empId:empID,isAttended:"0",isSubscribed:"1",meetingId: meetID!,key:"")
+            let sub = ref.child("Subscriptions").child(key)
             sub.setValue(subcribe.toAnyObject())
+            
             }
         }
         

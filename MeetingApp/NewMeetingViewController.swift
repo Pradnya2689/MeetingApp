@@ -157,7 +157,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         let usr = ref.child("Meetings").child(groceryItemRef.key)
         print("key of tbl \(groceryItemRef.key)")
         let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: "", mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: groceryItemRef.key,meetingCode: fourUniqueDigits, maxCount: maxLb.text!,currentCount: "",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: meetType ,completed: true, key: "")
-         
+        
         usr.setValue(meetItem.toAnyObject())
             var alert = UIAlertController(title: "Meeting is Submitted", message: "", preferredStyle: UIAlertControllerStyle.alert)
             

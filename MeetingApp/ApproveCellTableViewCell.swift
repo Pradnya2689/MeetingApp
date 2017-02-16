@@ -13,6 +13,7 @@ class ApproveCellTableViewCell: UITableViewCell {
     @IBOutlet weak var rejectBtn: UIButton!
     @IBOutlet weak var approveBtn: UIButton!
     @IBOutlet weak var IdLabel: UILabel!
+    var subscriptionID:String!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

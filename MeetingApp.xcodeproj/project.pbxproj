@@ -11,6 +11,7 @@
 		7BBB0E2FC1506435DEE7ED57 /* Pods_MeetingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF5EF02E23E96962D70F9D9A /* Pods_MeetingAppUITests.framework */; };
 		C07C97B3D7710CF7902D76B9 /* Pods_MeetingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94E603323EFE27B0ECAD8DD /* Pods_MeetingAppTests.framework */; };
 		C30231E11E52E1F00027462F /* Subcription.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30231E01E52E1F00027462F /* Subcription.swift */; };
+		C35516FE1E545CC5005836C3 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35516FD1E545CC5005836C3 /* Feedback.swift */; };
 		C3557A871E40BFF4008E1E82 /* AdminMeetingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3557A861E40BFF4008E1E82 /* AdminMeetingsViewController.swift */; };
 		C3557A891E40C956008E1E82 /* AdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3557A881E40C956008E1E82 /* AdminTableViewCell.swift */; };
 		C35661EA1E49C80600B0D912 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35661E91E49C80600B0D912 /* Users.swift */; };
@@ -60,6 +61,7 @@
 		B94E603323EFE27B0ECAD8DD /* Pods_MeetingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDFFB823BC2E21A25049104F /* Pods-MeetingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingApp/Pods-MeetingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C30231E01E52E1F00027462F /* Subcription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subcription.swift; sourceTree = "<group>"; };
+		C35516FD1E545CC5005836C3 /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		C3557A861E40BFF4008E1E82 /* AdminMeetingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminMeetingsViewController.swift; sourceTree = "<group>"; };
 		C3557A881E40C956008E1E82 /* AdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminTableViewCell.swift; sourceTree = "<group>"; };
 		C35661E61E49A79600B0D912 /* MeetingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetingApp.entitlements; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				C37D87001E40976F00D6462A /* AppDelegate.swift */,
 				C37D87021E40976F00D6462A /* ViewController.swift */,
 				C35661E91E49C80600B0D912 /* Users.swift */,
+				C35516FD1E545CC5005836C3 /* Feedback.swift */,
 				C37F11FB1E4DD55D00581899 /* Meeting.swift */,
 				C30231E01E52E1F00027462F /* Subcription.swift */,
 				C37D87041E40976F00D6462A /* Main.storyboard */,
@@ -492,6 +495,7 @@
 			files = (
 				C3557A891E40C956008E1E82 /* AdminTableViewCell.swift in Sources */,
 				C37F11FC1E4DD55D00581899 /* Meeting.swift in Sources */,
+				C35516FE1E545CC5005836C3 /* Feedback.swift in Sources */,
 				C3A027A31E430F590012D39E /* AdminReportViewController.swift in Sources */,
 				C37F11F81E4D9AFE00581899 /* ApproveListViewController.swift in Sources */,
 				C3580D0A1E44910C0067AA1A /* FeedbackViewController.swift in Sources */,

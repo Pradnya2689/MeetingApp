@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class AdminReportViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     var isCalled : String!
+    
+    var contentEffCount : Int = 0
     
     @IBOutlet weak var thankyouLB: UILabel!
     @IBOutlet weak var reportSegmentOutlet: UISegmentedControl!
@@ -36,6 +39,8 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true
+        
         let leftItem = UIBarButtonItem(title: "Done",
                                        style: .plain,
                                        target: self,
@@ -56,6 +61,40 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             
             self.thankyouLB.isHidden = true
         }
+        
+        ref = FIRDatabase.database().reference()
+        var counter = 0
+        
+        let filter = ref.child("FeedBacks").queryOrdered(byChild: "meetingID")
+        filter.observe(.value , with: {snapshot in
+            
+            // filter.observe(of: .childAdded,  with: {snapshot in
+            print(snapshot.value)
+            
+            var newItems = [FIRDataSnapshot]()
+            
+            // loop through the children and append them to the new array
+            for item in snapshot.children {
+                
+                
+                self.contentEffCount = self.contentEffCount + ((item as AnyObject).childSnapshot(forPath: "contentEffeciency").value as! Int?)!
+                
+                var effyCount = ((item as AnyObject).childSnapshot(forPath: "contentEffeciency").value as! Int?)!
+                
+//                if(self.effyCount == 1){
+//                    
+//                    
+//                     counter += counter
+//                }
+                
+                print(counter)
+                
+                newItems.append(item as! FIRDataSnapshot)
+            }
+            
+            print(self.contentEffCount)
+        })
+
 
     }
     

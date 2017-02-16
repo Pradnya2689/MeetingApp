@@ -19,6 +19,8 @@ class FeedbackViewController: UIViewController {
     @IBOutlet weak var btn4: UIButton!
     @IBOutlet weak var btn5: UIButton!
     
+    
+    var meetingID : String!
     let check = UIImage(named: "checkBoxEnable")! as UIImage
     let uncheck = UIImage(named: "checkBoxDisable")! as UIImage
     
@@ -33,9 +35,13 @@ class FeedbackViewController: UIViewController {
             btn4.setImage(uncheck, for: .normal)
             btn5.setImage(uncheck, for: .normal)
             
+            selectedAnswer = 1
+            
         }else{
             
              btn1.setImage(uncheck, for: .normal)
+            
+            selectedAnswer = 0
         }
         
     }
@@ -50,10 +56,13 @@ class FeedbackViewController: UIViewController {
             btn4.setImage(uncheck, for: .normal)
             btn5.setImage(uncheck, for: .normal)
             
+            selectedAnswer = 2
             
         }else{
             
             btn2.setImage(uncheck, for: .normal)
+            
+            selectedAnswer = 0
         }
     }
     
@@ -67,9 +76,13 @@ class FeedbackViewController: UIViewController {
             btn4.setImage(uncheck, for: .normal)
             btn5.setImage(uncheck, for: .normal)
             
+            selectedAnswer = 3
+            
         }else{
             
             btn3.setImage(uncheck, for: .normal)
+            
+            selectedAnswer = 0
         }
     }
     
@@ -83,9 +96,13 @@ class FeedbackViewController: UIViewController {
             btn3.setImage(uncheck, for: .normal)
             btn5.setImage(uncheck, for: .normal)
             
+            selectedAnswer = 4
+            
         }else{
             
             btn4.setImage(uncheck, for: .normal)
+            
+            selectedAnswer = 0
         }
     }
     @IBAction func btn5Action(_ sender: Any) {
@@ -98,21 +115,75 @@ class FeedbackViewController: UIViewController {
             btn3.setImage(uncheck, for: .normal)
             btn4.setImage(uncheck, for: .normal)
             
+            selectedAnswer = 5
+            
         }else{
             
             btn5.setImage(uncheck, for: .normal)
+            
+            selectedAnswer = 0
         }
     }
 
     
     
     var questionArray = [String]()
+    var answerArray = [Int]()
+    
+    var counter: Int = 0
+    var selectedAnswer: Int = 0
     
     @IBAction func nextBtnAction(_ sender: Any) {
         
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "comments") as! CommentsViewController
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+        if(counter < 4){
+            
+            print(counter)
+            
+            if((btn1.currentImage == uncheck)&&(btn2.currentImage == uncheck)&&(btn3.currentImage == uncheck)&&(btn4.currentImage == uncheck)&&(btn5.currentImage == uncheck)){
+                
+                self.showAlert(Message: "Select CheckBox")
+                
+                //            counter += 1
+                //            answerArray.append(selectedAnswer)
+                //            btn5.setImage(uncheck, for: .normal)
+                //            btn1.setImage(uncheck, for: .normal)
+                //            btn2.setImage(uncheck, for: .normal)
+                //            btn3.setImage(uncheck, for: .normal)
+                //            btn4.setImage(uncheck, for: .normal)
+                //            selectedAnswer = 0
+                //            print(answerArray)
+            }else{
+                counter += 1
+                questionLB.text = questionArray[counter]
+                answerArray.append(selectedAnswer)
+                btn5.setImage(uncheck, for: .normal)
+                btn1.setImage(uncheck, for: .normal)
+                btn2.setImage(uncheck, for: .normal)
+                btn3.setImage(uncheck, for: .normal)
+                btn4.setImage(uncheck, for: .normal)
+                selectedAnswer = 0
+                print(answerArray)
+            }
+        
+        }else{
+            answerArray.append(selectedAnswer)
+            btn5.setImage(uncheck, for: .normal)
+            btn1.setImage(uncheck, for: .normal)
+            btn2.setImage(uncheck, for: .normal)
+            btn3.setImage(uncheck, for: .normal)
+            btn4.setImage(uncheck, for: .normal)
+            selectedAnswer = 0
+
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "comments") as! CommentsViewController
+            secondViewController.ansArray = self.answerArray
+            secondViewController.meetId = meetingID
+            self.navigationController?.pushViewController(secondViewController, animated: true)
+          
+            
+        }
+        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -135,6 +206,10 @@ class FeedbackViewController: UIViewController {
         
         btn5.layer.cornerRadius = 5.0
         btn5.clipsToBounds = true
+        
+    
+        questionLB.text = questionArray[0]
+        //counter += 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,6 +220,15 @@ class FeedbackViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         
         self.title = ""
+    }
+    
+    
+    func showAlert(Message: String)
+    {
+        let alert = UIAlertController(title:"iMint", message:Message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -53,6 +53,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
 //        })
 //    }
     
+   
     func alertClose(_ gesture: UITapGestureRecognizer) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -277,12 +278,13 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.instructLB.text = "By \(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
             cell.dateLB.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
             cell.venueLB.text = dict.childSnapshot(forPath: "mvenue").value as! String?
-            cell.seatAvaLB.text = dict.childSnapshot(forPath: "maxcount").value as! String?
+            //cell.seatAvaLB.text = dict.childSnapshot(forPath: "maxcount").value as! String?
             
                         cell.subcribeBtn.isHidden = true
                         cell.feedbackBtn.isHidden = false
                         cell.meetingCodeBtn.isHidden = true
-            
+            cell.seatAvaLB.isHidden = true
+            cell.seatsLabel.isHidden = true
         }
         
         

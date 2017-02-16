@@ -10,6 +10,7 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var seatsLabel: UILabel!
     @IBOutlet weak var userNameLB: UILabel!
     @IBOutlet weak var instructLB: UILabel!
     @IBOutlet weak var venueLB: UILabel!

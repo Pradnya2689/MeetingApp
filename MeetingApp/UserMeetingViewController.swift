@@ -363,7 +363,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 
             }else{
                 
-                self.showAlert(Message: "Enter Meeting Code")
+               // self.showAlert(Message: "Enter Meeting Code")
             }
             
         }))

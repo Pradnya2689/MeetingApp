@@ -15,43 +15,13 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     var empID = UserDefaults.standard.value(forKey: "empID") as! String
     @IBOutlet weak var userTableView: UITableView!
     @IBAction func userSegmntAction(_ sender: UISegmentedControl) {
-        
+        //Indicator.sharedInstance.startActivityIndicator()
         userTableView.reloadData()
+        //Indicator.sharedInstance.stopActivityIndicator()
     }
     
     var alertText: UITextField!
     
-    
-    
-//    @IBAction func feedBackAction(_ sender: Any) {
-//        
-//        var alert = UIAlertController(title: "Enter Meeting Code", message: "", preferredStyle: UIAlertControllerStyle.alert)
-//
-//        alert.addTextField{
-//            (textField) -> Void in
-//            
-//            self.alertText = alert.textFields![0]
-//            self.alertText.delegate = self
-//            self.alertText.autocapitalizationType = UITextAutocapitalizationType.words
-//        }
-//        
-//        
-//        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: {
-//            (action) -> Void in
-//            
-//            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedBack") as! FeedbackViewController
-//            self.navigationController?.pushViewController(secondViewController, animated: true)
-//            
-//        }))
-//        
-//        
-//        
-//        self.present(alert, animated: true, completion:{
-//            //Indicator.sharedInstance.stopActivityIndicator()
-//            alert.view.superview?.isUserInteractionEnabled = true
-//            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
-//        })
-//    }
     
    
     func alertClose(_ gesture: UITapGestureRecognizer) {
@@ -78,15 +48,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        allmeetingName = ["Meeting2","Meeting3","Meeting5","Meeting6"]
-//        instructorArray = ["by John Miller","by Kate Smith","by Brain Hamilton","by Henry Pitt","by Daisy Steel"]
-//        venueArray = ["Datsun","Galaxy","Earth","Venus"]
-//        dateArray = ["6thFeb 3:00 PM-4:30 PM","7thFeb 10:00 PM-12:30 PM","7thFeb 5:00 PM-6:00 PM","8thFeb 5:00 PM-6:00 PM"]
-//        
-        //myMeetingName = ["Meeting1","Meeting4","Meeting7"]
-        instructorArray1 = ["by Kate Smith","by John Miller","by Daisy Steel"]
-        venueArray1 = ["Jupiter","Venus","Datsun"]
-        dateArray1 = ["7thFeb 10:00 PM-12:30 PM","8thFeb 5:00 PM-6:00 PM","9thFeb 5:00 PM-6:00 PM"]
+
         
         
         navigationItem.hidesBackButton = true
@@ -112,6 +74,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewWillAppear(_ animated: Bool) {
         
         self.title = "Meetings"
+        userSegmentCntrl.selectedSegmentIndex = 0
+        Indicator.sharedInstance.startActivityIndicator()
         fetchAllData()
         self.userTableView.reloadData()
         self.userSegmentCntrl.translatesAutoresizingMaskIntoConstraints = true
@@ -134,11 +98,11 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     
     
     func fetchAllData(){
-         myMeetingName  = [FIRDataSnapshot]()
+        
         
         
          allmeetingName = [FIRDataSnapshot]()
-      meetingIds.removeAllObjects()
+      
         ref = FIRDatabase.database().reference()
         
         var allMeetingDict = NSMutableDictionary()
@@ -159,12 +123,14 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
           self.allmeetingName = newItems as? [FIRDataSnapshot]
 //            print(self.allmeetingName)
+            // Indicator.sharedInstance.stopActivityIndicator()
            self.userTableView.reloadData()
             
         })
         
         let  ref1 = FIRDatabase.database().reference()
-        
+        meetingIds.removeAllObjects()
+         myMeetingName  = [FIRDataSnapshot]()
         let filter1 = ref1.child("Subscriptions").queryOrdered(byChild: "empId").queryEqual(toValue: empID)
         
         filter1.observe(.value, with: {snapshot in
@@ -186,19 +152,19 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     var newItems1 = [FIRDataSnapshot]()
                     
                     for item in snapshot.children {
-                       
+                      //  newItems1.append(item as! FIRDataSnapshot)
                         print("meeting id ******** \(item)")
-                        self.myMeetingName.append(item as! FIRDataSnapshot)
+                        
                         newItems1.append(item as! FIRDataSnapshot)
                     }
-                  
+                  self.myMeetingName = (newItems1 as? [FIRDataSnapshot])!
                 })
                 print(self.allmeetingName)
                
             }
            
 
-            
+             Indicator.sharedInstance.stopActivityIndicator()
          self.userTableView.reloadData()
         })
         
@@ -254,6 +220,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.subcribeBtn.isHidden = false
             cell.feedbackBtn.isHidden = true
             cell.meetingCodeBtn.isHidden = true
+            cell.seatAvaLB.isHidden = false
+            cell.seatsLabel.isHidden = false
             
             
         }else{
@@ -295,75 +263,69 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     func subcribeAction(sender: UIButton){
         
         
-//        var alert = UIAlertController(title: "Do you want to Subscribe", message: "", preferredStyle: UIAlertControllerStyle.alert)
-//        
-//        
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {
-//            (action) -> Void in
-//            self.dismiss(animated: true, completion: nil)
-//        }))
-//        
-//        
-//        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: {
-//            
-//            UIAlertAction in
-//            
-//            // Indicator.sharedInstance.startActivityIndicator()
-//            
-//            
-//            
-//            
-//        }))
-//        
-//        
-//        alert.view.tintColor = UIColor.black
-//        
-//        
-//        self.present(alert, animated: true, completion:{
-//            // Indicator.sharedInstance.stopActivityIndicator()
-//            alert.view.superview?.isUserInteractionEnabled = true
-//            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
-//        })
+        var alert = UIAlertController(title: "Do you want to Subscribe", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        
+        
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: {
+            (action) -> Void in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
+            
+            UIAlertAction in
+            
+            // Indicator.sharedInstance.startActivityIndicator()
+            
+            print(sender.tag)
+            print(self.empID)
+            
+            if(self.userSegmentCntrl.selectedSegmentIndex == 0){
+                let dict = self.allmeetingName[sender.tag] as FIRDataSnapshot
+                if(dict.childSnapshot(forPath: "meetingType").value as! String? == "1"){
+                    // let SubRef = ref.child("Subscriptions").childByAutoId()
+                    var meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
+                    var key = "\(meetID!)\(self.empID)"
+                    print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
+                    
+                    
+                    let subcribe = Subcription(attendeeId:key,empId:self.empID,isAttended:"0",isSubscribed:"2",meetingId: meetID!,key:"")
+                    
+                    
+                    let sub = ref.child("Subscriptions").child(key)
+                    sub.setValue(subcribe.toAnyObject())
+                }else{
+                    
+                    let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
+                    let key = "\(meetID!)\(self.empID)"
+                    print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
+                    let subcribe = Subcription(attendeeId:key,empId:self.empID,isAttended:"0",isSubscribed:"1",meetingId: meetID!,key:"")
+                    let sub = ref.child("Subscriptions").child(key)
+                    sub.setValue(subcribe.toAnyObject())
+                    
+                }
+                
+                
+            }
+             Indicator.sharedInstance.startActivityIndicator()
+            self.fetchAllData()
+            
+            
+        }))
+        
+        
+        alert.view.tintColor = UIColor.black
+        
+        
+        self.present(alert, animated: true, completion:{
+            // Indicator.sharedInstance.stopActivityIndicator()
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
+        })
 
         
         
-        
-        
-        
-        
-        
-        print(sender.tag)
-        print(empID)
-        
-        if(userSegmentCntrl.selectedSegmentIndex == 0){
-            let dict = allmeetingName[sender.tag] as FIRDataSnapshot
-            if(dict.childSnapshot(forPath: "meetingType").value as! String? == "1"){
-               // let SubRef = ref.child("Subscriptions").childByAutoId()
-                var meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
-                var key = "\(meetID!)\(empID)"
-                print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
-                
-                
-                let subcribe = Subcription(attendeeId:key,empId:empID,isAttended:"0",isSubscribed:"2",meetingId: meetID!,key:"")
-                
-                
-                let sub = ref.child("Subscriptions").child(key)
-                sub.setValue(subcribe.toAnyObject())
-            }else{
-            
-            let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
-            let key = "\(meetID!)\(empID)"
-            print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
-            let subcribe = Subcription(attendeeId:key,empId:empID,isAttended:"0",isSubscribed:"1",meetingId: meetID!,key:"")
-            let sub = ref.child("Subscriptions").child(key)
-            sub.setValue(subcribe.toAnyObject())
-            
-            }
-            
-            
-        }
-        
-        fetchAllData()
 //        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "viewComment") as! ViewCommentsViewController
 //        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
@@ -398,6 +360,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedBack") as! FeedbackViewController
             secondViewController.meetingID = meetID
             self.navigationController?.pushViewController(secondViewController, animated: true)
+                
             }else{
                 
                 self.showAlert(Message: "Enter Meeting Code")

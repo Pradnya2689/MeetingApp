@@ -128,6 +128,10 @@
                                     <constraint firstAttribute="trailing" secondItem="Qe0-zX-ySp" secondAttribute="trailing" constant="8" id="yzf-BB-X2e"/>
                                     <constraint firstAttribute="trailing" secondItem="2G4-1a-gZK" secondAttribute="trailing" id="zmo-82-RTi"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="bqJ-c2-LZV"/>
                                 </connections>

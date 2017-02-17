@@ -377,21 +377,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         })
         
     }
-    
-    func showAlert(Message: String)
-    {
-        let alert = UIAlertController(title:"Meeting App", message:Message , preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = self.alertText.text else { return true }
-        let newLength = text.characters.count + string.characters.count - range.length
-        return newLength <= 4
-    }
-
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

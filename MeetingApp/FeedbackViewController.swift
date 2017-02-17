@@ -187,7 +187,7 @@ class FeedbackViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        questionArray = ["The instructor presented the content effectively","The instructor encouraged interaction","The learning objectives were clearly presented and achieved.","I feel this session was a valuable use of my time.","Overall training feedback"]
+        questionArray = ["1. The instructor presented the content effectively","2. The instructor encouraged interaction","3. The learning objectives were clearly presented and achieved.","4. I feel this session was a valuable use of my time.","5. Overall training feedback"]
         
        feedBackBtn.layer.cornerRadius = 5.0
         feedBackBtn.clipsToBounds = true

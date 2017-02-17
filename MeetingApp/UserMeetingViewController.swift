@@ -294,6 +294,44 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     
     func subcribeAction(sender: UIButton){
         
+        
+//        var alert = UIAlertController(title: "Do you want to Subscribe", message: "", preferredStyle: UIAlertControllerStyle.alert)
+//        
+//        
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {
+//            (action) -> Void in
+//            self.dismiss(animated: true, completion: nil)
+//        }))
+//        
+//        
+//        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: {
+//            
+//            UIAlertAction in
+//            
+//            // Indicator.sharedInstance.startActivityIndicator()
+//            
+//            
+//            
+//            
+//        }))
+//        
+//        
+//        alert.view.tintColor = UIColor.black
+//        
+//        
+//        self.present(alert, animated: true, completion:{
+//            // Indicator.sharedInstance.stopActivityIndicator()
+//            alert.view.superview?.isUserInteractionEnabled = true
+//            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
+//        })
+
+        
+        
+        
+        
+        
+        
+        
         print(sender.tag)
         print(empID)
         
@@ -330,6 +368,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
 //        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
+    var meetingCode : String!
     
     func feedbackAction(sender: UIButton){
         
@@ -347,6 +386,11 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: {
             (action) -> Void in
             
+            let code = alert.textFields![0].text
+            self.meetingCode = code
+            
+            if(self.meetingCode != ""){
+            
             let dict = self.allmeetingName[sender.tag] as FIRDataSnapshot
                 var meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
             
@@ -354,6 +398,10 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedBack") as! FeedbackViewController
             secondViewController.meetingID = meetID
             self.navigationController?.pushViewController(secondViewController, animated: true)
+            }else{
+                
+                self.showAlert(Message: "Enter Meeting Code")
+            }
             
         }))
         

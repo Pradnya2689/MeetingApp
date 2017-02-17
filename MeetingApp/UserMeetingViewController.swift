@@ -154,8 +154,6 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             // loop through the children and append them to the new array
             for item in snapshot.children {
                 
-                
-                
                 newItems.append(item as! FIRDataSnapshot)
             }
             
@@ -239,6 +237,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
             if(meetingIds.contains(dict.childSnapshot(forPath: "meetingID").value as! String!)){
                 cell.subcribeBtn.titleLabel?.text = "Subscribed"
+                cell.subcribeBtn.tag = indexPath.row
+                cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
             }else{
                 cell.subcribeBtn.titleLabel?.text = "Subscribe"
                 cell.subcribeBtn.tag = indexPath.row
@@ -364,7 +364,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         
         fetchAllData()
-        
+//        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "viewComment") as! ViewCommentsViewController
+//        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
     var meetingCode : String!

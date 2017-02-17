@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CE8E1E91E55A64000F66A46 /* ViewCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE8E1E81E55A64000F66A46 /* ViewCommentsViewController.swift */; };
+		4CE8E1EB1E55A66E00F66A46 /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE8E1EA1E55A66E00F66A46 /* CommentsCell.swift */; };
 		718DB026045F97DB47A45FA1 /* Pods_MeetingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E23A08BAA3CF27D9F8D3AA9 /* Pods_MeetingApp.framework */; };
 		7BBB0E2FC1506435DEE7ED57 /* Pods_MeetingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF5EF02E23E96962D70F9D9A /* Pods_MeetingAppUITests.framework */; };
 		C07C97B3D7710CF7902D76B9 /* Pods_MeetingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94E603323EFE27B0ECAD8DD /* Pods_MeetingAppTests.framework */; };
@@ -57,6 +59,8 @@
 		02A8EA7C1D96FCA9607FEF2D /* Pods-MeetingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingAppTests/Pods-MeetingAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		0E23A08BAA3CF27D9F8D3AA9 /* Pods_MeetingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16FF6A1CB12624B6B7240624 /* Pods-MeetingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingApp/Pods-MeetingApp.release.xcconfig"; sourceTree = "<group>"; };
+		4CE8E1E81E55A64000F66A46 /* ViewCommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCommentsViewController.swift; sourceTree = "<group>"; };
+		4CE8E1EA1E55A66E00F66A46 /* CommentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		A3D2B5FAC6E896898228841B /* Pods-MeetingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingAppUITests/Pods-MeetingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B94E603323EFE27B0ECAD8DD /* Pods_MeetingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDFFB823BC2E21A25049104F /* Pods-MeetingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingApp/Pods-MeetingApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 				C3580D0B1E449B5E0067AA1A /* CommentsViewController.swift */,
 				C37F11F71E4D9AFE00581899 /* ApproveListViewController.swift */,
 				C37F11F91E4DA12400581899 /* ApproveCellTableViewCell.swift */,
+				4CE8E1E81E55A64000F66A46 /* ViewCommentsViewController.swift */,
+				4CE8E1EA1E55A66E00F66A46 /* CommentsCell.swift */,
 			);
 			path = MeetingApp;
 			sourceTree = "<group>";
@@ -504,8 +510,10 @@
 				C35661EA1E49C80600B0D912 /* Users.swift in Sources */,
 				C30231E11E52E1F00027462F /* Subcription.swift in Sources */,
 				C3580D081E445F750067AA1A /* UserTableViewCell.swift in Sources */,
+				4CE8E1EB1E55A66E00F66A46 /* CommentsCell.swift in Sources */,
 				C37F11FA1E4DA12400581899 /* ApproveCellTableViewCell.swift in Sources */,
 				C3580D061E445B260067AA1A /* UserMeetingViewController.swift in Sources */,
+				4CE8E1E91E55A64000F66A46 /* ViewCommentsViewController.swift in Sources */,
 				C37D87011E40976F00D6462A /* AppDelegate.swift in Sources */,
 				C3580D0C1E449B5E0067AA1A /* CommentsViewController.swift in Sources */,
 				C3A027A71E4341090012D39E /* EmployeeNoTableViewCell.swift in Sources */,

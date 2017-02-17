@@ -860,6 +860,70 @@
             </objects>
             <point key="canvasLocation" x="2888.8000000000002" y="672.41379310344837"/>
         </scene>
+        <!--View Comments View Controller-->
+        <scene sceneID="j1i-Z1-3d6">
+            <objects>
+                <viewController storyboardIdentifier="viewComment" id="2Ic-u5-WDg" customClass="ViewCommentsViewController" customModule="MeetingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YeN-mS-CpI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Abp-cy-vIB"/>
+                    </layoutGuides>
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="37H-hh-e2Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="JmA-Vu-R1t">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="coomntCell" rowHeight="66" id="vIg-0f-GN7" customClass="CommentsCell" customModule="MeetingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1" width="375" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vIg-0f-GN7" id="5Fn-UH-cl8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HF-R9-UCc">
+                                                    <rect key="frame" x="8" y="10" width="359" height="45"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="7HF-R9-UCc" secondAttribute="trailing" constant="8" id="RRU-V8-JUn"/>
+                                                <constraint firstItem="7HF-R9-UCc" firstAttribute="top" secondItem="5Fn-UH-cl8" secondAttribute="top" constant="10" id="Y0M-WJ-7cC"/>
+                                                <constraint firstAttribute="bottom" secondItem="7HF-R9-UCc" secondAttribute="bottom" constant="11" id="hSi-85-UQ4"/>
+                                                <constraint firstItem="7HF-R9-UCc" firstAttribute="leading" secondItem="5Fn-UH-cl8" secondAttribute="leading" constant="8" id="tHT-Gx-xoZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commntLbl" destination="7HF-R9-UCc" id="zZY-wt-dFN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2Ic-u5-WDg" id="9Zo-Bz-O5J"/>
+                                    <outlet property="delegate" destination="2Ic-u5-WDg" id="WTM-th-Gyd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JmA-Vu-R1t" firstAttribute="leading" secondItem="37H-hh-e2Y" secondAttribute="leading" id="NhY-0y-nFp"/>
+                            <constraint firstItem="JmA-Vu-R1t" firstAttribute="top" secondItem="37H-hh-e2Y" secondAttribute="top" id="XKV-uf-CMc"/>
+                            <constraint firstAttribute="trailing" secondItem="JmA-Vu-R1t" secondAttribute="trailing" id="dvs-Je-EXH"/>
+                            <constraint firstItem="JmA-Vu-R1t" firstAttribute="bottom" secondItem="Abp-cy-vIB" secondAttribute="top" id="nof-ay-8wP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commntTbl" destination="JmA-Vu-R1t" id="ikN-8B-Hju"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C44-RC-2Y9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2252" y="1316.4917541229386"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="2Ib-zy-kCJ">
             <objects>

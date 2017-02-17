@@ -13,11 +13,48 @@ import  Firebase
 let screenSize: CGRect = UIScreen.main.bounds
 let screenWidth = screenSize.width
 let screenHeight = screenSize.height
+
+
+open class Indicator {
+    var window :UIWindow = UIApplication.shared.keyWindow!
+    
+    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    
+    class var sharedInstance: Indicator {
+        struct Static {
+            static let sharedInstance: Indicator = Indicator()
+        }
+        return Static.sharedInstance
+    }
+    
+    
+    
+    open func startActivityIndicator() {
+        
+        activityIndicator.hidesWhenStopped = true;
+        activityIndicator.activityIndicatorViewStyle  = UIActivityIndicatorViewStyle.gray;
+        activityIndicator.center = window.center;
+        activityIndicator.startAnimating();
+        window.addSubview(activityIndicator)
+    }
+    
+    open func stopActivityIndicator() {
+        
+        activityIndicator.stopAnimating();
+        window.removeFromSuperview()
+        
+    }
+    
+    
+}
+
+
 var ref: FIRDatabaseReference!
 
 class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDelegate {
 
-    @IBOutlet weak var lineLB: UILabel!
+    @IBOutlet weak var loginScrollView: UIScrollView!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var empIdTextField: UITextField!
     
     var deviceToken = UserDefaults.standard.value(forKey: "token")
@@ -34,8 +71,6 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
             ref = FIRDatabase.database().reference()
             //addUser()
         
-//        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "adminMeet") as! AdminMeetingsViewController
-//        self.navigationController?.pushViewController(secondViewController, animated: true)
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
         self.navigationController?.pushViewController(secondViewController, animated: true)
@@ -73,15 +108,14 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
         print(deviceToken)
         
-        var frm: CGRect = lineLB.frame
-        
-//        self.signinButton.translatesAutoresizingMaskIntoConstraints = true
-//        self.signinButton.frame = CGRect(x: (screenWidth-103)/2, y: frm.origin.y+64, width: 103, height: 30)
+        self.loginScrollView.contentInset = UIEdgeInsets.zero
+        self.loginScrollView.scrollIndicatorInsets = UIEdgeInsets.zero
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(gesture:)))
         self.view.addGestureRecognizer(tapGesture)
         
         empIdTextField.delegate = self
+        emailTextField.delegate = self
         
         signinButton.layer.cornerRadius = 5.0
         signinButton.clipsToBounds = true
@@ -103,7 +137,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
     
     func showAlert(Message: String)
     {
-        let alert = UIAlertController(title:"iMint", message:Message , preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title:"Meeting App", message:Message , preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
@@ -114,23 +148,66 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
         self.title = "Signup"
         
-        
+        registerKeyboardNotifications()
        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        unregisterKeyboardNotifications()
     }
     
     func handleTap(gesture: UITapGestureRecognizer){
         empIdTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
         
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
-        textField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
         return true
     }
     
     func doneClicked(sender: AnyObject) {
         self.view.endEditing(true)
+    }
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = self.empIdTextField.text else { return true }
+        let newLength = text.characters.count + string.characters.count - range.length
+        return newLength <= 6
+    }
+    
+    
+    func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func unregisterKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func keyboardDidShow(_ notification: Notification) {
+        let userInfo: NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardSize = (userInfo.object(forKey: UIKeyboardFrameBeginUserInfoKey)! as AnyObject).cgRectValue.size
+        //        let contentInsets = UIEdgeInsetsMake(0, 0, 200, 0)
+        //        self.loginScrollView.contentInset = contentInsets
+        //        self.loginScrollView.scrollIndicatorInsets = contentInsets
+        
+        var contentInset:UIEdgeInsets = self.loginScrollView.contentInset
+        contentInset.bottom = keyboardSize.height
+        self.loginScrollView.contentInset = contentInset
+    }
+    
+    func keyboardWillHide(_ notification: Notification) {
+        let userInfo: NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardSize = (userInfo.object(forKey: UIKeyboardFrameBeginUserInfoKey)! as AnyObject).cgRectValue.size
+        var contentInset:UIEdgeInsets = self.loginScrollView.contentInset
+        contentInset.bottom = -keyboardSize.height
+        self.loginScrollView.contentInset = contentInset
     }
     
     override func didReceiveMemoryWarning() {

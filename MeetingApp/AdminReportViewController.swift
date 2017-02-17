@@ -11,6 +11,7 @@ import Firebase
 
 class AdminReportViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var viewaAllCmtsBtn: UIButton!
     var isCalled : String!
     
     var contentEffTotalCount : Int = 0
@@ -159,11 +160,15 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             
             self.thankyouLB.isHidden = false
             
+            self.viewaAllCmtsBtn.isHidden = true
+            
         }else{
             
             self.reportSegmentOutlet.isHidden = false
             
             self.thankyouLB.isHidden = true
+            
+            self.viewaAllCmtsBtn.isHidden = false
         }
         
         ref = FIRDatabase.database().reference()

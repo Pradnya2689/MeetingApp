@@ -19,6 +19,7 @@ class FeedbackViewController: UIViewController {
     @IBOutlet weak var btn4: UIButton!
     @IBOutlet weak var btn5: UIButton!
     
+    @IBOutlet weak var countLabel: UILabel!
     
     var meetingID : String!
     let check = UIImage(named: "checkBoxEnable")! as UIImage
@@ -129,6 +130,7 @@ class FeedbackViewController: UIViewController {
     
     var questionArray = [String]()
     var answerArray = [Int]()
+    var countArray = [String]()
     
     var counter: Int = 0
     var selectedAnswer: Int = 0
@@ -155,6 +157,7 @@ class FeedbackViewController: UIViewController {
             }else{
                 counter += 1
                 questionLB.text = questionArray[counter]
+                countLabel.text = countArray[counter]
                 answerArray.append(selectedAnswer)
                 btn5.setImage(uncheck, for: .normal)
                 btn1.setImage(uncheck, for: .normal)
@@ -189,6 +192,8 @@ class FeedbackViewController: UIViewController {
 
         questionArray = ["1. The instructor presented the content effectively","2. The instructor encouraged interaction","3. The learning objectives were clearly presented and achieved.","4. I feel this session was a valuable use of my time.","5. Overall training feedback"]
         
+        countArray = ["1 of 5", "2 of 5","3 of 5","4 of 5","5 of 5"]
+        
        feedBackBtn.layer.cornerRadius = 5.0
         feedBackBtn.clipsToBounds = true
         
@@ -209,6 +214,7 @@ class FeedbackViewController: UIViewController {
         
     
         questionLB.text = questionArray[0]
+        countLabel.text = countArray[0]
         //counter += 1
     }
     
@@ -225,7 +231,7 @@ class FeedbackViewController: UIViewController {
     
     func showAlert(Message: String)
     {
-        let alert = UIAlertController(title:"iMint", message:Message , preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title:"Meeting App", message:Message , preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         

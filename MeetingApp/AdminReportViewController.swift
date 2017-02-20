@@ -139,7 +139,7 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
     
     
     
-    
+    var meetingID : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,7 +173,7 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
         
         ref = FIRDatabase.database().reference()
         
-        let filter = ref.child("FeedBacks").queryOrdered(byChild: "meetingID")
+        let filter = ref.child("FeedBacks").queryOrdered(byChild: "meetingID").queryEqual(toValue: meetingID)
         filter.observe(.value , with: {snapshot in
             
             print(snapshot.value)

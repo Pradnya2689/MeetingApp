@@ -30,6 +30,7 @@ class CommentsViewController: UIViewController, UITextViewDelegate,UIGestureReco
         sub.setValue(feedBack.toAnyObject())
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "reportReview") as! AdminReportViewController
+        secondViewController.meetingID = meetId
         secondViewController.isCalled = "User"
         self.navigationController?.pushViewController(secondViewController, animated: true)
         

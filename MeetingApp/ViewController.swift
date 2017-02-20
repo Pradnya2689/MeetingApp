@@ -57,7 +57,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var empIdTextField: UITextField!
     
-    var deviceToken = UserDefaults.standard.value(forKey: "token")
+    var deviceToken = ""
     
     @IBAction func signINBtnAction(_ sender: Any) {
         
@@ -97,7 +97,11 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
     }
     func addUser() {
-        let user = Users.init(deviceToken: deviceToken as! String, empId: self.empIdTextField.text!, isAdmin: "0", deviceType: "0", key: "")
+        if let token = UserDefaults.standard.value(forKey: "token") as? String{
+            deviceToken = token
+        }
+        
+        let user = Users.init(deviceToken: deviceToken, empId: self.empIdTextField.text!, isAdmin: "0", deviceType: "0", key: "")
         
         let usr = ref.child("Users").child(self.empIdTextField.text!)
         usr.setValue(user.toAnyObject())

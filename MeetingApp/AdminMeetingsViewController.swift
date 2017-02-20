@@ -27,6 +27,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     @IBAction func reportActionBtn(_ sender: Any) {
         
         let ListViewControllerObj = self.storyboard?.instantiateViewController(withIdentifier: "reportReview") as? AdminReportViewController
+        
         ListViewControllerObj?.isCalled = "Admin"
         self.navigationController?.pushViewController(ListViewControllerObj!, animated: true)
         

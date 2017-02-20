@@ -81,8 +81,9 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         
         self.title = "Meetings"
         userSegmentCntrl.selectedSegmentIndex = 0
-        Indicator.sharedInstance.startActivityIndicator()
+        //Indicator.sharedInstance.startActivityIndicator()
         fetchAllData()
+        fetchMyMeeting()
         self.userTableView.reloadData()
         self.userSegmentCntrl.translatesAutoresizingMaskIntoConstraints = true
         self.userSegmentCntrl.frame = CGRect(x: 5, y: 0, width: screenWidth-10, height: 32)
@@ -108,7 +109,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         let  ref1 = FIRDatabase.database().reference()
         meetingIds.removeAllObjects()
         isSubscribed.removeAllObjects()
-       // myMeetingName.removeAll()
+       
         let filter1 = ref1.child("Subscriptions").queryOrdered(byChild: "empId").queryEqual(toValue: empID)
         
         filter1.observe(.value, with: {snapshot in
@@ -147,14 +148,17 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             }
             
             
-            
+           self.userTableView.reloadData()
         })
     }
     
     func fetchAllData(){
         // myMeetingName.removeAll()
          allmeetingName.removeAll()
+        userTableView.reloadData()
          //meetingIds.removeAllObjects()
+        
+         Indicator.sharedInstance.startActivityIndicator()
         ref = FIRDatabase.database().reference()
         
         var allMeetingDict = NSMutableDictionary()
@@ -162,9 +166,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         let filter = ref.child("Meetings").queryOrdered(byChild: "mdate")
         filter.observe(.value , with: {snapshot in
              print(snapshot.value)
-            if(snapshot.childrenCount == 0){
-                Indicator.sharedInstance.stopActivityIndicator()
-            }
+           
             var newItems = [FIRDataSnapshot]()
             for item in snapshot.children {
                 
@@ -256,19 +258,29 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             let subid = isSubscribed[indexPath.row] as! String
             
             if(subid == "1"){
+//                cell.translatesAutoresizingMaskIntoConstraints = true
+//                cell.feedbackBtn.frame = CGRect(x: 272, y: 124, width: 90, height: 21)
               cell.feedbackBtn.titleLabel?.text = "Feedback"
                 cell.feedbackBtn.tag = indexPath.row
                 cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
                 
             }else if(subid == "2"){
                 cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
-            }else{
-                cell.feedbackBtn.titleLabel?.text = "Feedback"
-                cell.feedbackBtn.tag = indexPath.row
-                cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
+//                cell.translatesAutoresizingMaskIntoConstraints = true
+//                cell.feedbackBtn.frame = CGRect(x: 200, y: 124, width: 162, height: 21)
+                
             }
+//            else{
+////                cell.translatesAutoresizingMaskIntoConstraints = true
+////                cell.feedbackBtn.frame = CGRect(x: 272, y: 124, width: 90, height: 21)
+//                cell.feedbackBtn.titleLabel?.text = "Feedback"
+//                cell.feedbackBtn.tag = indexPath.row
+//                cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
+//            }
             var instrID = dict.childSnapshot(forPath: "minstructorID").value as? String
             if(instrID! == empID){
+//                cell.translatesAutoresizingMaskIntoConstraints = true
+//                cell.feedbackBtn.frame = CGRect(x: 262, y: 124, width: 100, height: 21)
                  cell.feedbackBtn.titleLabel?.text = "Get Code"
                 cell.feedbackBtn.tag = indexPath.row
                 cell.feedbackBtn.addTarget(self, action: #selector(codeAction), for: .touchUpInside)
@@ -370,7 +382,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     
                 }
                
-                Indicator.sharedInstance.startActivityIndicator()
+               
                 self.fetchAllData()
             }
             

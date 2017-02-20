@@ -264,6 +264,16 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     }
     
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+        UIView.animate(withDuration: 0.3, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1.05, 1.05, 1)
+        },completion: nil)
+    }
+
+    
+    
     func editAction(sender: UIButton){
         
         print(sender.tag)

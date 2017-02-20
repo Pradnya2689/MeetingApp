@@ -260,6 +260,16 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     
+   
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    
+        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+        UIView.animate(withDuration: 0.3, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1.05, 1.05, 1)
+        },completion: nil)
+    }
+    
+    
     func subcribeAction(sender: UIButton){
         
         
@@ -376,6 +386,12 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
         })
         
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = self.alertText.text else { return true }
+        let newLength = text.characters.count + string.characters.count - range.length
+        return newLength <= 4
     }
  
     override func didReceiveMemoryWarning() {

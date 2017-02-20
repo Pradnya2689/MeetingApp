@@ -71,7 +71,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
             UserDefaults.standard.set(empIdTextField.text, forKey: "empID")
             
             ref = FIRDatabase.database().reference()
-            //addUser()
+            addUser()
         
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController

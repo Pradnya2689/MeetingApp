@@ -63,13 +63,15 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
         let numberCharacters = NSCharacterSet.decimalDigits.inverted
         
+//        if(self.isValidEmail(testStr: self.emailTextField.text!)){
+        
         if(empIdTextField.text != "" && empIdTextField.text?.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil){
             
             
             UserDefaults.standard.set(empIdTextField.text, forKey: "empID")
             
             ref = FIRDatabase.database().reference()
-            //addUser()
+            addUser()
         
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
@@ -79,7 +81,9 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         }else{
             self.showAlert(Message: "Enter Valid Employee ID")
         }
-        
+//        }else{
+//            self.showAlert(Message: "Enter Valid Email")
+//        }
     }
     
     func createMeeting() {
@@ -99,6 +103,13 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         usr.setValue(user.toAnyObject())
     }
 
+    
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
     
     
     @IBOutlet weak var signinButton: UIButton!

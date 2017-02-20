@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C17D9781E5AC3A20090AECF /* System San Francisco Display Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C17D9771E5AC3A20090AECF /* System San Francisco Display Regular.ttf */; };
+		4C17D97A1E5AC4FF0090AECF /* System San Francisco Display Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C17D9791E5AC4FF0090AECF /* System San Francisco Display Bold.ttf */; };
+		4C7A01C31E5736FB005125D9 /* SF UI Font License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4C7A01C21E5736FB005125D9 /* SF UI Font License.rtf */; };
 		4CE8E1E91E55A64000F66A46 /* ViewCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE8E1E81E55A64000F66A46 /* ViewCommentsViewController.swift */; };
 		4CE8E1EB1E55A66E00F66A46 /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE8E1EA1E55A66E00F66A46 /* CommentsCell.swift */; };
 		718DB026045F97DB47A45FA1 /* Pods_MeetingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E23A08BAA3CF27D9F8D3AA9 /* Pods_MeetingApp.framework */; };
@@ -59,6 +62,9 @@
 		02A8EA7C1D96FCA9607FEF2D /* Pods-MeetingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingAppTests/Pods-MeetingAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		0E23A08BAA3CF27D9F8D3AA9 /* Pods_MeetingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16FF6A1CB12624B6B7240624 /* Pods-MeetingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingApp/Pods-MeetingApp.release.xcconfig"; sourceTree = "<group>"; };
+		4C17D9771E5AC3A20090AECF /* System San Francisco Display Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Regular.ttf"; sourceTree = "<group>"; };
+		4C17D9791E5AC4FF0090AECF /* System San Francisco Display Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Bold.ttf"; sourceTree = "<group>"; };
+		4C7A01C21E5736FB005125D9 /* SF UI Font License.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "SF UI Font License.rtf"; sourceTree = "<group>"; };
 		4CE8E1E81E55A64000F66A46 /* ViewCommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCommentsViewController.swift; sourceTree = "<group>"; };
 		4CE8E1EA1E55A66E00F66A46 /* CommentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		A3D2B5FAC6E896898228841B /* Pods-MeetingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingAppUITests/Pods-MeetingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +195,9 @@
 				C37F11F91E4DA12400581899 /* ApproveCellTableViewCell.swift */,
 				4CE8E1E81E55A64000F66A46 /* ViewCommentsViewController.swift */,
 				4CE8E1EA1E55A66E00F66A46 /* CommentsCell.swift */,
+				4C17D9771E5AC3A20090AECF /* System San Francisco Display Regular.ttf */,
+				4C17D9791E5AC4FF0090AECF /* System San Francisco Display Bold.ttf */,
+				4C7A01C21E5736FB005125D9 /* SF UI Font License.rtf */,
 			);
 			path = MeetingApp;
 			sourceTree = "<group>";
@@ -349,8 +358,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C37D870E1E40976F00D6462A /* LaunchScreen.storyboard in Resources */,
+				4C17D9781E5AC3A20090AECF /* System San Francisco Display Regular.ttf in Resources */,
 				C35661EE1E4B1A5C00B0D912 /* GoogleService-Info.plist in Resources */,
+				4C17D97A1E5AC4FF0090AECF /* System San Francisco Display Bold.ttf in Resources */,
 				C37D870B1E40976F00D6462A /* Assets.xcassets in Resources */,
+				4C7A01C31E5736FB005125D9 /* SF UI Font License.rtf in Resources */,
 				C37D87061E40976F00D6462A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

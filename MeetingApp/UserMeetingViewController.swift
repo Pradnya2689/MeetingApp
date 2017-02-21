@@ -198,6 +198,9 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         cell.meetingCodeBtn.layer.cornerRadius = 5.0
         cell.meetingCodeBtn.clipsToBounds = true
         
+        cell.endMeetingBtn.layer.cornerRadius = 5.0
+        cell.endMeetingBtn.clipsToBounds = true
+        
       
         if(userSegmentCntrl.selectedSegmentIndex == 0){
             let dict = allmeetingName[indexPath.row] as FIRDataSnapshot
@@ -249,6 +252,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.meetingCodeBtn.isHidden = true
             cell.seatAvaLB.isHidden = false
             cell.seatsLabel.isHidden = false
+            cell.endMeetingBtn.isHidden = true
             
             
         }else{
@@ -279,11 +283,11 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
 //            }
             var instrID = dict.childSnapshot(forPath: "minstructorID").value as? String
             if(instrID! == empID){
-//                cell.translatesAutoresizingMaskIntoConstraints = true
-//                cell.feedbackBtn.frame = CGRect(x: 262, y: 124, width: 100, height: 21)
-                 cell.feedbackBtn.titleLabel?.text = "Get Code"
-                cell.feedbackBtn.tag = indexPath.row
-                cell.feedbackBtn.addTarget(self, action: #selector(codeAction), for: .touchUpInside)
+                cell.endMeetingBtn.isHidden = false
+                cell.meetingCodeBtn.isHidden = false
+                cell.feedbackBtn.isHidden = true
+                cell.meetingCodeBtn.tag = indexPath.row
+                cell.meetingCodeBtn.addTarget(self, action: #selector(codeAction), for: .touchUpInside)
             }
             //minstructorID
             cell.userNameLB.text = dict.childSnapshot(forPath: "mname").value as! String?
@@ -292,7 +296,6 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.venueLB.text = dict.childSnapshot(forPath: "mvenue").value as! String?
            cell.subcribeBtn.isHidden = true
             cell.feedbackBtn.isHidden = false
-            cell.meetingCodeBtn.isHidden = true
             cell.seatAvaLB.isHidden = true
             cell.seatsLabel.isHidden = true
         }
@@ -341,7 +344,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     
         
         
-        var alert = UIAlertController(title: "Do you want to Subscribe", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        var alert = UIAlertController(title: "Do you want to Subscribe for this Meeting?", message: "", preferredStyle: UIAlertControllerStyle.alert)
         
         
         alert.addAction(UIAlertAction(title: "No", style: .default, handler: {

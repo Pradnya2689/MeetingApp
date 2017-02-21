@@ -19,6 +19,7 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var subcribeBtn: UIButton!
     @IBOutlet weak var feedbackBtn: UIButton!
     @IBOutlet weak var meetingCodeBtn: UIButton!
+    @IBOutlet weak var endMeetingBtn: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

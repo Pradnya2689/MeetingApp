@@ -63,7 +63,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
         let numberCharacters = NSCharacterSet.decimalDigits.inverted
         
-//        if(self.isValidEmail(testStr: self.emailTextField.text!)){
+       // if((self.emailTextField.text != nil) && (self.isValidEmail(testStr: self.emailTextField.text!))){
         
         if(empIdTextField.text != "" && empIdTextField.text?.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil){
             
@@ -71,7 +71,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
             UserDefaults.standard.set(empIdTextField.text, forKey: "empID")
             
             ref = FIRDatabase.database().reference()
-            addUser()
+           // addUser()
         
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController

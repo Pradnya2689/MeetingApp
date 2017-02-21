@@ -143,7 +143,7 @@ class FeedbackViewController: UIViewController {
             
             if((btn1.currentImage == uncheck)&&(btn2.currentImage == uncheck)&&(btn3.currentImage == uncheck)&&(btn4.currentImage == uncheck)&&(btn5.currentImage == uncheck)){
                 
-                self.showAlert(Message: "Select CheckBox")
+                self.showAlert(Message: "Provide your Feedback")
                 
                 //            counter += 1
                 //            answerArray.append(selectedAnswer)
@@ -189,6 +189,8 @@ class FeedbackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         navigationItem.hidesBackButton = true
 
         questionArray = ["1. The instructor presented the content effectively","2. The instructor encouraged interaction","3. The learning objectives were clearly presented and achieved.","4. I feel this session was a valuable use of my time.","5. Overall training feedback"]
         

@@ -18,16 +18,16 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     let label = UILabel(frame: CGRect(x: (screenWidth-350)/2, y: (screenHeight-21)/2, width: 350, height: 21))
     
     @IBAction func userSegmntAction(_ sender: UISegmentedControl) {
-        
-        if(userSegmentCntrl.selectedSegmentIndex == 1){
-            Indicator.sharedInstance.startActivityIndicator()
-            self.fetchMyMeeting(){
-//                self.addMyMeetings {
-//                    self.userTableView.reloadData()
-//                }
+      
+         if(userSegmentCntrl.selectedSegmentIndex == 1){
+        if(myMeetingName.count == 0){
+          
                 
-            }
-            
+                label.textAlignment = .center
+                label.text = "You have not subscribed for any meetings"
+                self.view.addSubview(label)
+                self.view.bringSubview(toFront: label)
+                userTableView.isHidden = true
             
         //}
          }else{
@@ -48,17 +48,20 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
 
         }
         
-        
-//        if(userSegmentCntrl.selectedSegmentIndex == 1){
-//            Indicator.sharedInstance.startActivityIndicator()
-//            self.fetchMyMeeting()
-//            userTableView.reloadData()
-//            
-//            
-//        }
-////
-//        userTableView.reloadData()
-//        //Indicator.sharedInstance.stopActivityIndicator()
+        if(userSegmentCntrl.selectedSegmentIndex == 1){
+            Indicator.sharedInstance.startActivityIndicator()
+            self.fetchMyMeeting(){
+//                self.addMyMeetings {
+//                    self.userTableView.reloadData()
+//                }
+                
+            }
+            
+            
+        }
+//
+        userTableView.reloadData()
+        //Indicator.sharedInstance.stopActivityIndicator()
     }
     
     var alertText: UITextField!
@@ -125,7 +128,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             }
             
        
-        
+        userTableView.isHidden = false
+        label.removeFromSuperview()
         fetchAllData()
         self.userTableView.reloadData()
         self.userSegmentCntrl.translatesAutoresizingMaskIntoConstraints = true

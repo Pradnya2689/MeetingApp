@@ -690,7 +690,7 @@
                                     <action selector="btn1Action:" destination="00i-re-2FL" eventType="touchUpInside" id="ffU-Zl-HHg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strongly Disagree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daS-Jm-yZx">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strongly Disagree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daS-Jm-yZx">
                                 <rect key="frame" x="66" y="214" width="247" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="DEe-Fy-Qar"/>
@@ -711,7 +711,7 @@
                                     <action selector="btn2Action:" destination="00i-re-2FL" eventType="touchUpInside" id="bhO-Nu-Qee"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disagree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgv-6S-ibW">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disagree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgv-6S-ibW">
                                 <rect key="frame" x="66" y="269" width="247" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="247" id="Qa6-Qo-D5S"/>
@@ -732,7 +732,7 @@
                                     <action selector="btn3Action:" destination="00i-re-2FL" eventType="touchUpInside" id="9wN-gZ-F6R"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neutral" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00Y-KS-tEr">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neutral" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00Y-KS-tEr">
                                 <rect key="frame" x="66" y="324" width="228" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="AjY-VE-K6g"/>
@@ -753,7 +753,7 @@
                                     <action selector="btn4Action:" destination="00i-re-2FL" eventType="touchUpInside" id="DZq-9u-0gJ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auq-3V-iZx">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auq-3V-iZx">
                                 <rect key="frame" x="66" y="379" width="256" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="J1n-LN-UVJ"/>
@@ -774,7 +774,7 @@
                                     <action selector="btn5Action:" destination="00i-re-2FL" eventType="touchUpInside" id="43Y-4s-X8N"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strongly Agree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1HP-qX-Bdy">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strongly Agree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1HP-qX-Bdy">
                                 <rect key="frame" x="66" y="434" width="194" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Iik-YM-3RQ"/>
@@ -863,14 +863,19 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="agreeLabel" destination="auq-3V-iZx" id="AT4-EG-hfB"/>
                         <outlet property="btn1" destination="qFk-jN-AAc" id="n2h-ex-Cuk"/>
                         <outlet property="btn2" destination="IRn-YY-YwL" id="Xgg-OI-gFL"/>
                         <outlet property="btn3" destination="XBk-1v-9i2" id="EcL-0C-3gL"/>
                         <outlet property="btn4" destination="hys-jv-wwg" id="mkA-Wj-uSU"/>
                         <outlet property="btn5" destination="ai5-T5-QvA" id="wAt-ql-bI8"/>
                         <outlet property="countLabel" destination="rPr-zJ-hjE" id="SNU-TZ-hBP"/>
+                        <outlet property="disagreeLabel" destination="Wgv-6S-ibW" id="iLB-tJ-lLa"/>
                         <outlet property="feedBackBtn" destination="Te9-2Y-wTp" id="Zvk-HT-g86"/>
+                        <outlet property="neutralLabel" destination="00Y-KS-tEr" id="XqH-nT-7TL"/>
                         <outlet property="questionLB" destination="2it-x5-OPX" id="eVV-8U-mhO"/>
+                        <outlet property="stronglyAgreeLabel" destination="1HP-qX-Bdy" id="GB8-OV-C1s"/>
+                        <outlet property="stronglyDisagreeLabel" destination="daS-Jm-yZx" id="phT-QD-ZAy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GqM-MP-2H1" userLabel="First Responder" sceneMemberID="firstResponder"/>

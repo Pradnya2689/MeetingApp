@@ -29,7 +29,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             }
             
             
-        }
+        //}
          }else{
             if(allmeetingName.count == 0){
                

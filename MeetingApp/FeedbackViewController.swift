@@ -20,7 +20,7 @@ class FeedbackViewController: UIViewController {
     @IBOutlet weak var btn5: UIButton!
     
     @IBOutlet weak var countLabel: UILabel!
-    
+    var isSubscribed: String!
     var meetingID : String!
     let check = UIImage(named: "checkBoxEnable")! as UIImage
     let uncheck = UIImage(named: "checkBoxDisable")! as UIImage
@@ -169,6 +169,7 @@ class FeedbackViewController: UIViewController {
             }
         
         }else{
+            
             answerArray.append(selectedAnswer)
             btn5.setImage(uncheck, for: .normal)
             btn1.setImage(uncheck, for: .normal)
@@ -180,8 +181,8 @@ class FeedbackViewController: UIViewController {
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "comments") as! CommentsViewController
             secondViewController.ansArray = self.answerArray
             secondViewController.meetId = meetingID
+            secondViewController.isSubscribed = self.isSubscribed
             self.navigationController?.pushViewController(secondViewController, animated: true)
-          
             
         }
         

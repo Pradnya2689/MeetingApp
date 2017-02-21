@@ -122,9 +122,13 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             for item in snapshot.children {
                 let meetingID = (item as AnyObject).childSnapshot(forPath: "meetingId").value as! String?
                 let subID = (item as AnyObject).childSnapshot(forPath: "isSubscribed").value as! String?
+                let isattend = (item as AnyObject).childSnapshot(forPath: "isAttended").value as! String?
                 print("meeting id ********\((item as AnyObject).childSnapshot(forPath: "meetingId").value as! String?)")
                 self.meetingIds.add(meetingID!)
                 self.isSubscribed.add(subID!)
+                if(isattend != "1"){
+                    
+                
                 let  ref2 = FIRDatabase.database().reference()
                 
                 let filter2 = ref2.child("Meetings").queryOrdered(byChild: "meetingID").queryEqual(toValue: meetingID!)
@@ -142,12 +146,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     Indicator.sharedInstance.stopActivityIndicator()
                     self.userTableView.reloadData()
                 })
-                
-              //  print(self.allmeetingName)
-                
+                }
             }
-            
-            
            self.userTableView.reloadData()
         })
     }
@@ -448,9 +448,11 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
             let alrttxt = self.alertText.text
              let meetingCode = dict.childSnapshot(forPath: "meetingCode").value as! String?
+                let subid = self.isSubscribed[sender.tag] as! String
                 if(alrttxt == meetingCode){
                     let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedBack") as! FeedbackViewController
                     secondViewController.meetingID = meetID
+                    secondViewController.isSubscribed = subid
                     self.navigationController?.pushViewController(secondViewController, animated: true)
                 }else{
                     self.dismiss(animated: false, completion: nil)

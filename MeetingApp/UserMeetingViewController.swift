@@ -14,20 +14,58 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var userSegmentCntrl: UISegmentedControl!
     var empID = UserDefaults.standard.value(forKey: "empID") as! String
     @IBOutlet weak var userTableView: UITableView!
+    
+    let label = UILabel(frame: CGRect(x: (screenWidth-350)/2, y: (screenHeight-21)/2, width: 350, height: 21))
+    
     @IBAction func userSegmntAction(_ sender: UISegmentedControl) {
-        
-        if(userSegmentCntrl.selectedSegmentIndex == 1){
-            Indicator.sharedInstance.startActivityIndicator()
-            self.fetchMyMeeting()
-            userTableView.reloadData()
+      
+         if(userSegmentCntrl.selectedSegmentIndex == 1){
+        if(myMeetingName.count == 0){
+          
+                
+                label.textAlignment = .center
+                label.text = "You have not subscribed for any meetings"
+                self.view.addSubview(label)
+                self.view.bringSubview(toFront: label)
+                userTableView.isHidden = true
+            
+        }else{
+            userTableView.isHidden = false
+            label.removeFromSuperview()
+            self.userTableView.reloadData()
         }
-//
-        userTableView.reloadData()
-        //Indicator.sharedInstance.stopActivityIndicator()
+         }else{
+            if(allmeetingName.count == 0){
+               
+                    
+                    label.textAlignment = .center
+                    label.text = "No meetings added"
+                    self.view.addSubview(label)
+                    self.view.bringSubview(toFront: label)
+                    userTableView.isHidden = true
+               
+            }else{
+                userTableView.isHidden = false
+                label.removeFromSuperview()
+                self.userTableView.reloadData()
+            }
+
+        }
+        
+        
+//        if(userSegmentCntrl.selectedSegmentIndex == 1){
+//            Indicator.sharedInstance.startActivityIndicator()
+//            self.fetchMyMeeting()
+//            userTableView.reloadData()
+//            
+//            
+//        }
+////
+//        userTableView.reloadData()
+//        //Indicator.sharedInstance.stopActivityIndicator()
     }
     
     var alertText: UITextField!
-    
     
    
     func alertClose(_ gesture: UITapGestureRecognizer) {
@@ -84,7 +122,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         //Indicator.sharedInstance.startActivityIndicator()
         fetchAllData()
         fetchMyMeeting()
-        self.userTableView.reloadData()
+        
         self.userSegmentCntrl.translatesAutoresizingMaskIntoConstraints = true
         self.userSegmentCntrl.frame = CGRect(x: 5, y: 0, width: screenWidth-10, height: 32)
     }
@@ -256,6 +294,16 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
             
         }else{
+            
+//            if(myMeetingName.count == 0){
+//                
+//                let label = UILabel(frame: CGRect(x: (screenWidth-100)/2, y: (screenHeight-21)/2, width: 100, height: 21))
+//                            label.center = CGPoint(x: 160, y: 285)
+//                            label.textAlignment = .center
+//                            label.text = "No Meetings"
+//                            self.view.addSubview(label)
+//                
+//            }else{
 
             let dict = myMeetingName[indexPath.row] as FIRDataSnapshot
             
@@ -301,9 +349,10 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         
         
-        return cell
+        
+    //}
+    return cell
     }
-    
     
    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

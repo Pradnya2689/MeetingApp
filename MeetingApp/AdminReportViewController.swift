@@ -195,7 +195,7 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                 
                 self.overallFeedbackTotalCount = self.overallFeedbackTotalCount + ((item as AnyObject).childSnapshot(forPath: "overallFeedback").value as! Int?)!
                 
-                var effyCount = ((item as AnyObject).childSnapshot(forPath: "contentEffeciency").value as! Int?)!
+                let effyCount = ((item as AnyObject).childSnapshot(forPath: "contentEffeciency").value as! Int?)!
                 
                 if(effyCount == 1){
                      self.counter11 += 1
@@ -205,12 +205,12 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                     self.counter13 += 1
                 }else if(effyCount == 4){
                     self.counter14 += 1
-                }else{
+                }else if(effyCount == 5){
                     self.counter15 += 1
                 }
                 
                 
-                var interactionCount = ((item as AnyObject).childSnapshot(forPath: "encouragedInteraction").value as! Int?)!
+                let interactionCount = ((item as AnyObject).childSnapshot(forPath: "encouragedInteraction").value as! Int?)!
                 
                 if(interactionCount == 1){
                     self.counter21 += 1
@@ -220,12 +220,12 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                     self.counter23 += 1
                 }else if(effyCount == 4){
                     self.counter24 += 1
-                }else{
+                }else if(effyCount == 5){
                     self.counter25 += 1
                 }
                 
                 
-                var objectiveCount = ((item as AnyObject).childSnapshot(forPath: "learningObjectives").value as! Int?)!
+                let objectiveCount = ((item as AnyObject).childSnapshot(forPath: "learningObjectives").value as! Int?)!
                 
                 if(objectiveCount == 1){
                     self.counter31 += 1
@@ -235,12 +235,12 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                     self.counter33 += 1
                 }else if(effyCount == 4){
                     self.counter34 += 1
-                }else{
+                }else if(effyCount == 5){
                     self.counter35 += 1
                 }
                 
                 
-                var valueTimeCount = ((item as AnyObject).childSnapshot(forPath: "valuableuseOfTime").value as! Int?)!
+                let valueTimeCount = ((item as AnyObject).childSnapshot(forPath: "valuableuseOfTime").value as! Int?)!
                 
                 if(valueTimeCount == 1){
                     self.counter41 += 1
@@ -250,12 +250,12 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                     self.counter43 += 1
                 }else if(effyCount == 4){
                     self.counter44 += 1
-                }else{
+                }else if(effyCount == 5){
                     self.counter45 += 1
                 }
                 
                 
-                var overAllFBCount = ((item as AnyObject).childSnapshot(forPath: "encouragedInteraction").value as! Int?)!
+                let overAllFBCount = ((item as AnyObject).childSnapshot(forPath: "overallFeedback").value as! Int?)!
                 
                 if(overAllFBCount == 1){
                     self.counter51 += 1
@@ -265,7 +265,7 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                     self.counter53 += 1
                 }else if(effyCount == 4){
                     self.counter54 += 1
-                }else{
+                }else if(effyCount == 5){
                     self.counter55 += 1
                 }
                 
@@ -309,7 +309,7 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             self.countLb3Q2.text = "\(self.counter23)"
             self.countLb4Q2.text = "\(self.counter24)"
             self.countLb5Q2.text = "\(self.counter25)"
-
+            
             
             let stronglydisAgreeCount3 = (Float(self.counter31) / Float(totalCount))
             let disAgreeCount3 = (Float(self.counter32) / Float(totalCount))
@@ -366,6 +366,7 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             self.countLb3Q5.text = "\(self.counter53)"
             self.countLb4Q5.text = "\(self.counter54)"
             self.countLb5Q5.text = "\(self.counter55)"
+          
             
 
         })

@@ -63,7 +63,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
         let numberCharacters = NSCharacterSet.decimalDigits.inverted
         
-       // if((self.emailTextField.text != nil) && (self.isValidEmail(testStr: self.emailTextField.text!))){
+        if((self.emailTextField.text == "")){
         
         if(empIdTextField.text != "" && empIdTextField.text?.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil){
             
@@ -81,9 +81,28 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         }else{
             self.showAlert(Message: "Enter Valid Employee ID")
         }
-//        }else{
-//            self.showAlert(Message: "Enter Valid Email")
-//        }
+        }else{
+            if((self.emailTextField.text != nil) && (self.isValidEmail(testStr: self.emailTextField.text!))){
+            if(empIdTextField.text != "" && empIdTextField.text?.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil){
+                
+                
+                UserDefaults.standard.set(empIdTextField.text, forKey: "empID")
+                
+                ref = FIRDatabase.database().reference()
+                // addUser()
+                
+                
+                let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
+                self.navigationController?.pushViewController(secondViewController, animated: true)
+                
+                
+            }else{
+                self.showAlert(Message: "Enter Valid Employee ID")
+            }
+        }else{
+            self.showAlert(Message: "Enter Valid Email")
+        }
+        }
     }
     
     func createMeeting() {

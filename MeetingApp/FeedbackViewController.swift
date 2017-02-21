@@ -134,7 +134,12 @@ class FeedbackViewController: UIViewController {
     
     var counter: Int = 0
     var selectedAnswer: Int = 0
-    
+    func fadeIn(withDuration duration: TimeInterval = 0.5) {
+        UIView.animate(withDuration: duration, animations: {
+            self.view.alpha = 1.0
+        })
+    }
+
     @IBAction func nextBtnAction(_ sender: Any) {
         
         if(counter < 4){
@@ -155,6 +160,7 @@ class FeedbackViewController: UIViewController {
                 //            selectedAnswer = 0
                 //            print(answerArray)
             }else{
+                //self.view.alpha = 0.5
                 counter += 1
                 questionLB.text = questionArray[counter]
                 countLabel.text = countArray[counter]
@@ -165,6 +171,13 @@ class FeedbackViewController: UIViewController {
                 btn3.setImage(uncheck, for: .normal)
                 btn4.setImage(uncheck, for: .normal)
                 selectedAnswer = 0
+//                self.view.frame = CGRect(x: screenWidth, y: 0 , width: screenWidth, height: screenHeight)
+//                
+//                UIView.animate(withDuration: 0.50, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: [], animations: {
+//                    //Set x position what ever you want
+//                    self.view.frame = CGRect(x: 0, y: 0 , width: screenWidth, height: screenHeight)
+//                    
+//                }, completion: nil)
                 print(answerArray)
             }
         

@@ -214,13 +214,13 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                 
                 if(interactionCount == 1){
                     self.counter21 += 1
-                }else if(effyCount == 2) {
+                }else if(interactionCount == 2) {
                     self.counter22 += 1
-                }else if(effyCount == 3){
+                }else if(interactionCount == 3){
                     self.counter23 += 1
-                }else if(effyCount == 4){
+                }else if(interactionCount == 4){
                     self.counter24 += 1
-                }else if(effyCount == 5){
+                }else if(interactionCount == 5){
                     self.counter25 += 1
                 }
                 
@@ -229,13 +229,13 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                 
                 if(objectiveCount == 1){
                     self.counter31 += 1
-                }else if(effyCount == 2) {
+                }else if(objectiveCount == 2) {
                     self.counter32 += 1
-                }else if(effyCount == 3){
+                }else if(objectiveCount == 3){
                     self.counter33 += 1
-                }else if(effyCount == 4){
+                }else if(objectiveCount == 4){
                     self.counter34 += 1
-                }else if(effyCount == 5){
+                }else if(objectiveCount == 5){
                     self.counter35 += 1
                 }
                 
@@ -244,13 +244,13 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                 
                 if(valueTimeCount == 1){
                     self.counter41 += 1
-                }else if(effyCount == 2) {
+                }else if(valueTimeCount == 2) {
                     self.counter42 += 1
-                }else if(effyCount == 3){
+                }else if(valueTimeCount == 3){
                     self.counter43 += 1
-                }else if(effyCount == 4){
+                }else if(valueTimeCount == 4){
                     self.counter44 += 1
-                }else if(effyCount == 5){
+                }else if(valueTimeCount == 5){
                     self.counter45 += 1
                 }
                 
@@ -259,13 +259,13 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                 
                 if(overAllFBCount == 1){
                     self.counter51 += 1
-                }else if(effyCount == 2) {
+                }else if(overAllFBCount == 2) {
                     self.counter52 += 1
-                }else if(effyCount == 3){
+                }else if(overAllFBCount == 3){
                     self.counter53 += 1
-                }else if(effyCount == 4){
+                }else if(overAllFBCount == 4){
                     self.counter54 += 1
-                }else if(effyCount == 5){
+                }else if(overAllFBCount == 5){
                     self.counter55 += 1
                 }
                 

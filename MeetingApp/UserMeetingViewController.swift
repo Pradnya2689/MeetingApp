@@ -29,7 +29,11 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 self.view.bringSubview(toFront: label)
                 userTableView.isHidden = true
             
-        //}
+        }else{
+            userTableView.isHidden = false
+            label.removeFromSuperview()
+            self.userTableView.reloadData()
+        }
          }else{
             if(allmeetingName.count == 0){
                
@@ -90,8 +94,6 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         
         
         navigationItem.hidesBackButton = true
@@ -327,8 +329,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
 //            }
             cell.userNameLB.text = dict.childSnapshot(forPath: "mname").value as! String?
             cell.instructLB.text = "By \(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
-            cell.dateLB.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
-            cell.venueLB.text = dict.childSnapshot(forPath: "mvenue").value as! String?
+            cell.dateLB.text = "On \(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
+            cell.venueLB.text = "At  \(dict.childSnapshot(forPath: "mvenue").value as! String)"
             cell.seatAvaLB.text = dict.childSnapshot(forPath: "maxcount").value as! String?
             
            // cell.subcribeBtn.isHidden = false
@@ -389,8 +391,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             //minstructorID
             cell.userNameLB.text = dict.childSnapshot(forPath: "mname").value as! String?
             cell.instructLB.text = "By \(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
-            cell.dateLB.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
-            cell.venueLB.text = dict.childSnapshot(forPath: "mvenue").value as! String?
+            cell.dateLB.text = "On \(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
+            cell.venueLB.text = "At \(dict.childSnapshot(forPath: "mvenue").value as! String)"
             cell.subcribeBtn.isHidden = true
             cell.feedbackBtn.isHidden = false
             cell.seatAvaLB.isHidden = true

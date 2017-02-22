@@ -180,7 +180,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.title = "Signup"
+        self.title = "SignIn"
         if let username = UserDefaults.standard.value(forKey: "empID") as? String{
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
             let appdelegate = UIApplication.shared.delegate as! AppDelegate
@@ -215,9 +215,16 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if(textField == empIdTextField){
         guard let text = self.empIdTextField.text else { return true }
         let newLength = text.characters.count + string.characters.count - range.length
         return newLength <= 6
+        }else{
+            guard let text = self.emailTextField.text else { return true }
+            let newLength = text.characters.count + string.characters.count - range.length
+            return newLength <= 25
+        }
     }
     
     

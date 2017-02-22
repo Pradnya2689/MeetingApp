@@ -331,13 +331,13 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.instructLB.text = "By \(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
             cell.dateLB.text = "On \(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
             cell.venueLB.text = "At  \(dict.childSnapshot(forPath: "mvenue").value as! String)"
-            cell.seatAvaLB.text = dict.childSnapshot(forPath: "maxcount").value as! String?
+            cell.seatAvaLB.text = "\(dict.childSnapshot(forPath: "maxcount").value as! String) seats"
             
            // cell.subcribeBtn.isHidden = false
             cell.feedbackBtn.isHidden = true
             cell.meetingCodeBtn.isHidden = true
             cell.seatAvaLB.isHidden = false
-            cell.seatsLabel.isHidden = false
+            //cell.seatsLabel.isHidden = false
             cell.endMeetingBtn.isHidden = true
             
             
@@ -396,7 +396,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.subcribeBtn.isHidden = true
             cell.feedbackBtn.isHidden = false
             cell.seatAvaLB.isHidden = true
-            cell.seatsLabel.isHidden = true
+            //cell.seatsLabel.isHidden = true
         }
         
         

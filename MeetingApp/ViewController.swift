@@ -180,7 +180,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.title = "SignIn"
+        self.title = "Sign Up"
         if let username = UserDefaults.standard.value(forKey: "empID") as? String{
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
             let appdelegate = UIApplication.shared.delegate as! AppDelegate

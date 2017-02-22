@@ -13,7 +13,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
 
     @IBOutlet weak var newMeetScrollView: UIScrollView!
     @IBOutlet weak var submitBtn: UIButton!
-    
+    var empID = UserDefaults.standard.value(forKey: "empID") as! String
     var isCall : String!
     
     var datePickerView  : UIDatePicker = UIDatePicker()
@@ -193,7 +193,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: "", mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: meetID,meetingCode: fourUniqueDigits, maxCount: maxLb.text!,currentCount: "",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: meetType ,completed: true, key: "")
             
             usr.setValue(meetItem.toAnyObject())
-            var alert = UIAlertController(title: "Meeting is Edited", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Meeting is Edited", message: "", preferredStyle: UIAlertControllerStyle.alert)
             
             
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -223,7 +223,32 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             var alert = UIAlertController(title: "Meeting Added", message: "", preferredStyle: UIAlertControllerStyle.alert)
             
             
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            if(meetType == "1"){
+                // let SubRef = ref.child("Subscriptions").childByAutoId()
+                let meetID = groceryItemRef.key
+                let key = "\(meetID)\(self.empID)"
+              //  print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
+                
+                let subcribe = Subcription(attendeeId:key,empId:self.empID,isAttended:"0",isSubscribed:"2",meetingId: meetID,key:"")
+                
+                let sub = ref.child("Subscriptions").child(key)
+                sub.setValue(subcribe.toAnyObject())
+            }else{
+                
+                let meetID = groceryItemRef.key
+                let key = "\(meetID)\(self.empID)"
+               // print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
+                let subcribe = Subcription(attendeeId:key,empId:self.empID,isAttended:"0",isSubscribed:"1",meetingId: meetID,key:"")
+                let sub = ref.child("Subscriptions").child(key)
+                sub.setValue(subcribe.toAnyObject())
+                
+            }
+
+            
+            let alert1 = UIAlertController(title: "Meeting added.", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            
+            
+            alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action) -> Void in
                 
                 
@@ -234,10 +259,10 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             
             
             
-            self.present(alert, animated: true, completion:{
+            self.present(alert1, animated: true, completion:{
                 //Indicator.sharedInstance.stopActivityIndicator()
-                alert.view.superview?.isUserInteractionEnabled = true
-                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
+                alert1.view.superview?.isUserInteractionEnabled = true
+                alert1.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
             })
         }
         
@@ -397,7 +422,18 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     func onDidChangeTime(sender: UIDatePicker) {
         
         
-            var dateFormatter = DateFormatter()
+        if(sender.tag == 1){
+            
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .short
+            var strDate = dateFormatter.string(from: sender.date)
+            //startTimeLb.text = strDate
+        }
+        
+        if(sender.tag == 2){
+            let dateFormatter = DateFormatter()
             dateFormatter.timeStyle = .short
             // let dateAsString = "6:35 PM"
             // let dateFormatter = NSDateFormatter()
@@ -408,7 +444,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             let date24 = dateFormatter.string(from: sender.date)
             endTimeLb.text = date24
         
-        
+        }
     }
     
     

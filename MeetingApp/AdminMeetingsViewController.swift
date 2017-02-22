@@ -167,7 +167,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         filter.observe(.value , with: {snapshot in
             
         // filter.observe(of: .childAdded,  with: {snapshot in
-            print(snapshot.value)
+            //print(snapshot.value)
 
             var newItems = [FIRDataSnapshot]()
            

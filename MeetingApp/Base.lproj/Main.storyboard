@@ -846,7 +846,140 @@
                                     <constraint firstItem="daS-Jm-yZx" firstAttribute="trailing" secondItem="Wgv-6S-ibW" secondAttribute="trailing" id="vMa-Xf-C2L"/>
                                     <constraint firstItem="daS-Jm-yZx" firstAttribute="leading" secondItem="qFk-jN-AAc" secondAttribute="trailing" constant="8" symbolic="YES" id="z2v-jD-mCW"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" name="MyriadPro-Bold" family="Myriad Pro" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFk-jN-AAc">
+                                <rect key="frame" x="16" y="209" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="9Mm-rx-3qk"/>
+                                    <constraint firstAttribute="height" constant="30" id="vvi-cC-p7B"/>
+                                </constraints>
+                                <state key="normal" image="checkBoxDisable"/>
+                                <connections>
+                                    <action selector="btn1Action:" destination="00i-re-2FL" eventType="touchUpInside" id="ffU-Zl-HHg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strongly Disagree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daS-Jm-yZx">
+                                <rect key="frame" x="66" y="214" width="247" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="DEe-Fy-Qar"/>
+                                    <constraint firstAttribute="width" constant="247" id="oDe-xd-F4q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRn-YY-YwL">
+                                <rect key="frame" x="16" y="264" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Cx6-Rb-AMO"/>
+                                    <constraint firstAttribute="width" constant="30" id="rlg-2z-ziQ"/>
+                                </constraints>
+                                <state key="normal" image="checkBoxDisable"/>
+                                <connections>
+                                    <action selector="btn2Action:" destination="00i-re-2FL" eventType="touchUpInside" id="bhO-Nu-Qee"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disagree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgv-6S-ibW">
+                                <rect key="frame" x="66" y="269" width="247" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="247" id="Qa6-Qo-D5S"/>
+                                    <constraint firstAttribute="height" constant="21" id="zrT-Tj-9Cb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBk-1v-9i2">
+                                <rect key="frame" x="16" y="319" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Pgi-mi-GxD"/>
+                                    <constraint firstAttribute="height" constant="30" id="e43-Rt-MHj"/>
+                                </constraints>
+                                <state key="normal" image="checkBoxDisable"/>
+                                <connections>
+                                    <action selector="btn3Action:" destination="00i-re-2FL" eventType="touchUpInside" id="9wN-gZ-F6R"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neutral" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00Y-KS-tEr">
+                                <rect key="frame" x="66" y="324" width="228" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="AjY-VE-K6g"/>
+                                    <constraint firstAttribute="width" constant="228" id="gcG-jF-HFg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hys-jv-wwg">
+                                <rect key="frame" x="16" y="374" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1z5-qb-OaS"/>
+                                    <constraint firstAttribute="width" constant="30" id="hV4-Ch-NVd"/>
+                                </constraints>
+                                <state key="normal" image="checkBoxDisable"/>
+                                <connections>
+                                    <action selector="btn4Action:" destination="00i-re-2FL" eventType="touchUpInside" id="DZq-9u-0gJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auq-3V-iZx">
+                                <rect key="frame" x="66" y="379" width="256" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="J1n-LN-UVJ"/>
+                                    <constraint firstAttribute="width" constant="256" id="s5I-2z-VPB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ai5-T5-QvA">
+                                <rect key="frame" x="16" y="429" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="DCl-G4-vYg"/>
+                                    <constraint firstAttribute="height" constant="30" id="LhF-gA-ZTc"/>
+                                </constraints>
+                                <state key="normal" image="checkBoxDisable"/>
+                                <connections>
+                                    <action selector="btn5Action:" destination="00i-re-2FL" eventType="touchUpInside" id="43Y-4s-X8N"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strongly Agree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1HP-qX-Bdy">
+                                <rect key="frame" x="66" y="434" width="194" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Iik-YM-3RQ"/>
+                                    <constraint firstAttribute="width" constant="194" id="nI3-GM-WDG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Te9-2Y-wTp">
+                                <rect key="frame" x="106" y="522" width="162" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="691-v3-ohg"/>
+                                    <constraint firstAttribute="width" constant="162" id="Q3m-c3-TdB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MyriadPro-Bold" family="Myriad Pro" pointSize="18"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextBtnAction:" destination="00i-re-2FL" eventType="touchUpInside" id="cWR-aM-BKk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPr-zJ-hjE">
+                                <rect key="frame" x="117" y="47" width="154" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="J1j-pW-TwN"/>
+                                    <constraint firstAttribute="width" constant="154" id="rZJ-bD-0Yd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".HelveticaNeueDeskInterface-Regular" family="SFNS Display" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1057,6 +1190,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C44-RC-2Y9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2252" y="1316.4917541229386"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2Ib-zy-kCJ">
+            <objects>
+                <viewController id="4A4-gM-vYy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ahP-7R-8og"/>
+                        <viewControllerLayoutGuide type="bottom" id="KfQ-sr-OIi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JxY-UX-WlN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfm-VU-M9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3568.8000000000002" y="706.59670164917543"/>
         </scene>
         <!--New Meeting View Controller-->
         <scene sceneID="KFu-2O-K44">

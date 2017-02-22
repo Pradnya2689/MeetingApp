@@ -180,8 +180,8 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.title = "Signup"
-        if (UserDefaults.standard.value(forKey: "empID") as? String) != nil{
+        self.title = "Sign Up"
+        if let username = UserDefaults.standard.value(forKey: "empID") as? String{
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
             let appdelegate = UIApplication.shared.delegate as! AppDelegate
             let nav = UINavigationController(rootViewController: secondViewController)

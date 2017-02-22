@@ -27,7 +27,6 @@
 		C3580D0C1E449B5E0067AA1A /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3580D0B1E449B5E0067AA1A /* CommentsViewController.swift */; };
 		C37D87011E40976F00D6462A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37D87001E40976F00D6462A /* AppDelegate.swift */; };
 		C37D87031E40976F00D6462A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37D87021E40976F00D6462A /* ViewController.swift */; };
-		C37D87061E40976F00D6462A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37D87041E40976F00D6462A /* Main.storyboard */; };
 		C37D87091E40976F00D6462A /* MeetingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C37D87071E40976F00D6462A /* MeetingApp.xcdatamodeld */; };
 		C37D870B1E40976F00D6462A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37D870A1E40976F00D6462A /* Assets.xcassets */; };
 		C37D870E1E40976F00D6462A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37D870C1E40976F00D6462A /* LaunchScreen.storyboard */; };
@@ -39,6 +38,7 @@
 		C382309F1E5D749D00DD5697 /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C382309C1E5D741A00DD5697 /* MyriadPro-Bold.otf */; };
 		C38230A01E5D749D00DD5697 /* MyriadPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = C382309D1E5D741A00DD5697 /* MyriadPro-It.otf */; };
 		C38230A11E5D749D00DD5697 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C382309E1E5D741A00DD5697 /* MyriadPro-Regular.otf */; };
+		C38230A31E5DB05C00DD5697 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C38230A21E5DB05C00DD5697 /* Main.storyboard */; };
 		C3A027A31E430F590012D39E /* AdminReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A027A21E430F590012D39E /* AdminReportViewController.swift */; };
 		C3A027A71E4341090012D39E /* EmployeeNoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A027A61E4341090012D39E /* EmployeeNoTableViewCell.swift */; };
 		C3D556941E41F737002A09FC /* NewMeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D556931E41F737002A09FC /* NewMeetingViewController.swift */; };
@@ -87,7 +87,6 @@
 		C37D86FD1E40976E00D6462A /* MeetingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37D87001E40976F00D6462A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C37D87021E40976F00D6462A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C37D87051E40976F00D6462A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xml; };
 		C37D87081E40976F00D6462A /* MeetingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeetingApp.xcdatamodel; sourceTree = "<group>"; };
 		C37D870A1E40976F00D6462A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C37D870D1E40976F00D6462A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		C382309C1E5D741A00DD5697 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Bold.otf"; path = "../MyriadPro-Bold.otf"; sourceTree = "<group>"; };
 		C382309D1E5D741A00DD5697 /* MyriadPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-It.otf"; path = "../MyriadPro-It.otf"; sourceTree = "<group>"; };
 		C382309E1E5D741A00DD5697 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Regular.otf"; path = "../MyriadPro-Regular.otf"; sourceTree = "<group>"; };
+		C38230A21E5DB05C00DD5697 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C3A027A21E430F590012D39E /* AdminReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminReportViewController.swift; sourceTree = "<group>"; };
 		C3A027A61E4341090012D39E /* EmployeeNoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeNoTableViewCell.swift; sourceTree = "<group>"; };
 		C3D556931E41F737002A09FC /* NewMeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMeetingViewController.swift; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 				C35516FD1E545CC5005836C3 /* Feedback.swift */,
 				C37F11FB1E4DD55D00581899 /* Meeting.swift */,
 				C30231E01E52E1F00027462F /* Subcription.swift */,
-				C37D87041E40976F00D6462A /* Main.storyboard */,
+				C38230A21E5DB05C00DD5697 /* Main.storyboard */,
 				C37D870A1E40976F00D6462A /* Assets.xcassets */,
 				C37D870C1E40976F00D6462A /* LaunchScreen.storyboard */,
 				C37D870F1E40976F00D6462A /* Info.plist */,
@@ -367,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C382309F1E5D749D00DD5697 /* MyriadPro-Bold.otf in Resources */,
+				C38230A31E5DB05C00DD5697 /* Main.storyboard in Resources */,
 				C38230A01E5D749D00DD5697 /* MyriadPro-It.otf in Resources */,
 				C38230A11E5D749D00DD5697 /* MyriadPro-Regular.otf in Resources */,
 				C37D870E1E40976F00D6462A /* LaunchScreen.storyboard in Resources */,
@@ -375,7 +376,6 @@
 				4C17D97A1E5AC4FF0090AECF /* System San Francisco Display Bold.ttf in Resources */,
 				C37D870B1E40976F00D6462A /* Assets.xcassets in Resources */,
 				4C7A01C31E5736FB005125D9 /* SF UI Font License.rtf in Resources */,
-				C37D87061E40976F00D6462A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,14 +578,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C37D87041E40976F00D6462A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C37D87051E40976F00D6462A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C37D870C1E40976F00D6462A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -123,6 +123,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         //Indicator.sharedInstance.startActivityIndicator()
         
             self.fetchMyMeeting(){
+                self.fetchAllData()
 //                self.addMyMeetings {
 //                    self.userTableView.reloadData()
 //                }
@@ -132,7 +133,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
        
         userTableView.isHidden = false
         label.removeFromSuperview()
-        fetchAllData()
+        
         self.userTableView.reloadData()
         self.userSegmentCntrl.translatesAutoresizingMaskIntoConstraints = true
         self.userSegmentCntrl.frame = CGRect(x: 5, y: 0, width: screenWidth-10, height: 32)
@@ -254,7 +255,11 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             for item in snapshot.children {
                // let instrID = (item as AnyObject).childSnapshot(forPath: "minstructorID").value as! String?
                // if(instrID != self.empID){
+                if(self.meetingIds.contains((item as AnyObject).childSnapshot(forPath: "meetingID").value as! String!)){
+                    
+                }else{
                     newItems.append(item as! FIRDataSnapshot)
+                }
                 //}
                 
             }
@@ -354,20 +359,12 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
         }else{
             
-//            if(myMeetingName.count == 0){
-//                
-//                let label = UILabel(frame: CGRect(x: (screenWidth-100)/2, y: (screenHeight-21)/2, width: 100, height: 21))
-//                            label.center = CGPoint(x: 160, y: 285)
-//                            label.textAlignment = .center
-//                            label.text = "No Meetings"
-//                            self.view.addSubview(label)
-//                
-//            }else{
+
 
             let dict = myMeetingName[indexPath.row] as FIRDataSnapshot
-           // if(meetingIds.contains(dict.childSnapshot(forPath: "meetingID").value as! String!)){
+           
                 let subid = isSubscribed[indexPath.row] as! String
-                // let instrID = dict.childSnapshot(forPath: "minstructorID").value as! String?
+            
                 if(subid == "1" ){
                     
                     cell.feedbackBtn.titleLabel?.text = "Feedback"
@@ -376,19 +373,9 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     
                 }else if(subid == "2"){
                     cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
-                    //                cell.translatesAutoresizingMaskIntoConstraints = true
-                    //                cell.feedbackBtn.frame = CGRect(x: 200, y: 124, width: 162, height: 21)
                     
                 }
-            //}
-           
-            //            else{
-////                cell.translatesAutoresizingMaskIntoConstraints = true
-////                cell.feedbackBtn.frame = CGRect(x: 272, y: 124, width: 90, height: 21)
-//                cell.feedbackBtn.titleLabel?.text = "Feedback"
-//                cell.feedbackBtn.tag = indexPath.row
-//                cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
-//            }
+
             let instrID = dict.childSnapshot(forPath: "minstructorID").value as? String
             if(instrID! == self.empID){
                 cell.endMeetingBtn.isHidden = false
@@ -398,16 +385,20 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 cell.feedbackBtn.isHidden = true
                 cell.meetingCodeBtn.tag = indexPath.row
                 cell.meetingCodeBtn.addTarget(self, action: #selector(codeAction), for: .touchUpInside)
+            }else if(instrID! != self.empID){
+                cell.feedbackBtn.isHidden = false
+                cell.endMeetingBtn.isHidden = true
+                cell.meetingCodeBtn.isHidden = true
             }
-            //minstructorID
+           
             cell.userNameLB.text = dict.childSnapshot(forPath: "mname").value as! String?
             cell.instructLB.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
             cell.dateLB.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
             cell.venueLB.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
             cell.subcribeBtn.isHidden = true
-            cell.feedbackBtn.isHidden = false
+          
             cell.seatAvaLB.isHidden = true
-            //cell.seatsLabel.isHidden = true
+          
         }
         
         
@@ -417,13 +408,13 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    
-        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
-        UIView.animate(withDuration: 0.3, animations: {
-            cell.layer.transform = CATransform3DMakeScale(1.05, 1.05, 1)
-        },completion: nil)
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//    
+//        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+//        UIView.animate(withDuration: 0.3, animations: {
+//            cell.layer.transform = CATransform3DMakeScale(1.05, 1.05, 1)
+//        },completion: nil)
+//    }
     func updateCount(sender:Int){
        
        
@@ -446,7 +437,13 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
             
         }
-      
+        self.fetchMyMeeting(){
+            self.fetchAllData()
+            //                self.addMyMeetings {
+            //                    self.userTableView.reloadData()
+            //                }
+            
+        }
        
         
         
@@ -494,7 +491,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 }
                
                self.updateCount(sender: sender.tag)
-                self.fetchAllData()
+                
+                
             }
             
         }))

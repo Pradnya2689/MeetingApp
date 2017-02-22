@@ -21,11 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,FIRMessagingDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        var types: UIUserNotificationType = [UIUserNotificationType.badge ,
+        let types: UIUserNotificationType = [UIUserNotificationType.badge ,
             UIUserNotificationType.alert,
             UIUserNotificationType.sound]
         
-        var settings: UIUserNotificationSettings = UIUserNotificationSettings(types: types, categories: nil)
+        let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: types, categories: nil)
         
         if #available(iOS 10.0, *) {
         FIRMessaging.messaging().remoteMessageDelegate = self

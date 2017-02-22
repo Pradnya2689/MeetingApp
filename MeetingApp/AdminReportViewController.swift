@@ -176,9 +176,9 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
         let filter = ref.child("FeedBacks").queryOrdered(byChild: "meetingID").queryEqual(toValue: meetingID)
         filter.observe(.value , with: {snapshot in
             
-            print(snapshot.value)
+           // print(snapshot.value ?? <#default value#>!)
             
-            var totalCount = snapshot.childrenCount
+            let totalCount = snapshot.childrenCount
             print(totalCount)
             var newItems = [FIRDataSnapshot]()
             

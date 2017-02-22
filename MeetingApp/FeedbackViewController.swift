@@ -24,7 +24,7 @@ class FeedbackViewController: UIViewController {
     var meetingID : String!
     let check = UIImage(named: "checkBoxEnable")! as UIImage
     let uncheck = UIImage(named: "checkBoxDisable")! as UIImage
-    
+    @IBOutlet var feedBackVC : UIView!
     
     @IBAction func btn1Action(_ sender: Any) {
         
@@ -171,13 +171,13 @@ class FeedbackViewController: UIViewController {
                 btn3.setImage(uncheck, for: .normal)
                 btn4.setImage(uncheck, for: .normal)
                 selectedAnswer = 0
-//                self.view.frame = CGRect(x: screenWidth, y: 0 , width: screenWidth, height: screenHeight)
-//                
-//                UIView.animate(withDuration: 0.50, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: [], animations: {
-//                    //Set x position what ever you want
-//                    self.view.frame = CGRect(x: 0, y: 0 , width: screenWidth, height: screenHeight)
-//                    
-//                }, completion: nil)
+                self.feedBackVC.frame = CGRect(x: screenWidth, y: 0 , width: screenWidth, height: screenHeight)
+                
+                UIView.animate(withDuration: 0.50, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: [], animations: {
+                    //Set x position what ever you want
+                    self.feedBackVC.frame = CGRect(x: 0, y: 0 , width: screenWidth, height: screenHeight)
+                    
+                }, completion: nil)
                 print(answerArray)
             }
         

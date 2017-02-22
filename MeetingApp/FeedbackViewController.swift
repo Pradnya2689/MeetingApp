@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedbackViewController: UIViewController {
+class FeedbackViewController: UIViewController{
 
     @IBOutlet weak var feedBackBtn: UIButton!
     @IBOutlet weak var questionLB: UILabel!
@@ -18,6 +18,14 @@ class FeedbackViewController: UIViewController {
     @IBOutlet weak var btn3: UIButton!
     @IBOutlet weak var btn4: UIButton!
     @IBOutlet weak var btn5: UIButton!
+    
+    
+    @IBOutlet weak var stronglyDisagreeLabel: UILabel!
+    @IBOutlet weak var disagreeLabel: UILabel!
+    @IBOutlet weak var neutralLabel: UILabel!
+    @IBOutlet weak var agreeLabel: UILabel!
+    @IBOutlet weak var stronglyAgreeLabel: UILabel!
+    
     
     @IBOutlet weak var countLabel: UILabel!
     var isSubscribed: String!
@@ -206,7 +214,7 @@ class FeedbackViewController: UIViewController {
         
          navigationItem.hidesBackButton = true
 
-        questionArray = ["1. The instructor presented the content effectively","2. The instructor encouraged interaction","3. The learning objectives were clearly presented and achieved.","4. I feel this session was a valuable use of my time.","5. Overall training feedback"]
+        questionArray = ["The instructor presented the content effectively","The instructor encouraged interaction","The learning objectives were clearly presented and achieved.","I feel this session was a valuable use of my time.","Overall training feedback"]
         
         countArray = ["1 of 5", "2 of 5","3 of 5","4 of 5","5 of 5"]
         
@@ -232,7 +240,37 @@ class FeedbackViewController: UIViewController {
         questionLB.text = questionArray[0]
         countLabel.text = countArray[0]
         //counter += 1
+        
+        
+        
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapFunction))
+//        stronglyDisagreeLabel.isUserInteractionEnabled = true
+//        var tag = stronglyDisagreeLabel.tag
+//        stronglyDisagreeLabel.addGestureRecognizer(tap)
     }
+    
+//    func tapFunction(sender:UITapGestureRecognizer, tag: Int) {
+//        print("tap working")
+//        
+//        if(tag == 1){
+//            if(btn1.currentImage == uncheck){
+//                
+//                btn1.setImage(check, for: .normal)
+//                btn2.setImage(uncheck, for: .normal)
+//                btn3.setImage(uncheck, for: .normal)
+//                btn4.setImage(uncheck, for: .normal)
+//                btn5.setImage(uncheck, for: .normal)
+//                
+//                selectedAnswer = 1
+//                
+//            }else{
+//                
+//                btn1.setImage(uncheck, for: .normal)
+//                
+//                selectedAnswer = 0
+//            }
+//        }
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
     

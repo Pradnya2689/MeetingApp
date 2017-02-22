@@ -36,6 +36,9 @@
 		C37F11F81E4D9AFE00581899 /* ApproveListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F11F71E4D9AFE00581899 /* ApproveListViewController.swift */; };
 		C37F11FA1E4DA12400581899 /* ApproveCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F11F91E4DA12400581899 /* ApproveCellTableViewCell.swift */; };
 		C37F11FC1E4DD55D00581899 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F11FB1E4DD55D00581899 /* Meeting.swift */; };
+		C382309F1E5D749D00DD5697 /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C382309C1E5D741A00DD5697 /* MyriadPro-Bold.otf */; };
+		C38230A01E5D749D00DD5697 /* MyriadPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = C382309D1E5D741A00DD5697 /* MyriadPro-It.otf */; };
+		C38230A11E5D749D00DD5697 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C382309E1E5D741A00DD5697 /* MyriadPro-Regular.otf */; };
 		C3A027A31E430F590012D39E /* AdminReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A027A21E430F590012D39E /* AdminReportViewController.swift */; };
 		C3A027A71E4341090012D39E /* EmployeeNoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A027A61E4341090012D39E /* EmployeeNoTableViewCell.swift */; };
 		C3D556941E41F737002A09FC /* NewMeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D556931E41F737002A09FC /* NewMeetingViewController.swift */; };
@@ -98,6 +101,9 @@
 		C37F11F71E4D9AFE00581899 /* ApproveListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApproveListViewController.swift; sourceTree = "<group>"; };
 		C37F11F91E4DA12400581899 /* ApproveCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApproveCellTableViewCell.swift; sourceTree = "<group>"; };
 		C37F11FB1E4DD55D00581899 /* Meeting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
+		C382309C1E5D741A00DD5697 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Bold.otf"; path = "../MyriadPro-Bold.otf"; sourceTree = "<group>"; };
+		C382309D1E5D741A00DD5697 /* MyriadPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-It.otf"; path = "../MyriadPro-It.otf"; sourceTree = "<group>"; };
+		C382309E1E5D741A00DD5697 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Regular.otf"; path = "../MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		C3A027A21E430F590012D39E /* AdminReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminReportViewController.swift; sourceTree = "<group>"; };
 		C3A027A61E4341090012D39E /* EmployeeNoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeNoTableViewCell.swift; sourceTree = "<group>"; };
 		C3D556931E41F737002A09FC /* NewMeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMeetingViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +204,9 @@
 				4C17D9771E5AC3A20090AECF /* System San Francisco Display Regular.ttf */,
 				4C17D9791E5AC4FF0090AECF /* System San Francisco Display Bold.ttf */,
 				4C7A01C21E5736FB005125D9 /* SF UI Font License.rtf */,
+				C382309C1E5D741A00DD5697 /* MyriadPro-Bold.otf */,
+				C382309D1E5D741A00DD5697 /* MyriadPro-It.otf */,
+				C382309E1E5D741A00DD5697 /* MyriadPro-Regular.otf */,
 			);
 			path = MeetingApp;
 			sourceTree = "<group>";
@@ -357,6 +366,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C382309F1E5D749D00DD5697 /* MyriadPro-Bold.otf in Resources */,
+				C38230A01E5D749D00DD5697 /* MyriadPro-It.otf in Resources */,
+				C38230A11E5D749D00DD5697 /* MyriadPro-Regular.otf in Resources */,
 				C37D870E1E40976F00D6462A /* LaunchScreen.storyboard in Resources */,
 				4C17D9781E5AC3A20090AECF /* System San Francisco Display Regular.ttf in Resources */,
 				C35661EE1E4B1A5C00B0D912 /* GoogleService-Info.plist in Resources */,

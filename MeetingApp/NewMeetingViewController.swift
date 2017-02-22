@@ -121,6 +121,67 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(gesture:)))
         self.view.addGestureRecognizer(tapGesture)
+        
+        
+        let keyboardDoneButtonView = UIToolbar.init()
+        keyboardDoneButtonView.sizeToFit()
+        let doneButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.done,
+                                              target: self,
+                                              action: #selector(doneClicked))
+        let doneButton1 = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace,
+                                               target: nil,
+                                               action: nil)
+        doneButton1.width = screenWidth-80
+        
+        keyboardDoneButtonView.items = [doneButton1,doneButton]
+        instructorIDLb.inputAccessoryView = keyboardDoneButtonView
+        maxLb.inputAccessoryView = keyboardDoneButtonView
+        
+        
+    }
+    
+    func doneClicked(sender: AnyObject) {
+        self.view.endEditing(true)
+    }
+    
+    func donePicker (sender:UIBarButtonItem)
+        
+    {
+        print(datePickerView.date.description)
+        
+        
+        
+            let formatter = DateFormatter()
+            
+            formatter.dateFormat = "MMM dd, yyyy hh:mm a"
+            
+            let result = formatter.string(from: datePickerView.date as Date)
+            // var strDate = dateFormatter.string(from: sender.date)
+            dateLb.text = result
+            
+            dateLb.resignFirstResponder()
+    }
+    
+    func donePicker1 (sender:UIBarButtonItem)
+        
+    {
+       
+    
+            var dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = .short
+            
+            dateFormatter.dateFormat = "hh:mm a"
+            let date24 = dateFormatter.string(from: timePickerView.date)
+            endTimeLb.text = date24
+            
+            endTimeLb.resignFirstResponder()
+            
+    }
+    
+    func cancelPicker (sender:UIBarButtonItem){
+        dateLb.resignFirstResponder()
+        endTimeLb.resignFirstResponder()
+        
     }
     
     func createMeeting() {
@@ -236,21 +297,15 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if(textField == dateLb){
-            
-            
-//            timePickerView.datePickerMode = UIDatePickerMode.time
-//            startTimeLb.inputView = timePickerView
-//            timePickerView.tag = 1
-//            timePickerView.addTarget(self, action: #selector(self.onDidChangeTime), for: .valueChanged)
-//            //textField.resignFirstResponder()
-            
-            datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
-            dateLb.inputView = datePickerView
-            datePickerView.addTarget(self, action: #selector(self.onDidChangeDate), for: .valueChanged)
-            
-            
-        }
+//        if(textField == dateLb){
+//            
+//            
+//            datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
+//            dateLb.inputView = datePickerView
+//            datePickerView.addTarget(self, action: #selector(self.onDidChangeDate), for: .valueChanged)
+//            
+//            
+//        }
         
         
         
@@ -261,6 +316,21 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             endTimeLb.inputView = timePickerView
             timePickerView.tag = 2
             timePickerView.addTarget(self, action: #selector(self.onDidChangeTime), for: .valueChanged)
+            
+            let toolBar = UIToolbar()
+            toolBar.barStyle = UIBarStyle.default
+            toolBar.isTranslucent = true
+            toolBar.tintColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+            toolBar.sizeToFit()
+            
+            let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.donePicker1))
+            let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.cancelPicker))
+            
+            toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+            toolBar.isUserInteractionEnabled = true
+            
+            endTimeLb.inputAccessoryView = toolBar
         }
         
         return true
@@ -316,6 +386,20 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     }
     
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if(textField == instructorIDLb){
+            guard let text = self.instructorIDLb.text else { return true }
+            let newLength = text.characters.count + string.characters.count - range.length
+            return newLength <= 6
+        }else{
+            guard let text = textField.text else { return true }
+            let newLength = text.characters.count + string.characters.count - range.length
+            return newLength <= 25
+        }
+    }
+    
+    
     
     func onDidChangeDate(sender: UIDatePicker) {
         
@@ -358,7 +442,6 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             dateFormatter.dateFormat = "hh:mm a"
             let date24 = dateFormatter.string(from: sender.date)
             endTimeLb.text = date24
-        }
         
         
     }
@@ -369,20 +452,31 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(self.onDidChangeDate), for: .valueChanged)
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.cancelPicker))
+        
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        dateLb.inputAccessoryView = toolBar
     }
     
-    @IBAction func startTimePicker(_ sender: UITextField) {
-        
-        timePickerView.datePickerMode = UIDatePickerMode.time
-        sender.inputView = timePickerView
-        timePickerView.addTarget(self, action: #selector(self.onDidChangeTime), for: .valueChanged)
-    }
-   
+      
     @IBAction func endTimePicker(_ sender: UITextField) {
         
         timePickerView.datePickerMode = UIDatePickerMode.time
         sender.inputView = timePickerView
         timePickerView.addTarget(self, action: #selector(self.onDidChangeTime), for: .valueChanged)
+        
+        
     }
     /*
     // MARK: - Navigation

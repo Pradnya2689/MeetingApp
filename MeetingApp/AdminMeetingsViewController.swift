@@ -247,9 +247,9 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             
             
             cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
-            cell.instructorLb.text = "By \(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
-            cell.dateLb.text = "On \(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
-            cell.venueLb.text = "At \(dict.childSnapshot(forPath: "mvenue").value as! String)"
+            cell.instructorLb.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
+            cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
+            cell.venueLb.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
            
             cell.editBtn.isHidden = false
             cell.reportBtn.isHidden = true
@@ -263,9 +263,9 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         }else{
              let dict = completedmeetingName[indexPath.row] as FIRDataSnapshot
             cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
-            cell.instructorLb.text = "By \(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
-            cell.dateLb.text = "On \(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
-            cell.venueLb.text = "At \(dict.childSnapshot(forPath: "mvenue").value as! String)"
+            cell.instructorLb.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
+            cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
+            cell.venueLb.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
             cell.editBtn.isHidden = true
             cell.reportBtn.isHidden = false
             cell.approvalBtn.isHidden = true

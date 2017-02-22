@@ -245,10 +245,10 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             }
 
             
-            let alert = UIAlertController(title: "Meeting added.", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            let alert1 = UIAlertController(title: "Meeting added.", message: "", preferredStyle: UIAlertControllerStyle.alert)
             
             
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action) -> Void in
                 
                 
@@ -259,10 +259,10 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             
             
             
-            self.present(alert, animated: true, completion:{
+            self.present(alert1, animated: true, completion:{
                 //Indicator.sharedInstance.stopActivityIndicator()
-                alert.view.superview?.isUserInteractionEnabled = true
-                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
+                alert1.view.superview?.isUserInteractionEnabled = true
+                alert1.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
             })
         }
         
@@ -444,7 +444,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             let date24 = dateFormatter.string(from: sender.date)
             endTimeLb.text = date24
         
-        
+        }
     }
     
     

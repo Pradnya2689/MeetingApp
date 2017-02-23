@@ -8,9 +8,13 @@
 
 import UIKit
 import Firebase
+import EventKit
+
 
 class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
 
+    
+    var eventStore = EKEventStore()
     @IBOutlet weak var userSegmentCntrl: UISegmentedControl!
     var empID = UserDefaults.standard.value(forKey: "empID") as! String
     @IBOutlet weak var userTableView: UITableView!
@@ -104,7 +108,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                                        action: #selector(self.nextView))
         self.navigationItem.rightBarButtonItem = leftItem
         
-       
+       //alarmButtonClicked(sender: self)
         
         print("emp id \(empID)")
       
@@ -267,6 +271,20 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
           self.allmeetingName = newItems as? [FIRDataSnapshot]
           self.userTableView.reloadData()
             
+            if(self.allmeetingName.count == 0){
+                
+                
+                self.label.textAlignment = .center
+                self.label.text = "No meetings added"
+                self.view.addSubview(self.label)
+                self.view.bringSubview(toFront: self.label)
+                self.userTableView.isHidden = true
+                
+            }else{
+                self.userTableView.isHidden = false
+                self.label.removeFromSuperview()
+                self.userTableView.reloadData()
+            }
         })
         
         
@@ -494,6 +512,11 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     sub.setValue(subcribe.toAnyObject())
                     
                 }
+                let meetname = dict.childSnapshot(forPath: "mname").value as! String
+                let starttime = dict.childSnapshot(forPath: "mdate").value as! String
+                let endtime = dict.childSnapshot(forPath: "mendtime").value as! String
+                
+                self.alarmButtonClicked(startTime: starttime, endTime: endtime, titleOfMeeting: meetname)
                
                self.updateCount(sender: sender.tag)
                 
@@ -620,27 +643,99 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         let newLength = text.characters.count + string.characters.count - range.length
         return newLength <= 4
     }
+    func reminderIsAlreadyAdded()->Void {
+        let alert:UIAlertController = UIAlertController(title:"Auctionteer", message: "This alarm has already added to the reminder", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler:nil))
+        self.present(alert, animated: true, completion:nil)
+    }
+    func alarmButtonClicked(startTime:String,endTime:String,titleOfMeeting:String) {
+        print("Alarm Event add")
+        
+        self.eventStore = EKEventStore()
+        
+        EKEventStore().requestAccess(to: EKEntityType.event, completion: {
+            (success: Bool, error: Error?) in
+            
+            if success{
+                 //self.addAlarmToReminder()
+                let calendars = self.eventStore.calendars(for: EKEntityType.event)
+                
+                
+                for calendar in calendars {
+                   
+                    let formatter = DateFormatter()
+                    
+                    formatter.dateFormat = "MMM dd, yyyy HH:mm a"
+                    let startDatetm = formatter.date(from: startTime)
+                    //print(startDate)
+                    let arry = startTime.components(separatedBy: " ")
+                    let endstr = "\(arry[0]) \(arry[1]) \(arry[2]) \(endTime)"
+                    
+                    print(endstr)
+                    let datformatter = DateFormatter()
+                    
+                    datformatter.dateFormat = "MMM dd, yyyy HH:mm a"
+                    let startDate = datformatter.date(from: endstr)
+                    print(startDate!)
+                    var event = EKEvent(eventStore: self.eventStore)
+                    event.calendar = calendar
+                    print(Date())
+                    event.title = titleOfMeeting
+                    event.startDate = startDatetm! as Date
+                    event.endDate = startDate! as Date
+                    event.calendar = self.eventStore.defaultCalendarForNewEvents
+                   
+                    let alarm:EKAlarm = EKAlarm(relativeOffset: -300)
+                    event.alarms = [alarm]
+                   // print("start date \(endTime) end date \(endDate1)")
+                   
+                    do {
+                        try self.eventStore.save(event, span: EKSpan.thisEvent, commit: true)
+                        
+                    }
+                        
+                    catch let error {
+                        print("Event failed with error \(error.localizedDescription)")
+                    }
+                }
 
- 
+               
+            }else{
+                print("The app is not permitted to access reminders, make sure to grant permission in the settings and try again")
+            }
+        })
+        
+    }
+    func addAlarmToReminder() -> Void {
+        
+       
+               // }
+        
+       
+    }
+    func requestAccess(to entityType: EKEntityType, completion: @escaping EventKit.EKEventStoreRequestAccessCompletionHandler){
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    private func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        cell.separatorInset = UIEdgeInsets.zero
-        cell.layoutMargins = UIEdgeInsets.zero
-        
-        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
-        UIView.animate(withDuration: 0.25, animations: {
-             cell.layer.transform = CATransform3DMakeScale(1,1,1)
-        })
-        
-//        UIView.animateWithDuration(0.25, animations: {
-//            
-//            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+//    private func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        cell.separatorInset = UIEdgeInsets.zero
+//        cell.layoutMargins = UIEdgeInsets.zero
+//        
+//        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+//        UIView.animate(withDuration: 0.25, animations: {
+//             cell.layer.transform = CATransform3DMakeScale(1,1,1)
 //        })
-    }
+//        
+////        UIView.animateWithDuration(0.25, animations: {
+////            
+////            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+////        })
+//    }
 
     /*
     // MARK: - Navigation

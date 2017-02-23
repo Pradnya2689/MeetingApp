@@ -20,6 +20,7 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var feedbackBtn: UIButton!
     @IBOutlet weak var meetingCodeBtn: UIButton!
     @IBOutlet weak var endMeetingBtn: UIButton!
+    @IBOutlet weak var waitingForApprvBtn: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

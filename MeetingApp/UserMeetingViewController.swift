@@ -355,6 +355,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.seatAvaLB.isHidden = false
             //cell.seatsLabel.isHidden = false
             cell.endMeetingBtn.isHidden = true
+            cell.waitingForApprvBtn.isHidden = true
             
             
         }else{
@@ -365,16 +366,9 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
            
                 let subid = isSubscribed[indexPath.row] as! String
             
-                if(subid == "1" ){
-                    
-                    cell.feedbackBtn.titleLabel?.text = "Feedback"
-                    cell.feedbackBtn.tag = indexPath.row
-                    cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
-                    
-                }else if(subid == "2"){
-                    cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
-                    
-                }
+            cell.feedbackBtn.isHidden = true
+            
+            
 
             let instrID = dict.childSnapshot(forPath: "minstructorID").value as? String
             if(instrID! == self.empID){
@@ -386,9 +380,21 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 cell.meetingCodeBtn.tag = indexPath.row
                 cell.meetingCodeBtn.addTarget(self, action: #selector(codeAction), for: .touchUpInside)
             }else if(instrID! != self.empID){
-                cell.feedbackBtn.isHidden = false
+                //cell.feedbackBtn.isHidden = false
                 cell.endMeetingBtn.isHidden = true
                 cell.meetingCodeBtn.isHidden = true
+                if(subid == "1" ){
+                    cell.feedbackBtn.isHidden = false
+                    cell.feedbackBtn.titleLabel?.text = "Feedback"
+                    cell.feedbackBtn.tag = indexPath.row
+                    cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
+                    
+                }else if(subid == "2"){
+                    //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
+                    cell.feedbackBtn.isHidden = true
+                    cell.waitingForApprvBtn.isHidden = false
+                    
+                }
             }
            
             cell.userNameLB.text = dict.childSnapshot(forPath: "mname").value as! String?
@@ -396,7 +402,6 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.dateLB.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
             cell.venueLB.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
             cell.subcribeBtn.isHidden = true
-          
             cell.seatAvaLB.isHidden = true
           
         }

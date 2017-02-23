@@ -10,6 +10,7 @@ import UIKit
 
 class AdminTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var maxCntLb: UILabel!
     @IBOutlet weak var approvalBtn: UIButton!
     @IBOutlet weak var reportBtn: UIButton!
     @IBOutlet weak var editBtn: UIButton!

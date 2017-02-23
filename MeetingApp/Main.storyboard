@@ -273,8 +273,8 @@
                                                                 <constraint firstAttribute="width" constant="230" id="Y3y-OG-oTb"/>
                                                                 <constraint firstAttribute="height" constant="21" id="qNa-2G-3dH"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="16"/>
-                                                            <color key="textColor" red="0.1089952257" green="0.086452907989999994" blue="0.081624348959999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="13"/>
+                                                            <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChZ-LW-MIo">

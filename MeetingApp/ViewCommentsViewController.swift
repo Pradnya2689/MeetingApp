@@ -9,19 +9,7 @@
 import UIKit
 import Firebase
 class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
-    @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = commntTbl.dequeueReusableCell(withIdentifier: "coomntCell", for: indexPath) as! CommentsCell
-        
-        cell.commntLbl.text = coomntArray.object(at: indexPath.row) as? String
-        
-        return cell
-    }
-    @available(iOS 2.0, *)
-     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        return UITableViewAutomaticDimension
-    }
+    
     @IBOutlet var commntTbl:UITableView!
      var ref: FIRDatabaseReference!
     var coomntArray:NSMutableArray! = NSMutableArray()
@@ -33,6 +21,10 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        
+        self.title = "View Comments"
+        
+        Indicator.sharedInstance.startActivityIndicator()
             fetchData(){
              self.commntTbl.dataSource = self
              self.commntTbl.delegate = self
@@ -43,10 +35,27 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
             if(self.coomntArray.count > 0){
                
                // self.commntTbl.reloadInputViews()
+                Indicator.sharedInstance.stopActivityIndicator()
                 self.commntTbl.reloadData()
             }
            
         }
+    }
+    
+    @available(iOS 2.0, *)
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = commntTbl.dequeueReusableCell(withIdentifier: "coomntCell", for: indexPath) as! CommentsCell
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
+        cell.commntLbl.text = coomntArray.object(at: indexPath.row) as? String
+        
+        return cell
+    }
+    @available(iOS 2.0, *)
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
     }
     override func viewDidAppear(_ animated: Bool) {
         
@@ -55,7 +64,7 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
         self.commntTbl.reloadData()
     }
     func fetchData(finished: @escaping () -> Void) {
-       
+       Indicator.sharedInstance.startActivityIndicator()
         self.coomntArray = NSMutableArray()
         ref = FIRDatabase.database().reference()
         
@@ -79,7 +88,7 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
                     newItems.add(cmnt2)
                 }
             }
-            
+            Indicator.sharedInstance.stopActivityIndicator()
             self.coomntArray = NSMutableArray.init(array: newItems)
             finished()
         })

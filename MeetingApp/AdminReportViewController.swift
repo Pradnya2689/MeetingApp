@@ -14,6 +14,11 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var viewaAllCmtsBtn: UIButton!
     var isCalled : String!
     
+    @IBAction func viewCmmtAction(_ sender: Any) {
+        
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "viewComment") as! ViewCommentsViewController
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
     var contentEffTotalCount : Int = 0
     var encouragIntTotalCount : Int = 0
     var learnObjTotalCount :  Int = 0
@@ -399,6 +404,11 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
         self.title = "Reports"
         
         feedbackView.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+         self.title = ""
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

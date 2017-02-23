@@ -147,6 +147,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     
     func fetchAllData(){
         
+        Indicator.sharedInstance.startActivityIndicator()
         let date = NSDate()
         let formatter = DateFormatter()
         
@@ -181,6 +182,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             
             self.upcommingMeetingName = newItems as? [FIRDataSnapshot]
             print(self.meetingDataArray)
+            Indicator.sharedInstance.stopActivityIndicator()
             self.adminTableView.reloadData()
 
             
@@ -204,6 +206,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             
             self.completedmeetingName = newItems as? [FIRDataSnapshot]
             print(self.meetingDataArray)
+            Indicator.sharedInstance.stopActivityIndicator()
             self.adminTableView.reloadData()
             
             
@@ -246,11 +249,19 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             let dict = upcommingMeetingName[indexPath.row] as FIRDataSnapshot
             
             
+            var cnt = (dict.childSnapshot(forPath: "currentCount").value as! String?)!
+            
+            var maxcnt = (dict.childSnapshot(forPath: "maxcount").value as! String?)!
+            if(cnt == ""){
+                cnt = "0"
+            }
+            var dif = Int(maxcnt)! - Int(cnt)!
+            
             cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
             cell.instructorLb.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
             cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
             cell.venueLb.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
-           
+            cell.seatAvabLb.text = "\(dif) out of \(dict.childSnapshot(forPath: "maxcount").value as! String) seats remaining"
             cell.editBtn.isHidden = false
             cell.reportBtn.isHidden = true
             cell.approvalBtn.isHidden = false
@@ -260,6 +271,10 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             
             cell.approvalBtn.tag = indexPath.row
             cell.approvalBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+            
+            //cell.maxCntLb.isHidden = false
+            cell.seatAvabLb.isHidden = false
+            
         }else{
              let dict = completedmeetingName[indexPath.row] as FIRDataSnapshot
             cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
@@ -269,6 +284,8 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             cell.editBtn.isHidden = true
             cell.reportBtn.isHidden = false
             cell.approvalBtn.isHidden = true
+            //cell.maxCntLb.isHidden = true
+            cell.seatAvabLb.isHidden = true
         }
 
         

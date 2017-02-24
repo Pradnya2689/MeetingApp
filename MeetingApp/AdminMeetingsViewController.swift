@@ -48,15 +48,12 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         
     }
     @IBOutlet weak var adminTableView: UITableView!
-   
     let label = UILabel(frame: CGRect(x: (screenWidth-350)/2, y: (screenHeight-21)/2, width: 350, height: 21))
     
     @IBAction func adminSegmentAction(_ sender: UISegmentedControl) {
         
         if(adminMeetingSegCntrl.selectedSegmentIndex == 1){
             if(completedmeetingName.count == 0){
-                
-                
                 label.textAlignment = .center
                 label.text = "There are no completed meetings"
                 self.view.addSubview(label)
@@ -70,8 +67,6 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             }
         }else{
             if(upcommingMeetingName.count == 0){
-                
-                
                 label.textAlignment = .center
                 label.text = "There are no upcomming meetings"
                 self.view.addSubview(label)
@@ -151,7 +146,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         let date = NSDate()
         let formatter = DateFormatter()
         
-        formatter.dateFormat = "MMM dd, yyyy HH:mm a"
+        formatter.dateFormat = "MMM dd, yyyy HH:mm"
         
         let result = formatter.string(from: date as Date)
         
@@ -166,26 +161,14 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         
         let filter = ref.child("Meetings").queryOrdered(byChild: "mdate").queryStarting(atValue: result ,childKey: "mdate")
         filter.observe(.value , with: {snapshot in
-            
-        // filter.observe(of: .childAdded,  with: {snapshot in
-            //print(snapshot.value)
-
-            var newItems = [FIRDataSnapshot]()
-           
-            // loop through the children and append them to the new array
+           var newItems = [FIRDataSnapshot]()
             for item in snapshot.children {
-                
-               
-
                 newItems.append(item as! FIRDataSnapshot)
             }
-            
             self.upcommingMeetingName = newItems as? [FIRDataSnapshot]
             print(self.meetingDataArray)
             Indicator.sharedInstance.stopActivityIndicator()
             self.adminTableView.reloadData()
-
-            
         })
         
         var completedMeetingDict = NSMutableDictionary()
@@ -220,12 +203,8 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
-            
-            //return meetingDataArray.count
             return upcommingMeetingName.count
-            
         }else{
-        
         return completedmeetingName.count
         }
     }

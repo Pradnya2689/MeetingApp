@@ -153,7 +153,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         
             let formatter = DateFormatter()
             
-            formatter.dateFormat = "MMM dd, yyyy hh:mm a"
+            formatter.dateFormat = "MMM dd, yyyy HH:mm"
             
             let result = formatter.string(from: datePickerView.date as Date)
             // var strDate = dateFormatter.string(from: sender.date)
@@ -165,15 +165,11 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     func donePicker1 (sender:UIBarButtonItem)
         
     {
-       
-    
             var dateFormatter = DateFormatter()
             dateFormatter.timeStyle = .short
-            
-            dateFormatter.dateFormat = "hh:mm a"
+            dateFormatter.dateFormat = "HH:mm"
             let date24 = dateFormatter.string(from: timePickerView.date)
             endTimeLb.text = date24
-            
             endTimeLb.resignFirstResponder()
             
     }
@@ -194,19 +190,10 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             
             usr.setValue(meetItem.toAnyObject())
             let alert = UIAlertController(title: "Meeting is Edited", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            
-            
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action) -> Void in
-                
-                
-                self.navigationController!.popViewController(animated: true)
-                
-                
+               self.navigationController!.popViewController(animated: true)
             }))
-            
-            
-            
             self.present(alert, animated: true, completion:{
                 //Indicator.sharedInstance.stopActivityIndicator()
                 alert.view.superview?.isUserInteractionEnabled = true
@@ -229,7 +216,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
                 let key = "\(meetID)\(self.empID)"
               //  print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
                 
-                let subcribe = Subcription(attendeeId:key,empId:self.empID,isAttended:"0",isSubscribed:"2",meetingId: meetID,key:"")
+                let subcribe = Subcription(attendeeId:key,empId:instructorIDLb.text!,isAttended:"0",isSubscribed:"2",meetingId: meetID,key:"")
                 
                 let sub = ref.child("Subscriptions").child(key)
                 sub.setValue(subcribe.toAnyObject())
@@ -238,28 +225,18 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
                 let meetID = groceryItemRef.key
                 let key = "\(meetID)\(self.empID)"
                // print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
-                let subcribe = Subcription(attendeeId:key,empId:self.empID,isAttended:"0",isSubscribed:"1",meetingId: meetID,key:"")
+                let subcribe = Subcription(attendeeId:key,empId:instructorIDLb.text!,isAttended:"0",isSubscribed:"1",meetingId: meetID,key:"")
                 let sub = ref.child("Subscriptions").child(key)
                 sub.setValue(subcribe.toAnyObject())
                 
             }
-
-            
-            let alert1 = UIAlertController(title: "Meeting added.", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            
-            
+           let alert1 = UIAlertController(title: "Meeting added.", message: "", preferredStyle: UIAlertControllerStyle.alert)
             alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action) -> Void in
-                
-                
-                self.navigationController!.popViewController(animated: true)
-                
-                
+            self.navigationController!.popViewController(animated: true)
             }))
             
-            
-            
-            self.present(alert1, animated: true, completion:{
+             self.present(alert1, animated: true, completion:{
                 //Indicator.sharedInstance.stopActivityIndicator()
                 alert1.view.superview?.isUserInteractionEnabled = true
                 alert1.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(_:))))
@@ -411,7 +388,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         
         let formatter = DateFormatter()
         
-        formatter.dateFormat = "MMM dd, yyyy hh:mm a"
+        formatter.dateFormat = "MMM dd, yyyy HH:mm"
         
         let result = formatter.string(from: sender.date as Date)
        // var strDate = dateFormatter.string(from: sender.date)
@@ -440,7 +417,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             //  dateFormatter.dateFormat = "h:mm a"
             //  let date = dateFormatter.dateFromString(dateAsString)
             
-            dateFormatter.dateFormat = "hh:mm a"
+            dateFormatter.dateFormat = "HH:mm"
             let date24 = dateFormatter.string(from: sender.date)
             endTimeLb.text = date24
         

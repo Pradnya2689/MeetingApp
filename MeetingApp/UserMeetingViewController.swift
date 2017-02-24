@@ -327,10 +327,12 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     cell.subcribeBtn.isHidden = true
                 }else{
                     if(dif > 0){
+                         cell.seatAvaLB.text = "\(dif) seats"
                         cell.subcribeBtn.isHidden = false
                         //                cell.subcribeBtn.tag = indexPath.row
                         //                cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
                     }else{
+                         cell.seatAvaLB.text = "\(0) seats"
                         cell.subcribeBtn.isHidden = true
                     }
                     //cell.subcribeBtn.isHidden = false
@@ -348,10 +350,12 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             }else{
                 if(dif > 0){
                     cell.subcribeBtn.isHidden = false
+                    cell.seatAvaLB.text = "\(dif) seats"
                     //                cell.subcribeBtn.tag = indexPath.row
                     //                cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
                 }else{
                     cell.subcribeBtn.isHidden = true
+                    cell.seatAvaLB.text = "\(0) seats"
                 }
                // cell.subcribeBtn.isHidden = false
                 cell.subcribeBtn.titleLabel?.text = "Subscribe"
@@ -365,7 +369,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.instructLB.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
             cell.dateLB.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
             cell.venueLB.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
-            cell.seatAvaLB.text = "\(dif) seats"
+            
             
            // cell.subcribeBtn.isHidden = false
             cell.feedbackBtn.isHidden = true
@@ -385,7 +389,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 let subid = isSubscribed[indexPath.row] as! String
             
             cell.feedbackBtn.isHidden = true
-            
+             cell.waitingForApprvBtn.isHidden = true
             
 
             let instrID = dict.childSnapshot(forPath: "minstructorID").value as? String

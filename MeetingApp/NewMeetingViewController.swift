@@ -373,7 +373,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         }else{
             guard let text = textField.text else { return true }
             let newLength = text.characters.count + string.characters.count - range.length
-            return newLength <= 25
+            return newLength <= 100 
         }
     }
     

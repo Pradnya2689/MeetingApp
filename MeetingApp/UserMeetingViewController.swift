@@ -593,12 +593,19 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             let code = alert.textFields![0].text
             self.meetingCode = code
             
-            if(self.meetingCode != ""){
             
-            let dict = self.myMeetingName[sender.tag] as FIRDataSnapshot
-            let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
-            let alrttxt = self.alertText.text
-             let meetingCode = dict.childSnapshot(forPath: "meetingCode").value as! String?
+            
+            if(self.meetingCode == ""){
+                
+               self.showAlert(Message: "Enter Meeting Code")
+                
+                
+            }else{
+                
+                let dict = self.myMeetingName[sender.tag] as FIRDataSnapshot
+                let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
+                let alrttxt = self.alertText.text
+                let meetingCode = dict.childSnapshot(forPath: "meetingCode").value as! String?
                 let subid = self.isSubscribed[sender.tag] as! String
                 if(alrttxt == meetingCode){
                     let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedBack") as! FeedbackViewController
@@ -607,7 +614,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     self.navigationController?.pushViewController(secondViewController, animated: true)
                 }else{
                     self.dismiss(animated: false, completion: nil)
-                     let alert = UIAlertController(title: "Invalid Meeting code", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "Invalid Meeting code", message: "", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
                         (action) -> Void in
                         
@@ -615,12 +622,38 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     self.present(alert, animated: true, completion: nil)
                     
                 }
-            
                 
-            }else{
                 
-               // self.showAlert(Message: "Enter Meeting Code")
             }
+            
+//            if(self.meetingCode != ""){
+//            
+//            let dict = self.myMeetingName[sender.tag] as FIRDataSnapshot
+//            let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
+//            let alrttxt = self.alertText.text
+//             let meetingCode = dict.childSnapshot(forPath: "meetingCode").value as! String?
+//                let subid = self.isSubscribed[sender.tag] as! String
+//                if(alrttxt == meetingCode){
+//                    let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedBack") as! FeedbackViewController
+//                    secondViewController.meetingID = meetID
+//                    secondViewController.isSubscribed = subid
+//                    self.navigationController?.pushViewController(secondViewController, animated: true)
+//                }else{
+//                    self.dismiss(animated: false, completion: nil)
+//                     let alert = UIAlertController(title: "Invalid Meeting code", message: "", preferredStyle: UIAlertControllerStyle.alert)
+//                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
+//                        (action) -> Void in
+//                        
+//                    }))
+//                    self.present(alert, animated: true, completion: nil)
+//                    
+//                }
+//            
+//                
+//            }else{
+//                
+//                self.showAlert(Message: "Enter Meeting Code")
+//            }
             
         }))
         

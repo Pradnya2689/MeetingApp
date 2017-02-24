@@ -24,10 +24,13 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     var meetingDataArray:[FIRDataSnapshot]! = [FIRDataSnapshot]()
     var ref: FIRDatabaseReference!
     
-    @IBAction func reportActionBtn(_ sender: Any) {
+    
+    @IBAction func reportActionBtn(_ sender: UIButton) {
+        let dict = completedmeetingName[sender.tag] as FIRDataSnapshot
+        let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
         
         let ListViewControllerObj = self.storyboard?.instantiateViewController(withIdentifier: "reportReview") as? AdminReportViewController
-        
+        ListViewControllerObj?.meetingID = meetID
         ListViewControllerObj?.isCalled = "Admin"
         self.navigationController?.pushViewController(ListViewControllerObj!, animated: true)
         
@@ -240,22 +243,34 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             cell.instructorLb.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
             cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
             cell.venueLb.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
-            cell.seatAvabLb.text = "\(dif) out of \(dict.childSnapshot(forPath: "maxcount").value as! String) seats remaining"
+            cell.seatAvabLb.text = "\(dif) of \(dict.childSnapshot(forPath: "maxcount").value as! String) seats remaining"
             cell.editBtn.isHidden = false
             cell.reportBtn.isHidden = true
-            cell.approvalBtn.isHidden = false
+            
             
             cell.editBtn.tag = indexPath.row
             cell.editBtn.addTarget(self, action: #selector(editAction), for: .touchUpInside)
             
-            cell.approvalBtn.tag = indexPath.row
-            cell.approvalBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+            
             
             //cell.maxCntLb.isHidden = false
             cell.seatAvabLb.isHidden = false
             
+            
+            var meetType = dict.childSnapshot(forPath: "meetingType").value as! String?
+            
+            if(meetType == "1"){
+                
+                cell.approvalBtn.isHidden = false
+                cell.approvalBtn.tag = indexPath.row
+                cell.approvalBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+            }else{
+                cell.approvalBtn.isHidden = true
+            }
+            
         }else{
              let dict = completedmeetingName[indexPath.row] as FIRDataSnapshot
+            
             cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
             cell.instructorLb.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
             cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"

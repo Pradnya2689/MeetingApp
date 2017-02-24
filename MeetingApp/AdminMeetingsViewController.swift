@@ -24,10 +24,13 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     var meetingDataArray:[FIRDataSnapshot]! = [FIRDataSnapshot]()
     var ref: FIRDatabaseReference!
     
-    @IBAction func reportActionBtn(_ sender: Any) {
+    
+    @IBAction func reportActionBtn(_ sender: UIButton) {
+        let dict = completedmeetingName[sender.tag] as FIRDataSnapshot
+        let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
         
         let ListViewControllerObj = self.storyboard?.instantiateViewController(withIdentifier: "reportReview") as? AdminReportViewController
-        
+        ListViewControllerObj?.meetingID = meetID
         ListViewControllerObj?.isCalled = "Admin"
         self.navigationController?.pushViewController(ListViewControllerObj!, animated: true)
         
@@ -288,6 +291,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             
         }else{
              let dict = completedmeetingName[indexPath.row] as FIRDataSnapshot
+            
             cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
             cell.instructorLb.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
             cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"

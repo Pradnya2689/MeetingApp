@@ -20,6 +20,7 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBAction func viewCmmtAction(_ sender: Any) {
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "viewComment") as! ViewCommentsViewController
+        secondViewController.meetingId = self.meetingID
         self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     var contentEffTotalCount : Int = 0

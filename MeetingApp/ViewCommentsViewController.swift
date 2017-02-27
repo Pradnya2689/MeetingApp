@@ -13,6 +13,11 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
     @IBOutlet var commntTbl:UITableView!
      var ref: FIRDatabaseReference!
     var coomntArray:NSMutableArray! = NSMutableArray()
+    
+    let label = UILabel(frame: CGRect(x: (screenWidth-350)/2, y: (screenHeight-21)/2, width: 350, height: 21))
+    
+    var meetingId : String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,7 +28,7 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
     override func viewWillAppear(_ animated: Bool) {
         
         self.title = "View Comments"
-        
+        print(meetingId)
         Indicator.sharedInstance.startActivityIndicator()
             fetchData(){
              self.commntTbl.dataSource = self
@@ -32,12 +37,23 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
 
             //do something here after running your function
             print("Tada!!!!\(self.coomntArray.count)")
+//                self.label.textAlignment = .center
+//                self.label.text = "There are no completed meetings"
+//                self.view.addSubview(self.label)
+//                self.view.bringSubview(toFront: self.label)
             if(self.coomntArray.count > 0){
-               
+                //adminTableView.isHidden = false
+                //self.label.removeFromSuperview()
                // self.commntTbl.reloadInputViews()
                 Indicator.sharedInstance.stopActivityIndicator()
+                
                 self.commntTbl.reloadData()
-            }
+            }else{
+                self.label.textAlignment = .center
+                self.label.text = "There are no comments for this meeting"
+                self.view.addSubview(self.label)
+                self.view.bringSubview(toFront: self.label)
+                }
            
         }
     }
@@ -68,7 +84,7 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
         self.coomntArray = NSMutableArray()
         ref = FIRDatabase.database().reference()
         
-        let filter = ref.child("FeedBacks").queryOrdered(byChild: "feedbackId")
+        let filter = ref.child("FeedBacks").queryOrdered(byChild: "meetingID").queryEqual(toValue: meetingId!)
         filter.observe(.value , with: {snapshot in
             
             // filter.observe(of: .childAdded,  with: {snapshot in

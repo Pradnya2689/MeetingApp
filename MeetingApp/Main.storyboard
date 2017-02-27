@@ -1560,7 +1560,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ii9-St-Rcl">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ii9-St-Rcl">
                                                 <rect key="frame" x="170" y="8" width="130" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="130" id="2B7-uD-deb"/>
@@ -1580,7 +1580,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXb-ac-qra">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXb-ac-qra">
                                                 <rect key="frame" x="170" y="37" width="169" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="169" id="2na-qC-Uge"/>
@@ -2877,6 +2877,7 @@
                         <outlet property="agreePB3" destination="SxV-2V-FTo" id="S6f-F6-ZMP"/>
                         <outlet property="agreePB4" destination="YmT-AM-m5H" id="IGS-Zv-vD1"/>
                         <outlet property="agreePB5" destination="Idr-lE-dQP" id="9v9-tg-L5I"/>
+                        <outlet property="attendanceTableView" destination="hgc-Vo-8Z1" id="mnv-1f-jkI"/>
                         <outlet property="attendanceView" destination="XI7-gh-4HU" id="tYh-pF-AQv"/>
                         <outlet property="countLBQ2" destination="Y5F-3c-vsl" id="gpQ-T1-o8y"/>
                         <outlet property="countLb1" destination="5Xd-vt-TKr" id="xvX-ua-cKf"/>
@@ -2926,6 +2927,8 @@
                         <outlet property="stronglyagreePB4" destination="4k6-xj-GNg" id="gmG-xW-f5J"/>
                         <outlet property="stronglyagreePB5" destination="fyx-8Z-jW6" id="tQe-FF-ILy"/>
                         <outlet property="thankyouLB" destination="xNO-Fg-85u" id="A6n-88-DeC"/>
+                        <outlet property="totalAttendedLB" destination="AXb-ac-qra" id="lTy-rP-qyD"/>
+                        <outlet property="totalSubscribedLB" destination="Ii9-St-Rcl" id="XtA-Qh-JMM"/>
                         <outlet property="viewaAllCmtsBtn" destination="3b6-32-RK7" id="tO6-un-Ad0"/>
                     </connections>
                 </viewController>

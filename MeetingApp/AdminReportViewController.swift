@@ -14,6 +14,9 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var viewaAllCmtsBtn: UIButton!
     var isCalled : String!
     
+    @IBOutlet weak var totalAttendedLB: UILabel!
+    @IBOutlet weak var totalSubscribedLB: UILabel!
+    @IBOutlet weak var attendanceTableView: UITableView!
     @IBAction func viewCmmtAction(_ sender: Any) {
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "viewComment") as! ViewCommentsViewController
@@ -59,7 +62,8 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
 
     
     
-    
+    var attendedArray = [FIRDataSnapshot]()
+    var notattendedArray = [FIRDataSnapshot]()
     @IBOutlet weak var thankyouLB: UILabel!
     @IBOutlet weak var reportSegmentOutlet: UISegmentedControl!
     @IBAction func reportSegCntrl(_ sender: Any) {
@@ -69,9 +73,42 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             feedbackView.isHidden = false
             attendanceView.isHidden = true
         }else{
-            
+            attendedArray.removeAll()
+            notattendedArray.removeAll()
+            Indicator.sharedInstance.startActivityIndicator()
             feedbackView.isHidden = true
             attendanceView.isHidden = false
+            
+               ref = FIRDatabase.database().reference()
+            let filter = ref.child("Subscriptions").queryOrdered(byChild: "meetingId").queryEqual(toValue: meetingID!)
+            filter.observe(.value , with: {snapshot in
+                
+                // print(snapshot.value ?? <#default value#>!)
+                
+                let totalCount = snapshot.childrenCount
+                print(totalCount)
+               
+                for item in snapshot.children {
+                    let meetingID = (item as AnyObject).childSnapshot(forPath: "meetingId").value as! String?
+                    let subID = (item as AnyObject).childSnapshot(forPath: "isSubscribed").value as! String?
+                    let isattend = (item as AnyObject).childSnapshot(forPath: "isAttended").value as! String!
+            
+                    if(subID == "1"){
+                        
+                        if(isattend == "1"){
+                            
+                            self.attendedArray.append(item as! FIRDataSnapshot)
+                        }else{
+                            self.notattendedArray.append(item as! FIRDataSnapshot)
+                        }
+                    }
+                }
+                Indicator.sharedInstance.stopActivityIndicator()
+                self.totalSubscribedLB.text = "\(totalCount)"
+                self.totalAttendedLB.text = "\(self.attendedArray.count)"
+                self.attendanceTableView.reloadData()
+                
+            })
         }
     }
     
@@ -178,6 +215,8 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
         
         ref = FIRDatabase.database().reference()
         
+        if(reportSegmentOutlet.selectedSegmentIndex == 0){
+        
         let filter = ref.child("FeedBacks").queryOrdered(byChild: "meetingID").queryEqual(toValue: meetingID)
         filter.observe(.value , with: {snapshot in
             
@@ -185,6 +224,41 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             
             let totalCount = snapshot.childrenCount
             print(totalCount)
+            
+            if(totalCount == 0){
+                
+                 self.counter11 = 0
+                 self.counter12 = 0
+                 self.counter13 = 0
+                 self.counter14 = 0
+                 self.counter15 = 0
+                
+                 self.counter21 = 0
+                 self.counter22 = 0
+                 self.counter23 = 0
+                 self.counter24 = 0
+                 self.counter25 = 0
+                
+                 self.counter31 = 0
+                 self.counter32 = 0
+                 self.counter33 = 0
+                 self.counter34 = 0
+                 self.counter35 = 0
+                
+                 self.counter41 = 0
+                 self.counter42 = 0
+                 self.counter43 = 0
+                 self.counter44 = 0
+                 self.counter45 = 0
+                
+                 self.counter51 = 0
+                 self.counter52 = 0
+                 self.counter53 = 0
+                 self.counter54 = 0
+                 self.counter55 = 0
+
+            }
+            
             var newItems = [FIRDataSnapshot]()
             
             // loop through the children and append them to the new array
@@ -284,11 +358,13 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             let AgreeCount1 = (Float(self.counter14) / Float(totalCount))
             let stronglyAgreeCount1 = (Float(self.counter15) / Float(totalCount))
             
+            if(totalCount != 0 ){
             self.stronglyDisagreePB.progress = Float(stronglydisAgreeCount1)
             self.disagreePB.progress = Float(disAgreeCount1)
             self.neutralPB.progress = Float(neutralCount1)
             self.agreePB.progress = Float(AgreeCount1)
             self.stronglyAgreePB.progress = Float(stronglyAgreeCount1)
+            }
             
             self.countLb1.text = "\(self.counter11)"
             self.countLb2.text = "\(self.counter12)"
@@ -296,18 +372,20 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             self.countLb4.text = "\(self.counter14)"
             self.countLb5.text = "\(self.counter15)"
             
-            
+           
             let stronglydisAgreeCount2 = (Float(self.counter21) / Float(totalCount))
             let disAgreeCount2 = (Float(self.counter22) / Float(totalCount))
             let neutralCount2 = (Float(self.counter23) / Float(totalCount))
             let AgreeCount2 = (Float(self.counter24) / Float(totalCount))
             let stronglyAgreeCount2 = (Float(self.counter25) / Float(totalCount))
-            
+         
+              if(totalCount != 0 ){
             self.stronglyDisagreePB2.progress = Float(stronglydisAgreeCount2)
             self.disagreePB2.progress = Float(disAgreeCount2)
             self.neutralPB2.progress = Float(neutralCount2)
             self.agreePB2.progress = Float(AgreeCount2)
             self.stronglyagreePB2.progress = Float(stronglyAgreeCount2)
+            }
             
             self.countLBQ2.text = "\(self.counter21)"
             self.countLb2Q2.text = "\(self.counter22)"
@@ -322,11 +400,13 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             let AgreeCount3 = (Float(self.counter34) / Float(totalCount))
             let stronglyAgreeCount3 = (Float(self.counter35) / Float(totalCount))
             
+              if(totalCount != 0 ){
             self.stronglyDisagreePB3.progress = Float(stronglydisAgreeCount3)
             self.disagreePB3.progress = Float(disAgreeCount3)
             self.neutralPB3.progress = Float(neutralCount3)
             self.agreePB3.progress = Float(AgreeCount3)
             self.stronglyagreePB3.progress = Float(stronglyAgreeCount3)
+            }
             
             self.countLb1Q3.text = "\(self.counter31)"
             self.countLb2Q3.text = "\(self.counter32)"
@@ -341,11 +421,13 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             let AgreeCount4 = (Float(self.counter44) / Float(totalCount))
             let stronglyAgreeCount4 = (Float(self.counter45) / Float(totalCount))
             
+              if(totalCount != 0 ){
             self.stronglyDisagreePB4.progress = Float(stronglydisAgreeCount4)
             self.disagreePB4.progress = Float(disAgreeCount4)
             self.neutralPB4.progress = Float(neutralCount4)
             self.agreePB4.progress = Float(AgreeCount4)
             self.stronglyagreePB4.progress = Float(stronglyAgreeCount4)
+            }
             
             self.countLb1Q4.text = "\(self.counter41)"
             self.countLb2Q4.text = "\(self.counter42)"
@@ -360,11 +442,13 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             let AgreeCount5 = (Float(self.counter54) / Float(totalCount))
             let stronglyAgreeCount5 = (Float(self.counter55) / Float(totalCount))
             
+              if(totalCount != 0 ){
             self.stronglyDisagreePB5.progress = Float(stronglydisAgreeCount5)
             self.disagreePB5.progress = Float(disAgreeCount5)
             self.neutralPB5.progress = Float(neutralCount5)
             self.agreePB5.progress = Float(AgreeCount5)
             self.stronglyagreePB5.progress = Float(stronglyAgreeCount5)
+            }
             
             self.countLb1Q5.text = "\(self.counter51)"
             self.countLb2Q5.text = "\(self.counter52)"
@@ -375,6 +459,20 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             
 
         })
+            
+        }else{
+            
+            let filter = ref.child("Subscriptions").queryOrdered(byChild: "meetingId").queryEqual(toValue: meetingID)
+            filter.observe(.value , with: {snapshot in
+                
+                // print(snapshot.value ?? <#default value#>!)
+                
+                let totalCount = snapshot.childrenCount
+                print(totalCount)
+                var newItems = [FIRDataSnapshot]()
+            })
+            
+        }
 
 
     }
@@ -412,15 +510,16 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return employeeId.count
+        return notattendedArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "attendance", for: indexPath) as! EmployeeNoTableViewCell
         
-        
-        cell.idNumberLabel.text = employeeId[indexPath.row]
+        let dict = notattendedArray[indexPath.row] as FIRDataSnapshot
+        let cnt = (dict.childSnapshot(forPath: "empId").value as! String?)!
+        cell.idNumberLabel.text = cnt
         
         return cell
     }

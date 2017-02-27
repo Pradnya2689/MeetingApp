@@ -125,7 +125,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
             endingLineNumber = "148"
-            landmarkName = "nextView()"
+            landmarkName = "fetchAllData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -157,22 +157,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "230"
             endingLineNumber = "230"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MeetingApp/AdminMeetingsViewController.swift"
-            timestampString = "509610581.935231"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -184,44 +168,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetingApp/AdminMeetingsViewController.swift"
-            timestampString = "509610581.935231"
+            timestampString = "509621366.897274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetingApp/AdminMeetingsViewController.swift"
+            timestampString = "509873520.398112"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
+            landmarkName = "editAction(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetingApp/AdminMeetingsViewController.swift"
+            timestampString = "509873520.398112"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
+            landmarkName = "AdminMeetingsViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetingApp/AdminMeetingsViewController.swift"
+            timestampString = "509873520.398112"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MeetingApp/AdminMeetingsViewController.swift"
-            timestampString = "509610581.935231"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
-            landmarkName = "subcribeAction(sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MeetingApp/AdminMeetingsViewController.swift"
-            timestampString = "509610581.935231"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
-            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -456,7 +456,7 @@
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/FeedbackViewController.swift"
-                  timestampString = "509548506.195793"
+                  timestampString = "509874014.119717"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "188"
@@ -471,7 +471,7 @@
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/FeedbackViewController.swift"
-                  timestampString = "509548506.19754"
+                  timestampString = "509874014.121678"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "188"
@@ -616,7 +616,7 @@
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/UserMeetingViewController.swift"
-                  timestampString = "509548506.229542"
+                  timestampString = "509874014.148206"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "316"
@@ -631,12 +631,12 @@
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/UserMeetingViewController.swift"
-                  timestampString = "509548506.231322"
+                  timestampString = "509874014.150046"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "316"
                   endingLineNumber = "316"
-                  offsetFromSymbolStart = "33870">
+                  offsetFromSymbolStart = "36049">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -664,7 +664,7 @@
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/UserMeetingViewController.swift"
-                  timestampString = "509548506.236168"
+                  timestampString = "509874014.153701"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "318"
@@ -679,12 +679,12 @@
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/UserMeetingViewController.swift"
-                  timestampString = "509548506.238007"
+                  timestampString = "509874014.15569"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "318"
                   endingLineNumber = "318"
-                  offsetFromSymbolStart = "33892">
+                  offsetFromSymbolStart = "36071">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -702,86 +702,6 @@
             startingLineNumber = "189"
             endingLineNumber = "189"
             landmarkName = "nextBtnAction(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MeetingApp/AdminReportViewController.swift"
-            timestampString = "509527046.234229"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MeetingApp/AdminReportViewController.swift"
-            timestampString = "509527046.234229"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "370"
-            endingLineNumber = "370"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MeetingApp/AdminReportViewController.swift"
-            timestampString = "509527046.234229"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MeetingApp/AdminReportViewController.swift"
-            timestampString = "509527046.234229"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MeetingApp/AdminReportViewController.swift"
-            timestampString = "509527046.234229"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
-            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1048,7 +968,7 @@
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/ViewCommentsViewController.swift"
-                  timestampString = "509548506.323262"
+                  timestampString = "509874014.212795"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1063,7 +983,7 @@
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/ViewCommentsViewController.swift"
-                  timestampString = "509548506.324999"
+                  timestampString = "509874014.214851"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -1078,7 +998,7 @@
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/ViewCommentsViewController.swift"
-                  timestampString = "509548506.326821"
+                  timestampString = "509874014.216855"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1093,7 +1013,7 @@
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/ViewCommentsViewController.swift"
-                  timestampString = "509548506.328552"
+                  timestampString = "509874014.218883"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1108,7 +1028,7 @@
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/ViewCommentsViewController.swift"
-                  timestampString = "509548506.330639"
+                  timestampString = "509874014.220933"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -1125,11 +1045,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetingApp/AdminMeetingsViewController.swift"
-            timestampString = "509610581.935231"
+            timestampString = "509873520.398112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1141,11 +1061,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetingApp/AdminMeetingsViewController.swift"
-            timestampString = "509610581.935231"
+            timestampString = "509873520.398112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1173,27 +1093,27 @@
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/UserMeetingViewController.swift"
-                  timestampString = "509548506.345854"
+                  timestampString = "509874014.233034"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "586"
-                  endingLineNumber = "586"
-                  offsetFromSymbolStart = "697">
+                  startingLineNumber = "587"
+                  endingLineNumber = "587"
+                  offsetFromSymbolStart = "615">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MeetingApp.UserMeetingViewController.(feedbackAction (sender : __ObjC.UIButton) -&gt; ()).(closure #2)"
+                  symbolName = "MeetingApp.UserMeetingViewController.(feedbackAction (sender : __ObjC.UIButton) -&gt; ()).(closure #1)"
                   moduleName = "MeetingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/administrator/Documents/MeetingAppGit/MeetingApp/UserMeetingViewController.swift"
-                  timestampString = "509548506.347721"
+                  timestampString = "509874014.234924"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "589"
-                  endingLineNumber = "589"
-                  offsetFromSymbolStart = "27">
+                  startingLineNumber = "587"
+                  endingLineNumber = "587"
+                  offsetFromSymbolStart = "990">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1227,6 +1147,134 @@
             startingLineNumber = "599"
             endingLineNumber = "599"
             landmarkName = "feedbackAction(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetingApp/ApproveListViewController.swift"
+            timestampString = "509621658.862995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetingApp/ApproveListViewController.swift"
+            timestampString = "509621660.53226"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "subcribeAction(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetingApp/UserMeetingViewController.swift"
+            timestampString = "509870024.098452"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "715"
+            endingLineNumber = "715"
+            landmarkName = "alarmButtonClicked(startTime:endTime:titleOfMeeting:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetingApp/UserMeetingViewController.swift"
+            timestampString = "509870025.482051"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "702"
+            endingLineNumber = "702"
+            landmarkName = "alarmButtonClicked(startTime:endTime:titleOfMeeting:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetingApp/UserMeetingViewController.swift"
+            timestampString = "509870126.162414"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "717"
+            endingLineNumber = "717"
+            landmarkName = "alarmButtonClicked(startTime:endTime:titleOfMeeting:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetingApp/UserMeetingViewController.swift"
+            timestampString = "509870127.685485"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "716"
+            endingLineNumber = "716"
+            landmarkName = "alarmButtonClicked(startTime:endTime:titleOfMeeting:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetingApp/AdminReportViewController.swift"
+            timestampString = "509873227.027725"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "reportSegCntrl(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetingApp/AdminReportViewController.swift"
+            timestampString = "509873691.18677"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

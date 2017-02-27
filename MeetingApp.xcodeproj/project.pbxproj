@@ -323,7 +323,7 @@
 					C37D86FC1E40976700D6462A = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = A8U8Q2EEBA;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -640,7 +640,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0ad80a63-77c3-44b1-bc4a-3306646d8c07";
+				PROVISIONING_PROFILE = "4868a6ff-ff06-4a8c-8385-7c4dddd06c18";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -685,7 +685,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "0ad80a63-77c3-44b1-bc4a-3306646d8c07";
+				PROVISIONING_PROFILE = "4868a6ff-ff06-4a8c-8385-7c4dddd06c18";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -699,14 +699,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MeetingApp/MeetingApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A8U8Q2EEBA;
 				INFOPLIST_FILE = MeetingApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.feedbackapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.marketplace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0ad80a63-77c3-44b1-bc4a-3306646d8c07";
-				PROVISIONING_PROFILE_SPECIFIER = adhoc_feedback;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -718,14 +719,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MeetingApp/MeetingApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A8U8Q2EEBA;
 				INFOPLIST_FILE = MeetingApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.feedbackapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.marketplace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0ad80a63-77c3-44b1-bc4a-3306646d8c07";
-				PROVISIONING_PROFILE_SPECIFIER = adhoc_feedback;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

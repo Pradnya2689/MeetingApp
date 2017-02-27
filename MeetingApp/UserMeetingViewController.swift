@@ -310,6 +310,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         
       
         if(userSegmentCntrl.selectedSegmentIndex == 0){
+            cell.subcribeBtn.isHidden = true
             let dict = allmeetingName[indexPath.row] as FIRDataSnapshot
             var cnt = (dict.childSnapshot(forPath: "currentCount").value as! String?)!
             
@@ -327,13 +328,12 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     if(dif > 0){
                          cell.seatAvaLB.text = "\(dif) seats"
                         cell.subcribeBtn.isHidden = false
-                        //                cell.subcribeBtn.tag = indexPath.row
-                        //                cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+                     
                     }else{
                          cell.seatAvaLB.text = "\(0) seats"
                         cell.subcribeBtn.isHidden = true
                     }
-                    //cell.subcribeBtn.isHidden = false
+                    
                     cell.subcribeBtn.titleLabel?.text = "Interest"
                     cell.subcribeBtn.tag = indexPath.row
                     cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
@@ -342,20 +342,17 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
             if(meetingIds.contains(dict.childSnapshot(forPath: "meetingID").value as! String!)){
                 cell.subcribeBtn.isHidden = true
-               // cell.subcribeBtn.titleLabel?.text = "Subscribed"
-//                cell.subcribeBtn.tag = indexPath.row
-//                cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+              
             }else{
                 if(dif > 0){
                     cell.subcribeBtn.isHidden = false
                     cell.seatAvaLB.text = "\(dif) seats"
-                    //                cell.subcribeBtn.tag = indexPath.row
-                    //                cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+                 
                 }else{
                     cell.subcribeBtn.isHidden = true
                     cell.seatAvaLB.text = "\(0) seats"
                 }
-               // cell.subcribeBtn.isHidden = false
+              
                 cell.subcribeBtn.titleLabel?.text = "Subscribe"
                 cell.subcribeBtn.tag = indexPath.row
                 cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
@@ -369,7 +366,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.venueLB.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
             
             
-           // cell.subcribeBtn.isHidden = false
+           
             cell.feedbackBtn.isHidden = true
             cell.meetingCodeBtn.isHidden = true
             cell.seatAvaLB.isHidden = false
@@ -380,8 +377,6 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
         }else{
             
-
-
             let dict = myMeetingName[indexPath.row] as FIRDataSnapshot
            
                 let subid = isSubscribed[indexPath.row] as! String
@@ -408,12 +403,17 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     cell.feedbackBtn.titleLabel?.text = "Feedback"
                     cell.feedbackBtn.tag = indexPath.row
                     cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
-                    
+                     cell.waitingForApprvBtn.isHidden = true
                 }else if(subid == "2"){
                     //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
                     cell.feedbackBtn.isHidden = true
                     cell.waitingForApprvBtn.isHidden = false
-                    
+                     cell.waitingForApprvBtn.titleLabel?.text = "Waiting For Approval"
+                }else if(subid == "3"){
+                    //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
+                    cell.feedbackBtn.isHidden = true
+                    cell.waitingForApprvBtn.isHidden = false
+                     cell.waitingForApprvBtn.titleLabel?.text = "Rejected by admin"
                 }
             }
            

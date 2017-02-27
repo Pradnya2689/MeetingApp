@@ -239,12 +239,19 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             }
             var dif = Int(maxcnt)! - Int(cnt)!
             
+            if(dif > 0 ){
+                cell.seatAvabLb.text = "\(dif) of \(dict.childSnapshot(forPath: "maxcount").value as! String) seats remaining"
+
+            }else{
+                cell.seatAvabLb.text = "\(0) of \(dict.childSnapshot(forPath: "maxcount").value as! String) seats remaining"
+
+            }
+            
             cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
             cell.instructorLb.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
             cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
             cell.venueLb.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
-            cell.seatAvabLb.text = "\(dif) of \(dict.childSnapshot(forPath: "maxcount").value as! String) seats remaining"
-            cell.editBtn.isHidden = false
+                       cell.editBtn.isHidden = false
             cell.reportBtn.isHidden = true
             
             
@@ -275,7 +282,9 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             cell.instructorLb.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
             cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
             cell.venueLb.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
+            cell.reportBtn.tag = indexPath.row
             cell.editBtn.isHidden = true
+            
             cell.reportBtn.isHidden = false
             cell.approvalBtn.isHidden = true
             //cell.maxCntLb.isHidden = true

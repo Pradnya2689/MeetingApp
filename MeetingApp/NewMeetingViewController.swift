@@ -189,6 +189,11 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: "", mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: meetID,meetingCode: fourUniqueDigits, maxCount: maxLb.text!,currentCount: "",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: meetType ,completed: true, key: "")
             
             usr.setValue(meetItem.toAnyObject())
+            
+            
+          
+            
+            usr.setValue(meetItem.toAnyObject())
             let alert = UIAlertController(title: "Meeting is Edited", message: "", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action) -> Void in
@@ -213,7 +218,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             if(meetType == "1"){
                 // let SubRef = ref.child("Subscriptions").childByAutoId()
                 let meetID = groceryItemRef.key
-                let key = "\(meetID)\(self.empID)"
+                let key = "\(meetID)\(instructorIDLb.text!)"
               //  print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
                 
                 let subcribe = Subcription(attendeeId:key,empId:instructorIDLb.text!,isAttended:"0",isSubscribed:"2",meetingId: meetID,key:"")
@@ -334,10 +339,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     func keyboardDidShow(_ notification: Notification) {
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary
         let keyboardSize = (userInfo.object(forKey: UIKeyboardFrameBeginUserInfoKey)! as AnyObject).cgRectValue.size
-        //        let contentInsets = UIEdgeInsetsMake(0, 0, 200, 0)
-        //        self.loginScrollView.contentInset = contentInsets
-        //        self.loginScrollView.scrollIndicatorInsets = contentInsets
-        
+     
         var contentInset:UIEdgeInsets = self.newMeetScrollView.contentInset
         contentInset.bottom = keyboardSize.height
         self.newMeetScrollView.contentInset = contentInset

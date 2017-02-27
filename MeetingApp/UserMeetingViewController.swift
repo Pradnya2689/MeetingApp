@@ -272,9 +272,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
           self.userTableView.reloadData()
             
             if(self.allmeetingName.count == 0){
-                
-                
-                self.label.textAlignment = .center
+                 self.label.textAlignment = .center
                 self.label.text = "No meetings added"
                 self.view.addSubview(self.label)
                 self.view.bringSubview(toFront: self.label)
@@ -703,7 +701,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                    
                     let formatter = DateFormatter()
                     
-                    formatter.dateFormat = "MMM dd, yyyy HH:mm a"
+                    formatter.dateFormat = "MMM dd, yyyy HH:mm"
                     let startDatetm = formatter.date(from: startTime)
                     //print(startDate)
                     let arry = startTime.components(separatedBy: " ")
@@ -712,7 +710,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     print(endstr)
                     let datformatter = DateFormatter()
                     
-                    datformatter.dateFormat = "MMM dd, yyyy HH:mm a"
+                    datformatter.dateFormat = "MMM dd, yyyy HH:mm"
                     let startDate = datformatter.date(from: endstr)
                     print(startDate!)
                     var event = EKEvent(eventStore: self.eventStore)

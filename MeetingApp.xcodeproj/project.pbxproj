@@ -323,7 +323,7 @@
 					C37D86FC1E40976700D6462A = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = A8U8Q2EEBA;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -335,11 +335,13 @@
 					};
 					C37D87131E40977100D6462A = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = A8U8Q2EEBA;
 						ProvisioningStyle = Automatic;
 						TestTargetID = C37D86FC1E40976700D6462A;
 					};
 					C37D871E1E40977100D6462A = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = A8U8Q2EEBA;
 						ProvisioningStyle = Automatic;
 						TestTargetID = C37D86FC1E40976700D6462A;
 					};
@@ -614,9 +616,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = A8U8Q2EEBA;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -636,6 +640,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "0ad80a63-77c3-44b1-bc4a-3306646d8c07";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -663,9 +668,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = A8U8Q2EEBA;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -678,6 +685,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "0ad80a63-77c3-44b1-bc4a-3306646d8c07";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -690,12 +698,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MeetingApp/MeetingApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
 				DEVELOPMENT_TEAM = A8U8Q2EEBA;
 				INFOPLIST_FILE = MeetingApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.marketplace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.feedbackapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0ad80a63-77c3-44b1-bc4a-3306646d8c07";
+				PROVISIONING_PROFILE_SPECIFIER = adhoc_feedback;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -706,12 +717,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MeetingApp/MeetingApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
 				DEVELOPMENT_TEAM = A8U8Q2EEBA;
 				INFOPLIST_FILE = MeetingApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.marketplace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.feedbackapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0ad80a63-77c3-44b1-bc4a-3306646d8c07";
+				PROVISIONING_PROFILE_SPECIFIER = adhoc_feedback;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

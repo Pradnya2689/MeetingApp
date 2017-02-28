@@ -109,9 +109,12 @@
                                             <action selector="signINBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ubu-6c-vTu"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Version 1.0.2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3W-FI-3Nf">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Version 1.0.3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3W-FI-3Nf">
                                         <rect key="frame" x="253" y="554" width="114" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="k2T-2H-rcP"/>
+                                            <constraint firstAttribute="width" constant="114" id="nAd-f3-sEc"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -119,6 +122,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="LTn-tk-eUW" secondAttribute="trailing" constant="8" id="0TZ-Da-jXK"/>
+                                    <constraint firstAttribute="bottom" secondItem="o3W-FI-3Nf" secondAttribute="bottom" constant="8" id="0V2-xC-6zs"/>
+                                    <constraint firstAttribute="trailing" secondItem="o3W-FI-3Nf" secondAttribute="trailing" constant="8" id="2Uq-EE-RXp"/>
                                     <constraint firstItem="LTn-tk-eUW" firstAttribute="leading" secondItem="rvN-Gs-bfn" secondAttribute="leading" constant="8" id="3Eq-zp-DVB"/>
                                     <constraint firstItem="hmy-DX-z4r" firstAttribute="top" secondItem="rvN-Gs-bfn" secondAttribute="top" constant="149" id="7Qe-Cg-TNt"/>
                                     <constraint firstAttribute="trailing" secondItem="hmy-DX-z4r" secondAttribute="trailing" constant="20" id="8Ny-6E-WkP"/>
@@ -3066,7 +3071,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kSj-l2-YTK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xex-cH-dzH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xex-cH-dzH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

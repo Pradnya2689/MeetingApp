@@ -159,14 +159,20 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         
         print(result1)
         ref = FIRDatabase.database().reference()
-        
-        var upcommingMeetingDict = NSMutableDictionary()
-        
+        self.upcommingMeetingName.removeAll()
+       // var upcommingMeetingDict = NSMutableDictionary()
+        var newItems1 = [FIRDataSnapshot]()
         let filter = ref.child("Meetings").queryOrdered(byChild: "mdate").queryStarting(atValue: result ,childKey: "mdate")
         filter.observe(.value , with: {snapshot in
            var newItems = [FIRDataSnapshot]()
             for item in snapshot.children {
-                newItems.append(item as! FIRDataSnapshot)
+                let isexpired = (item as AnyObject).childSnapshot(forPath: "isExpired").value as! String?
+               //let instrID = (item1 as AnyObject).childSnapshot(forPath: "minstructorID").value as! String?
+                if(isexpired != "1" ){
+                 newItems.append(item as! FIRDataSnapshot)
+                }else{
+                    newItems1.append(item as! FIRDataSnapshot)
+                }
             }
             self.upcommingMeetingName = newItems as? [FIRDataSnapshot]
             print(self.meetingDataArray)
@@ -175,35 +181,25 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         })
         
         var completedMeetingDict = NSMutableDictionary()
-        
         let filter1 = ref.child("Meetings").queryOrdered(byChild: "mdate").queryEnding(atValue: result )
         
         filter1.observe(.value, with: {snapshot in
             print(snapshot.value)
             
-
-            
-            var newItems = [FIRDataSnapshot]()
-            
             // loop through the children and append them to the new array
             for item in snapshot.children {
-                newItems.append(item as! FIRDataSnapshot)
+                newItems1.append(item as! FIRDataSnapshot)
             }
             
-            self.completedmeetingName = newItems as? [FIRDataSnapshot]
+            self.completedmeetingName = newItems1 as? [FIRDataSnapshot]
             print(self.meetingDataArray)
             Indicator.sharedInstance.stopActivityIndicator()
             self.adminTableView.reloadData()
             
-            
         })
     
-        
 }
-
-
-
-    
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
             return upcommingMeetingName.count
@@ -253,16 +249,9 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             cell.venueLb.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
                        cell.editBtn.isHidden = false
             cell.reportBtn.isHidden = true
-            
-            
             cell.editBtn.tag = indexPath.row
             cell.editBtn.addTarget(self, action: #selector(editAction), for: .touchUpInside)
-            
-            
-            
-            //cell.maxCntLb.isHidden = false
             cell.seatAvabLb.isHidden = false
-            
             
             var meetType = dict.childSnapshot(forPath: "meetingType").value as! String?
             

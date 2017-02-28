@@ -228,7 +228,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             }else{
                 
                 let meetID = groceryItemRef.key
-                let key = "\(meetID)\(self.empID)"
+                let key = "\(meetID)\(instructorIDLb.text!)"
                // print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
                 let subcribe = Subcription(attendeeId:key,empId:instructorIDLb.text!,isAttended:"0",isSubscribed:"1",meetingId: meetID,key:"")
                 let sub = ref.child("Subscriptions").child(key)

@@ -35,6 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,FIRMessagingDelegate{
         application.registerForRemoteNotifications()
     
          FIRApp.configure()
+        
+        
+        var pageController = UIPageControl.appearance()
+        pageController.pageIndicatorTintColor = UIColor.lightGray
+        pageController.currentPageIndicatorTintColor = UIColor.black
+        pageController.backgroundColor = UIColor.white
+        
+        
+        
         return true
     }
     func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage){

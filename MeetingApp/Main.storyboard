@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kSj-l2-YTK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kSj-l2-YTK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1047,6 +1047,32 @@
             </objects>
             <point key="canvasLocation" x="2894" y="1092"/>
         </scene>
+        <!--Main View Cmmt View Controller-->
+        <scene sceneID="h2b-PT-Obf">
+            <objects>
+                <viewController storyboardIdentifier="mainCmmtView" id="7BA-xm-Lk3" customClass="MainViewCmmtViewController" customModule="MeetingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bar-vG-RdJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="KxP-5r-w8o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KSZ-QE-Aci">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sGO-ok-6Ml" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="809" y="1316"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="2Sd-Ta-d17">
+            <objects>
+                <pageViewController storyboardIdentifier="pageViewCntrl" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="G71-Yu-QhQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IUd-gY-Fkz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1485" y="1316"/>
+        </scene>
         <!--View Comments View Controller-->
         <scene sceneID="j1i-Z1-3d6">
             <objects>
@@ -1059,9 +1085,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkv-CS-hDL">
+                                <rect key="frame" x="16" y="28" width="343" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="Qme-Xj-ibb"/>
+                                    <constraint firstAttribute="width" constant="343" id="jzo-PU-JB7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="16"/>
+                                <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="66" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="JmA-Vu-R1t">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="XkV-pw-yBS"/>
+                                    <constraint firstAttribute="height" constant="547" id="pqc-hI-QLK"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="coomntCell" rowHeight="66" id="vIg-0f-GN7" customClass="CommentsCell" customModule="MeetingApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1" width="375" height="66"/>
@@ -1111,14 +1151,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JmA-Vu-R1t" firstAttribute="leading" secondItem="37H-hh-e2Y" secondAttribute="leading" id="NhY-0y-nFp"/>
-                            <constraint firstItem="JmA-Vu-R1t" firstAttribute="top" secondItem="37H-hh-e2Y" secondAttribute="top" id="XKV-uf-CMc"/>
-                            <constraint firstAttribute="trailing" secondItem="JmA-Vu-R1t" secondAttribute="trailing" id="dvs-Je-EXH"/>
-                            <constraint firstItem="JmA-Vu-R1t" firstAttribute="bottom" secondItem="Abp-cy-vIB" secondAttribute="top" id="nof-ay-8wP"/>
+                            <constraint firstItem="JmA-Vu-R1t" firstAttribute="leading" secondItem="37H-hh-e2Y" secondAttribute="leading" id="6er-GM-uuz"/>
+                            <constraint firstItem="JmA-Vu-R1t" firstAttribute="top" secondItem="lkv-CS-hDL" secondAttribute="bottom" constant="8" id="8QS-Xs-jnT"/>
+                            <constraint firstItem="Abp-cy-vIB" firstAttribute="top" secondItem="JmA-Vu-R1t" secondAttribute="bottom" id="RQT-B2-Ci5"/>
+                            <constraint firstAttribute="trailing" secondItem="JmA-Vu-R1t" secondAttribute="trailing" id="Z4I-qi-AaM"/>
+                            <constraint firstItem="lkv-CS-hDL" firstAttribute="leading" secondItem="37H-hh-e2Y" secondAttribute="leading" constant="16" id="bXG-hV-wg9"/>
+                            <constraint firstAttribute="trailing" secondItem="lkv-CS-hDL" secondAttribute="trailing" constant="16" id="hhI-4v-uZ0"/>
+                            <constraint firstItem="lkv-CS-hDL" firstAttribute="top" secondItem="YeN-mS-CpI" secondAttribute="bottom" constant="8" id="ten-FP-JG7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="commntTbl" destination="JmA-Vu-R1t" id="ikN-8B-Hju"/>
+                        <outlet property="titleLB" destination="lkv-CS-hDL" id="AGE-wk-3gn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C44-RC-2Y9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1727,7 +1771,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="8fp-uU-uI2">
-                                                        <rect key="frame" x="130" y="15" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="15" width="180" height="2.5"/>
                                                         <color key="backgroundColor" red="0.28401674069999999" green="0.30649341079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -1758,7 +1802,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="FEz-4m-XMd">
-                                                        <rect key="frame" x="130" y="43" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="43" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="0hO-Lh-QgA"/>
                                                             <constraint firstAttribute="height" constant="1.5" id="usb-LH-1Rg"/>
@@ -1787,7 +1831,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="9EM-RV-fFQ">
-                                                        <rect key="frame" x="130" y="71" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="71" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="4fl-eA-9tL"/>
                                                             <constraint firstAttribute="height" constant="1.5" id="JMF-7g-qX0"/>
@@ -1816,7 +1860,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Idr-lE-dQP">
-                                                        <rect key="frame" x="130" y="99" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="99" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1.5" id="ekH-xD-Abb"/>
                                                             <constraint firstAttribute="width" constant="180" id="uB2-Qv-SUW"/>
@@ -1845,7 +1889,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="fyx-8Z-jW6">
-                                                        <rect key="frame" x="130" y="127" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="127" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="3Jt-rF-bmc"/>
                                                             <constraint firstAttribute="height" constant="1.5" id="x4i-Kx-Sox"/>
@@ -1938,7 +1982,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="uwo-gA-ZB7">
-                                                        <rect key="frame" x="130" y="15" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="15" width="180" height="2.5"/>
                                                         <color key="backgroundColor" red="0.28401674069999999" green="0.30649341079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -1969,7 +2013,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="uMc-c1-wp6">
-                                                        <rect key="frame" x="130" y="43" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="43" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="9Bg-BU-Ksp"/>
                                                             <constraint firstAttribute="height" constant="1.5" id="ehc-op-5oo"/>
@@ -1998,7 +2042,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="jMQ-eL-KD8">
-                                                        <rect key="frame" x="130" y="71" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="71" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1.5" id="SXN-Yd-ZOr"/>
                                                             <constraint firstAttribute="width" constant="180" id="hFC-4c-HF1"/>
@@ -2027,7 +2071,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="obE-VV-fPx">
-                                                        <rect key="frame" x="130" y="99" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="99" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1.5" id="1R7-vA-lr0"/>
                                                             <constraint firstAttribute="width" constant="180" id="Z7W-l4-Nm3"/>
@@ -2056,7 +2100,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Mm7-mo-wIa">
-                                                        <rect key="frame" x="130" y="127" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="127" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="eNO-mL-hba"/>
                                                             <constraint firstAttribute="height" constant="1.5" id="yrd-r8-qGD"/>
@@ -2150,7 +2194,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="9XQ-Gh-Pu0">
-                                                        <rect key="frame" x="130" y="15" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="15" width="180" height="2.5"/>
                                                         <color key="backgroundColor" red="0.28401674069999999" green="0.30649341079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -2181,7 +2225,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="14Q-sn-dCG">
-                                                        <rect key="frame" x="130" y="43" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="43" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1.5" id="Pb9-Pj-j73"/>
                                                             <constraint firstAttribute="width" constant="180" id="j1J-Te-mu3"/>
@@ -2210,7 +2254,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="CMT-2V-KBm">
-                                                        <rect key="frame" x="130" y="71" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="71" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="Dct-UL-TEQ"/>
                                                             <constraint firstAttribute="height" constant="1.5" id="hro-Uv-eea"/>
@@ -2239,7 +2283,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="mZB-QV-Wbt">
-                                                        <rect key="frame" x="130" y="99" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="99" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="2uq-TJ-l1p"/>
                                                             <constraint firstAttribute="height" constant="1.5" id="NSP-XJ-XGS"/>
@@ -2268,7 +2312,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="bjG-xN-bMj">
-                                                        <rect key="frame" x="130" y="127" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="127" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1.5" id="9oS-XB-xtj"/>
                                                             <constraint firstAttribute="width" constant="180" id="bHD-dx-0AQ"/>
@@ -2362,7 +2406,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="47Z-JY-jua">
-                                                        <rect key="frame" x="130" y="18" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="18" width="180" height="2.5"/>
                                                         <color key="backgroundColor" red="0.28401674069999999" green="0.30649341079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -2393,7 +2437,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="09K-9Z-YlS">
-                                                        <rect key="frame" x="130" y="46" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="46" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1.5" id="YhR-Kk-t7n"/>
                                                             <constraint firstAttribute="width" constant="180" id="kxx-XF-UFu"/>
@@ -2422,7 +2466,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="bLN-k1-sVh">
-                                                        <rect key="frame" x="130" y="74" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="74" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="FcO-eS-gLY"/>
                                                             <constraint firstAttribute="height" constant="1.5" id="K9S-eD-zWe"/>
@@ -2451,7 +2495,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="SxV-2V-FTo">
-                                                        <rect key="frame" x="130" y="102" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="102" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="jSH-WV-nQh"/>
                                                             <constraint firstAttribute="height" constant="1.5" id="qiH-qR-zjr"/>
@@ -2480,7 +2524,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="GT6-gE-L8q">
-                                                        <rect key="frame" x="130" y="130" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="130" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1.5" id="A7V-KC-VTq"/>
                                                             <constraint firstAttribute="width" constant="180" id="ONH-aY-4Xu"/>
@@ -2587,7 +2631,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="g0L-P8-Wnf">
-                                                        <rect key="frame" x="130" y="18" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="18" width="180" height="2.5"/>
                                                         <color key="backgroundColor" red="0.28401674069999999" green="0.30649341079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -2618,7 +2662,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Ihc-0I-jOs">
-                                                        <rect key="frame" x="130" y="46" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="46" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="W3j-vf-vgH"/>
                                                             <constraint firstAttribute="height" constant="1.5" id="fWh-aw-7R8"/>
@@ -2647,7 +2691,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="17d-Lv-nhd">
-                                                        <rect key="frame" x="130" y="74" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="74" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="XK2-yT-dvp"/>
                                                             <constraint firstAttribute="height" constant="1.5" id="iEa-Tz-lij"/>
@@ -2676,7 +2720,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="YmT-AM-m5H">
-                                                        <rect key="frame" x="130" y="102" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="102" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1.5" id="N8N-8s-Ehn"/>
                                                             <constraint firstAttribute="width" constant="180" id="t09-7A-mLu"/>
@@ -2705,7 +2749,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="4k6-xj-GNg">
-                                                        <rect key="frame" x="130" y="130" width="180" height="3"/>
+                                                        <rect key="frame" x="130" y="130" width="180" height="2.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="3MQ-SA-lOs"/>
                                                             <constraint firstAttribute="height" constant="1.5" id="ze2-xR-qvx"/>
@@ -3064,7 +3108,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kSj-l2-YTK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xex-cH-dzH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xex-cH-dzH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

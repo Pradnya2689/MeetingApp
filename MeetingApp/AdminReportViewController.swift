@@ -19,7 +19,7 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var attendanceTableView: UITableView!
     @IBAction func viewCmmtAction(_ sender: Any) {
         
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "viewComment") as! ViewCommentsViewController
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "mainCmmtView") as! MainViewCmmtViewController
         secondViewController.meetingId = self.meetingID
         self.navigationController?.pushViewController(secondViewController, animated: true)
     }

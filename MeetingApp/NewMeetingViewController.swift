@@ -43,8 +43,46 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     var meetID : String!
     
     @IBAction func newMeetingSubmitAction(_ sender: Any) {
+        
+        
+        if(nameMeetingLb.text == ""){
+            
+            self.showAlert(Message: "Enter Meeting Name")
+           
+        }else if(venueLb.text == ""){
+            
+            self.showAlert(Message: "Enter Venue")
+            
+        }else if(instructorNameLB.text == ""){
+            
+            self.showAlert(Message: "Enter Instructor Name")
+            
+        }else if(instructorIDLb.text == ""){
+            
+            self.showAlert(Message: "Enter Instructor ID")
+            
+        }else if(dateLb.text == ""){
+            
+            self.showAlert(Message: "Select Date")
+            
+        }else if(endTimeLb.text == ""){
+            
+            self.showAlert(Message: "Select EndTime")
+            
+        }else if(maxLb.text == ""){
+            
+            self.showAlert(Message: "Enter Maximum Seats Available")
+            
+        }else if(selfSubcribeBtn.currentImage == uncheck && approveBtn.currentImage == uncheck){
+            
+            self.showAlert(Message: "Select Meeting Type")
+            
+        }else{
+     
         ref = FIRDatabase.database().reference()
         createMeeting()
+            
+        }
     }
     @IBAction func selfSubAction(_ sender: Any) {
         
@@ -139,6 +177,16 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         
         
     }
+    
+    
+    func showAlert(Message: String)
+    {
+        let alert = UIAlertController(title:"Meeting App", message:Message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
     
     func doneClicked(sender: AnyObject) {
         self.view.endEditing(true)

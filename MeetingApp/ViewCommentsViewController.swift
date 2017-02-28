@@ -15,7 +15,7 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
     var coomntArray:NSMutableArray! = NSMutableArray()
     var coomntArray1:NSMutableArray! = NSMutableArray()
     
-    let label = UILabel(frame: CGRect(x: (screenWidth-350)/2, y: (screenHeight-21)/2, width: 350, height: 21))
+    let label = UILabel(frame: CGRect(x: (screenWidth-350)/2, y: (screenHeight-60)/2, width: 350, height: 60))
     
     @IBOutlet weak var titleLB: UILabel!
     var meetingId : String!
@@ -57,10 +57,23 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
                 
                 self.commntTbl.reloadData()
             }else{
+                if(self.pageIndex==0){
+                    self.titleLB.isHidden = true
                 self.label.textAlignment = .center
+                    self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
                 self.label.text = "There are no comments for this meeting"
                 self.view.addSubview(self.label)
                 self.view.bringSubview(toFront: self.label)
+                }else{
+                    self.titleLB.isHidden = true
+                    self.label.textAlignment = .center
+                    self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
+                   // self.label.lineBreakMode = .byWordWrapping
+                    self.label.numberOfLines = 3
+                    self.label.text = "There are no improvements suggested for this meeting"
+                    self.view.addSubview(self.label)
+                    self.view.bringSubview(toFront: self.label)
+                }
                 }
            
         }

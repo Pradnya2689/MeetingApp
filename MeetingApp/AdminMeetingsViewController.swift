@@ -58,6 +58,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         if(adminMeetingSegCntrl.selectedSegmentIndex == 1){
             if(completedmeetingName.count == 0){
                 label.textAlignment = .center
+                self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
                 label.text = "There are no completed meetings"
                 self.view.addSubview(label)
                 self.view.bringSubview(toFront: label)
@@ -71,6 +72,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         }else{
             if(upcommingMeetingName.count == 0){
                 label.textAlignment = .center
+                self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
                 label.text = "There are no upcomming meetings"
                 self.view.addSubview(label)
                 self.view.bringSubview(toFront: label)

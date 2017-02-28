@@ -13,10 +13,15 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
     @IBOutlet var commntTbl:UITableView!
      var ref: FIRDatabaseReference!
     var coomntArray:NSMutableArray! = NSMutableArray()
+    var coomntArray1:NSMutableArray! = NSMutableArray()
     
     let label = UILabel(frame: CGRect(x: (screenWidth-350)/2, y: (screenHeight-21)/2, width: 350, height: 21))
     
+    @IBOutlet weak var titleLB: UILabel!
     var meetingId : String!
+    
+    var titleText : String!
+    var pageIndex : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +35,9 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
         self.title = "View Comments"
         print(meetingId)
         Indicator.sharedInstance.startActivityIndicator()
+        
+        self.titleLB.text = self.titleText
+        
             fetchData(){
              self.commntTbl.dataSource = self
              self.commntTbl.delegate = self
@@ -63,8 +71,11 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
         let cell = commntTbl.dequeueReusableCell(withIdentifier: "coomntCell", for: indexPath) as! CommentsCell
         
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        
+        if(pageIndex == 0){
         cell.commntLbl.text = coomntArray.object(at: indexPath.row) as? String
+        }else{
+         cell.commntLbl.text = coomntArray1.object(at: indexPath.row) as? String
+        }
         
         return cell
     }
@@ -82,6 +93,7 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
     func fetchData(finished: @escaping () -> Void) {
        Indicator.sharedInstance.startActivityIndicator()
         self.coomntArray = NSMutableArray()
+        self.coomntArray1 = NSMutableArray()
         ref = FIRDatabase.database().reference()
         
         let filter = ref.child("FeedBacks").queryOrdered(byChild: "meetingID").queryEqual(toValue: meetingId!)
@@ -91,6 +103,7 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
             print(snapshot.value)
             
             let newItems = NSMutableArray()
+            let newItems1 = NSMutableArray()
             
             // loop through the children and append them to the new array
             for item in snapshot.children {
@@ -101,11 +114,12 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
                 }
                 let cmnt2 = (item as AnyObject).childSnapshot(forPath: "comment2").value as! String! as String
                 if(cmnt2.characters.count != 0){
-                    newItems.add(cmnt2)
+                    newItems1.add(cmnt2)
                 }
             }
             Indicator.sharedInstance.stopActivityIndicator()
             self.coomntArray = NSMutableArray.init(array: newItems)
+            self.coomntArray1 = NSMutableArray.init(array: newItems1)
             finished()
         })
         
@@ -113,7 +127,11 @@ class ViewCommentsViewController: UIViewController,UITableViewDataSource,UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(pageIndex == 0){
         return coomntArray.count
+        }else{
+        return coomntArray1.count
+        }
     }
     
     //open func cellForRow(at indexPath: IndexPath) -> UITableViewCell?{

@@ -129,6 +129,35 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         
         self.adminMeetingSegCntrl.translatesAutoresizingMaskIntoConstraints = true
         self.adminMeetingSegCntrl.frame = CGRect(x: 5, y: 0, width: screenWidth-10, height: 32)
+        
+        if(adminMeetingSegCntrl.selectedSegmentIndex == 1){
+            if(completedmeetingName.count == 0){
+                label.textAlignment = .center
+                label.text = "There are no completed meetings"
+                self.view.addSubview(label)
+                self.view.bringSubview(toFront: label)
+                adminTableView.isHidden = true
+                
+            }else{
+                adminTableView.isHidden = false
+                label.removeFromSuperview()
+                self.adminTableView.reloadData()
+            }
+        }else{
+            if(upcommingMeetingName.count == 0){
+                label.textAlignment = .center
+                label.text = "There are no upcomming meetings"
+                self.view.addSubview(label)
+                self.view.bringSubview(toFront: label)
+                adminTableView.isHidden = true
+                
+            }else{
+                adminTableView.isHidden = false
+                label.removeFromSuperview()
+                self.adminTableView.reloadData()
+            }
+            
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

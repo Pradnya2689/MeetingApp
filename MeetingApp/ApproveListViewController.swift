@@ -18,7 +18,7 @@ class ApproveListViewController: UIViewController,UITableViewDelegate,UITableVie
         super.viewDidLoad()
         
         //empIDArray = ["106759","103428","106249","102863"]
-
+         Indicator.sharedInstance.startActivityIndicator()
         ref = FIRDatabase.database().reference()
         let filter = ref.child("Subscriptions").queryOrdered(byChild: "meetingId").queryEqual(toValue: meetinID)
         filter.observe(.value , with: {snapshot in
@@ -32,7 +32,7 @@ class ApproveListViewController: UIViewController,UITableViewDelegate,UITableVie
             for item in snapshot.children {
                   newItems.append(item as! FIRDataSnapshot)
             }
-            
+            Indicator.sharedInstance.stopActivityIndicator()
             self.empIDArray = newItems
             self.approvalTable.reloadData()
             
@@ -57,7 +57,11 @@ class ApproveListViewController: UIViewController,UITableViewDelegate,UITableVie
         if(dict.childSnapshot(forPath: "isSubscribed").value as! String! == "1" ){
            cell.approveBtn.isHidden = true
             cell.rejectBtn.isHidden = true
-        }else{
+        }else if(dict.childSnapshot(forPath: "isSubscribed").value as! String! == "3" ){
+            cell.approveBtn.isHidden = true
+            cell.rejectBtn.isHidden = true
+        }
+        else{
             cell.approveBtn.isHidden = false
             cell.rejectBtn.isHidden = false
         }
@@ -67,19 +71,50 @@ class ApproveListViewController: UIViewController,UITableViewDelegate,UITableVie
         cell.subscriptionID = dict.childSnapshot(forPath: "attendeeId").value as! String?
         cell.approveBtn.tag = indexPath.row
         cell.approveBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+        cell.rejectBtn.tag = indexPath.row
+        cell.rejectBtn.addTarget(self, action: #selector(subcribeAction1), for: .touchUpInside)
+        
         return cell
     }
-    func subcribeAction(sender: UIButton){
-        
+    func subcribeAction1(sender: UIButton){
+        Indicator.sharedInstance.startActivityIndicator()
         print(sender.tag)
-        let dict = empIDArray[sender.tag] as! FIRDataSnapshot
+        let dict = empIDArray[sender.tag] 
         
         let meetID = dict.childSnapshot(forPath: "meetingId").value as! String?
         let key = dict.childSnapshot(forPath: "attendeeId").value as! String!
-    
-        let subcribe = Subcription(attendeeId:key!,empId:empID,isAttended:"0",isSubscribed:"1",meetingId: meetID!,key:"")
+        let empIDs = dict.childSnapshot(forPath: "empId").value as! String!
+        
+        
+        let subcribe = Subcription(attendeeId:key!,empId:empIDs!,isAttended:"0",isSubscribed:"3",meetingId: meetID!,key:"")
         let sub = ref.child("Subscriptions").child(key!)
         sub.setValue(subcribe.toAnyObject())
+        Indicator.sharedInstance.stopActivityIndicator()
+        
+        let indx = NSIndexPath.init(row: sender.tag, section: 0)
+        let cell = approvalTable.cellForRow(at: indx as IndexPath) as! ApproveCellTableViewCell
+        cell.approveBtn.isHidden = true
+        cell.rejectBtn.isHidden = true
+        
+    }
+
+    func subcribeAction(sender: UIButton){
+        
+        print(sender.tag)
+        let dict = empIDArray[sender.tag] 
+        
+        let meetID = dict.childSnapshot(forPath: "meetingId").value as! String?
+        let key = dict.childSnapshot(forPath: "attendeeId").value as! String!
+        let empIDs = dict.childSnapshot(forPath: "empId").value as! String!
+        let subcribe = Subcription(attendeeId:key!,empId:empIDs!,isAttended:"0",isSubscribed:"1",meetingId: meetID!,key:"")
+        let sub = ref.child("Subscriptions").child(key!)
+        sub.setValue(subcribe.toAnyObject())
+        
+        
+        let indx = NSIndexPath.init(row: sender.tag, section: 0)
+        let cell = approvalTable.cellForRow(at: indx as IndexPath) as! ApproveCellTableViewCell
+        cell.approveBtn.isHidden = true
+        cell.rejectBtn.isHidden = true
 
     }
 

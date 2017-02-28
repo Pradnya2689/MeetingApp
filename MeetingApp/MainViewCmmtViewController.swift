@@ -29,7 +29,7 @@ class MainViewCmmtViewController: UIViewController,UIPageViewControllerDataSourc
         
         self.pageViewController.setViewControllers(viewControllers as! [UIViewController], direction: .forward, animated: true, completion: nil)
         
-        self.pageViewController.view.frame = CGRect(x: 0, y: 28, width: self.view.frame.width, height: self.view.frame.height-28)
+        self.pageViewController.view.frame = CGRect(x: 0, y: 28, width: self.view.frame.width, height: self.view.frame.height - 28)
         
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)

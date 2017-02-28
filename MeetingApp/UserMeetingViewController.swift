@@ -28,6 +28,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
           
                 
                 label.textAlignment = .center
+            self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
                 label.text = "You have not subscribed for any meetings"
                 self.view.addSubview(label)
                 self.view.bringSubview(toFront: label)
@@ -43,6 +44,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                
                     
                     label.textAlignment = .center
+                self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
                     label.text = "No meetings added"
                     self.view.addSubview(label)
                     self.view.bringSubview(toFront: label)
@@ -273,6 +275,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
             if(self.allmeetingName.count == 0){
                  self.label.textAlignment = .center
+                self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
                 self.label.text = "No meetings added"
                 self.view.addSubview(self.label)
                 self.view.bringSubview(toFront: self.label)

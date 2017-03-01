@@ -126,14 +126,18 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewWillAppear(_ animated: Bool) {
         
         self.title = "Meetings"
-        userSegmentCntrl.selectedSegmentIndex = 0
+        
+        //userSegmentCntrl.selectedSegmentIndex = 0
         //Indicator.sharedInstance.startActivityIndicator()
         
             self.fetchMyMeeting(){
                 self.fetchAllData()
-//                self.addMyMeetings {
-//                    self.userTableView.reloadData()
-//                }
+
+                if(self.myMeetingName.count > 0){
+                    self.userSegmentCntrl.selectedSegmentIndex = 1
+                }else{
+                    self.userSegmentCntrl.selectedSegmentIndex = 0
+                }
                 
             }
             
@@ -449,7 +453,6 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
        
         let dict = self.allmeetingName[sender] as FIRDataSnapshot
         var cnt = (dict.childSnapshot(forPath: "currentCount").value as! String?)!
-        
         let maxcnt = (dict.childSnapshot(forPath: "maxcount").value as! String?)!
         if(cnt == ""){
             cnt = "0"
@@ -468,9 +471,6 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         self.fetchMyMeeting(){
             self.fetchAllData()
-            //                self.addMyMeetings {
-            //                    self.userTableView.reloadData()
-            //                }
             
         }
        

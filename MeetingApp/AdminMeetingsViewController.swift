@@ -272,7 +272,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
                 cell.seatAvabLb.text = "\(dif) of \(dict.childSnapshot(forPath: "maxcount").value as! String) seats remaining"
 
             }else{
-                cell.seatAvabLb.text = "\(0) of \(dict.childSnapshot(forPath: "maxcount").value as! String) seats remaining"
+                cell.seatAvabLb.text = "No seats remaining"
 
             }
             

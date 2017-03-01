@@ -250,9 +250,9 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jupiter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ign-3Z-Kth">
-                                                            <rect key="frame" x="30" y="66" width="147" height="21"/>
+                                                            <rect key="frame" x="30" y="66" width="219" height="21"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="147" id="RpP-q2-JJU"/>
+                                                                <constraint firstAttribute="width" constant="219" id="RpP-q2-JJU"/>
                                                                 <constraint firstAttribute="height" constant="21" id="rpQ-7f-yl1"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="16"/>
@@ -341,7 +341,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="yjt-Wb-mT0" secondAttribute="trailing" constant="25" id="DQu-g2-5oW"/>
                                                         <constraint firstAttribute="trailing" secondItem="iup-66-CoY" secondAttribute="trailing" constant="25" id="Dn6-cm-r4L"/>
                                                         <constraint firstItem="yjt-Wb-mT0" firstAttribute="leading" secondItem="lab-2d-Dn5" secondAttribute="trailing" constant="2" id="FQ5-9X-5Ai"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Ign-3Z-Kth" secondAttribute="trailing" constant="198" id="G8L-eZ-8Ed"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ign-3Z-Kth" secondAttribute="trailing" constant="126" id="G8L-eZ-8Ed"/>
                                                         <constraint firstItem="CHJ-FD-Ed8" firstAttribute="top" secondItem="vom-5j-ReH" secondAttribute="bottom" constant="8" id="Hha-57-dGZ"/>
                                                         <constraint firstItem="xwb-yJ-eWE" firstAttribute="top" secondItem="7RL-9W-Uox" secondAttribute="bottom" constant="8" id="IM4-G7-RCf"/>
                                                         <constraint firstItem="lab-2d-Dn5" firstAttribute="leading" secondItem="qyY-yB-ql0" secondAttribute="leading" constant="8" id="JmE-ym-HsP"/>
@@ -489,10 +489,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Galaxy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQk-yJ-HNh">
-                                                            <rect key="frame" x="30" y="66" width="208" height="21"/>
+                                                            <rect key="frame" x="30" y="66" width="249" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="E60-zz-RH7"/>
-                                                                <constraint firstAttribute="width" constant="208" id="VaJ-5y-ZRr"/>
+                                                                <constraint firstAttribute="width" constant="249" id="VaJ-5y-ZRr"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="16"/>
                                                             <nil key="textColor"/>
@@ -648,7 +648,7 @@
                                                         <constraint firstItem="Ouf-jk-W7R" firstAttribute="leading" secondItem="pJB-Sm-6iQ" secondAttribute="leading" constant="8" id="rUQ-M5-REm"/>
                                                         <constraint firstItem="4nX-hS-xq6" firstAttribute="leading" secondItem="NLA-BE-J3h" secondAttribute="trailing" constant="-207" id="ro0-qz-RgC"/>
                                                         <constraint firstAttribute="trailing" secondItem="4nX-hS-xq6" secondAttribute="trailing" constant="130" id="tIS-B9-1MW"/>
-                                                        <constraint firstAttribute="trailing" secondItem="zQk-yJ-HNh" secondAttribute="trailing" constant="137" id="uFR-Ts-UE6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zQk-yJ-HNh" secondAttribute="trailing" constant="96" id="uFR-Ts-UE6"/>
                                                         <constraint firstItem="edU-OX-aoa" firstAttribute="leading" secondItem="eO8-cf-NXG" secondAttribute="trailing" constant="2" id="uSe-Xe-oLk"/>
                                                         <constraint firstItem="6PN-Fe-fc0" firstAttribute="top" secondItem="Ouf-jk-W7R" secondAttribute="bottom" constant="9" id="us5-C5-gw7"/>
                                                         <constraint firstAttribute="trailing" secondItem="iCW-x9-KMN" secondAttribute="trailing" constant="25" id="vPK-yk-wPb"/>

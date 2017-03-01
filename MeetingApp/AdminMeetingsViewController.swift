@@ -132,36 +132,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         self.adminMeetingSegCntrl.translatesAutoresizingMaskIntoConstraints = true
         self.adminMeetingSegCntrl.frame = CGRect(x: 5, y: 0, width: screenWidth-10, height: 32)
         
-        if(adminMeetingSegCntrl.selectedSegmentIndex == 1){
-            if(completedmeetingName.count == 0){
-                label.textAlignment = .center
-                self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
-                label.text = "There are no completed meetings"
-                self.view.addSubview(label)
-                self.view.bringSubview(toFront: label)
-                adminTableView.isHidden = true
-                
-            }else{
-                adminTableView.isHidden = false
-                label.removeFromSuperview()
-                self.adminTableView.reloadData()
-            }
-        }else{
-            if(upcommingMeetingName.count == 0){
-                label.textAlignment = .center
-                self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
-                label.text = "There are no upcomming meetings"
-                self.view.addSubview(label)
-                self.view.bringSubview(toFront: label)
-                adminTableView.isHidden = true
-                
-            }else{
-                adminTableView.isHidden = false
-                label.removeFromSuperview()
-                self.adminTableView.reloadData()
-            }
-            
-        }
+       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -210,7 +181,20 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             self.upcommingMeetingName = newItems as? [FIRDataSnapshot]
             print(self.meetingDataArray)
             Indicator.sharedInstance.stopActivityIndicator()
-            self.adminTableView.reloadData()
+            if(self.adminMeetingSegCntrl.selectedSegmentIndex == 1){
+                if(self.upcommingMeetingName.count == 0){
+                    self.label.textAlignment = .center
+                    self.label.text = "There are no upcomming meetings"
+                    self.view.addSubview(self.label)
+                    self.view.bringSubview(toFront: self.label)
+                    self.adminTableView.isHidden = true
+                    
+                }else{
+                    self.adminTableView.isHidden = false
+                    self.label.removeFromSuperview()
+                    self.adminTableView.reloadData()
+                }
+            }
         })
         
         var completedMeetingDict = NSMutableDictionary()
@@ -227,9 +211,24 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             self.completedmeetingName = newItems1 as? [FIRDataSnapshot]
             print(self.meetingDataArray)
             Indicator.sharedInstance.stopActivityIndicator()
-            self.adminTableView.reloadData()
+            
+                if(self.completedmeetingName.count == 0){
+                    self.label.textAlignment = .center
+                    self.label.text = "There are no completed meetings"
+                    self.view.addSubview(self.label)
+                    self.view.bringSubview(toFront: self.label)
+                    self.adminTableView.isHidden = true
+                    
+                }else{
+                    self.adminTableView.isHidden = false
+                    self.label.removeFromSuperview()
+                    self.adminTableView.reloadData()
+                }
+                
+            //}
             
         })
+        
     
 }
   
@@ -324,6 +323,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             let dict = upcommingMeetingName[sender.tag] as FIRDataSnapshot
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "approvals") as! ApproveListViewController
             secondViewController.meetinID = dict.childSnapshot(forPath: "meetingID").value as! String!
+            secondViewController.instruID = dict.childSnapshot(forPath: "minstructorID").value as! String!
             self.navigationController?.pushViewController(secondViewController, animated: true)
         }
         

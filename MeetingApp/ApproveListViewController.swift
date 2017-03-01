@@ -14,6 +14,7 @@ class ApproveListViewController: UIViewController,UITableViewDelegate,UITableVie
     var meetinID:String!
     @IBOutlet var approvalTable : UITableView!
     var empID = UserDefaults.standard.value(forKey: "empID") as! String
+    var instruID : String!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,14 +24,18 @@ class ApproveListViewController: UIViewController,UITableViewDelegate,UITableVie
         let filter = ref.child("Subscriptions").queryOrdered(byChild: "meetingId").queryEqual(toValue: meetinID)
         filter.observe(.value , with: {snapshot in
             
-            // filter.observe(of: .childAdded,  with: {snapshot in
+            
             print(snapshot.value)
             
             var newItems = [FIRDataSnapshot]()
             
             // loop through the children and append them to the new array
             for item in snapshot.children {
-                  newItems.append(item as! FIRDataSnapshot)
+                let empId = (item as AnyObject).childSnapshot(forPath: "empId").value as! String?
+                if(empId != self.instruID){
+                     newItems.append(item as! FIRDataSnapshot)
+                }
+                
             }
             Indicator.sharedInstance.stopActivityIndicator()
             self.empIDArray = newItems

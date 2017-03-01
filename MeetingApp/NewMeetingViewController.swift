@@ -22,7 +22,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     let check = UIImage(named: "checkBoxEnable")! as UIImage
     let uncheck = UIImage(named: "checkBoxDisable")! as UIImage
     
-    var meetType: String!
+    var meetType: String!=""
     
     var ref: FIRDatabaseReference!
     

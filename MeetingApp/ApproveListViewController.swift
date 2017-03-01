@@ -56,24 +56,30 @@ class ApproveListViewController: UIViewController,UITableViewDelegate,UITableVie
 
         if(dict.childSnapshot(forPath: "isSubscribed").value as! String! == "1" ){
            cell.approveBtn.isHidden = true
-            cell.rejectBtn.isHidden = true
+            cell.rejectBtn.setTitle("Accepted", for: .normal)
+            cell.rejectBtn.isHidden = false
+            cell.rejectBtn.isUserInteractionEnabled = false
+            
         }else if(dict.childSnapshot(forPath: "isSubscribed").value as! String! == "3" ){
             cell.approveBtn.isHidden = true
-            cell.rejectBtn.isHidden = true
+            cell.rejectBtn.isHidden = false
+            cell.rejectBtn.setTitle("Rejected", for: .normal)
+            cell.rejectBtn.isUserInteractionEnabled = false
         }
         else{
             cell.approveBtn.isHidden = false
             cell.rejectBtn.isHidden = false
+            cell.approveBtn.tag = indexPath.row
+            cell.approveBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+            cell.rejectBtn.tag = indexPath.row
+            cell.rejectBtn.addTarget(self, action: #selector(subcribeAction1), for: .touchUpInside)
+            
         }
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         cell.IdLabel.text = dict.childSnapshot(forPath: "empId").value as! String?
         cell.subscriptionID = dict.childSnapshot(forPath: "attendeeId").value as! String?
-        cell.approveBtn.tag = indexPath.row
-        cell.approveBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
-        cell.rejectBtn.tag = indexPath.row
-        cell.rejectBtn.addTarget(self, action: #selector(subcribeAction1), for: .touchUpInside)
-        
+     
         return cell
     }
     func subcribeAction1(sender: UIButton){
@@ -94,7 +100,7 @@ class ApproveListViewController: UIViewController,UITableViewDelegate,UITableVie
         let indx = NSIndexPath.init(row: sender.tag, section: 0)
         let cell = approvalTable.cellForRow(at: indx as IndexPath) as! ApproveCellTableViewCell
         cell.approveBtn.isHidden = true
-        cell.rejectBtn.isHidden = true
+        cell.rejectBtn.setTitle("Rejected", for: .normal)
         
     }
 

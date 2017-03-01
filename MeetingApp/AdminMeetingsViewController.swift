@@ -272,7 +272,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
                 cell.seatAvabLb.text = "\(dif) of \(dict.childSnapshot(forPath: "maxcount").value as! String) seats remaining"
 
             }else{
-                cell.seatAvabLb.text = "\(0) of \(dict.childSnapshot(forPath: "maxcount").value as! String) seats remaining"
+                cell.seatAvabLb.text = "No seats remaining"
 
             }
             
@@ -341,13 +341,13 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     }
     
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
-        UIView.animate(withDuration: 0.3, animations: {
-            cell.layer.transform = CATransform3DMakeScale(1.05, 1.05, 1)
-        },completion: nil)
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        
+//        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+//        UIView.animate(withDuration: 0.3, animations: {
+//            cell.layer.transform = CATransform3DMakeScale(1.05, 1.05, 1)
+//        },completion: nil)
+//    }
 
     
     

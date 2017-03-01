@@ -92,7 +92,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var adminMeetingSegCntrl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.hidesBackButton = true
         
 //        upcommingMeetingName = ["Meeting4","Meeting5","Meeting6","Meeting7","Meeting8"]
 //        instructorArray = ["by John Miller","by Kate Smith","by Brain Hamilton","by Henry Pitt","by Daisy Steel"]
@@ -109,7 +109,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         
         
 
-        fetchAllData()
+        
         self.adminTableView.reloadData()
         
     }
@@ -122,7 +122,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     override func viewWillAppear(_ animated: Bool) {
         
         self.title = "Meetings"
-        
+        fetchAllData()
         let leftItem = UIBarButtonItem(title: "Add Meeting",
                                        style: .plain,
                                        target: self,
@@ -166,61 +166,62 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         self.upcommingMeetingName.removeAll()
        // var upcommingMeetingDict = NSMutableDictionary()
         var newItems1 = [FIRDataSnapshot]()
-        let filter = ref.child("Meetings").queryOrdered(byChild: "mdate").queryStarting(atValue: result ,childKey: "mdate")
+        let filter = ref.child("Meetings").queryOrdered(byChild: "isExpired").queryEqual(toValue: "0")
         filter.observe(.value , with: {snapshot in
            var newItems = [FIRDataSnapshot]()
             for item in snapshot.children {
-                let isexpired = (item as AnyObject).childSnapshot(forPath: "isExpired").value as! String?
-               //let instrID = (item1 as AnyObject).childSnapshot(forPath: "minstructorID").value as! String?
-                if(isexpired != "1" ){
+                //let isexpired = (item as AnyObject).childSnapshot(forPath: "isExpired").value as! String?
+               
+                
                  newItems.append(item as! FIRDataSnapshot)
-                }else{
-                    newItems1.append(item as! FIRDataSnapshot)
-                }
+               
+                
             }
-            self.upcommingMeetingName = newItems as? [FIRDataSnapshot]
+            self.upcommingMeetingName = newItems
             print(self.meetingDataArray)
             Indicator.sharedInstance.stopActivityIndicator()
-            if(self.adminMeetingSegCntrl.selectedSegmentIndex == 1){
+            if(self.adminMeetingSegCntrl.selectedSegmentIndex == 0){
                 if(self.upcommingMeetingName.count == 0){
                     self.label.textAlignment = .center
                     self.label.text = "There are no upcomming meetings"
                     self.view.addSubview(self.label)
                     self.view.bringSubview(toFront: self.label)
-                    self.adminTableView.isHidden = true
+                    self.adminTableView.reloadData()
+                  //  self.adminTableView.isHidden = true
                     
                 }else{
-                    self.adminTableView.isHidden = false
+                    //self.adminTableView.isHidden = false
                     self.label.removeFromSuperview()
                     self.adminTableView.reloadData()
                 }
             }
         })
-        
-        var completedMeetingDict = NSMutableDictionary()
-        let filter1 = ref.child("Meetings").queryOrdered(byChild: "mdate").queryEnding(atValue: result )
+        self.completedmeetingName.removeAll()
+      //  var completedMeetingDict = NSMutableDictionary()
+        let filter1 = ref.child("Meetings").queryOrdered(byChild: "isExpired").queryEqual(toValue: "1")
         
         filter1.observe(.value, with: {snapshot in
-            print(snapshot.value)
+         //   print(snapshot.value)
             
             // loop through the children and append them to the new array
             for item in snapshot.children {
                 newItems1.append(item as! FIRDataSnapshot)
             }
             
-            self.completedmeetingName = newItems1 as? [FIRDataSnapshot]
+            self.completedmeetingName = newItems1 
             print(self.meetingDataArray)
             Indicator.sharedInstance.stopActivityIndicator()
             
-                if(self.completedmeetingName.count == 0){
+                if(self.completedmeetingName.count == 1){
                     self.label.textAlignment = .center
                     self.label.text = "There are no completed meetings"
                     self.view.addSubview(self.label)
                     self.view.bringSubview(toFront: self.label)
-                    self.adminTableView.isHidden = true
+                   // self.adminTableView.isHidden = true
+                    self.adminTableView.reloadData()
                     
                 }else{
-                    self.adminTableView.isHidden = false
+                   // self.adminTableView.isHidden = false
                     self.label.removeFromSuperview()
                     self.adminTableView.reloadData()
                 }
@@ -341,14 +342,14 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     }
     
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
-        UIView.animate(withDuration: 0.3, animations: {
-            cell.layer.transform = CATransform3DMakeScale(1.05, 1.05, 1)
-        },completion: nil)
-    }
-
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        
+//        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+//        UIView.animate(withDuration: 0.3, animations: {
+//            cell.layer.transform = CATransform3DMakeScale(1.05, 1.05, 1)
+//        },completion: nil)
+//    }
+//
     
     
     func editAction(sender: UIButton){

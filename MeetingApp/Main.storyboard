@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kSj-l2-YTK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kSj-l2-YTK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -96,7 +96,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXj-DX-H5v">
                                         <rect key="frame" x="106" y="329" width="162" height="40"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ZHH-nk-93f"/>
                                             <constraint firstAttribute="width" constant="162" id="mUh-dQ-BYT"/>
@@ -109,7 +109,7 @@
                                             <action selector="signINBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ubu-6c-vTu"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Version 1.0.3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3W-FI-3Nf">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Version 1.0.4" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3W-FI-3Nf">
                                         <rect key="frame" x="253" y="554" width="114" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="k2T-2H-rcP"/>
@@ -189,7 +189,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8Jp-aA-Bo4">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                         <segments>
                                             <segment title="Upcomming"/>
                                             <segment title="Completed"/>
@@ -199,7 +199,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="154" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nGA-mu-0ea">
-                                        <rect key="frame" x="0.0" y="41" width="375" height="606"/>
+                                        <rect key="frame" x="0.0" y="77" width="375" height="570"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adminCell" rowHeight="154" id="T3r-Xf-Jhi" customClass="AdminTableViewCell" customModule="MeetingApp" customModuleProvider="target">
@@ -296,9 +296,7 @@
                                                                 <constraint firstAttribute="width" constant="102" id="ZHf-5j-6yD"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
-                                                            <state key="normal" title="Approvals">
-                                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </state>
+                                                            <state key="normal" title="Approvals"/>
                                                         </button>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Xt-Ng-jKI">
                                                             <rect key="frame" x="292" y="124" width="70" height="21"/>
@@ -307,9 +305,7 @@
                                                                 <constraint firstAttribute="width" constant="70" id="nl5-3Z-ysA"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
-                                                            <state key="normal" title="Edit">
-                                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </state>
+                                                            <state key="normal" title="Edit"/>
                                                         </button>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHJ-FD-Ed8">
                                                             <rect key="frame" x="292" y="124" width="70" height="21"/>
@@ -318,9 +314,7 @@
                                                                 <constraint firstAttribute="width" constant="70" id="oAN-Bb-ENE"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
-                                                            <state key="normal" title="Report">
-                                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </state>
+                                                            <state key="normal" title="Report"/>
                                                             <connections>
                                                                 <action selector="reportActionBtn:" destination="JA9-th-MSu" eventType="touchUpInside" id="ZST-ts-zY3"/>
                                                             </connections>
@@ -433,19 +427,18 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UHX-Ec-FG6">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                         <segments>
                                             <segment title="All Meetings"/>
                                             <segment title="My Meetings"/>
                                         </segments>
-                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="adminSegmentAction:" destination="JA9-th-MSu" eventType="valueChanged" id="7LL-cW-zfq"/>
                                             <action selector="userSegmntAction:" destination="Jwl-YX-p3b" eventType="valueChanged" id="7T8-8F-rqx"/>
                                         </connections>
                                     </segmentedControl>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="163" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3BI-Wg-jax">
-                                        <rect key="frame" x="0.0" y="41" width="375" height="606"/>
+                                        <rect key="frame" x="0.0" y="77" width="375" height="570"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userTable" rowHeight="156" id="3Au-Wc-7Fx" customClass="UserTableViewCell" customModule="MeetingApp" customModuleProvider="target">
@@ -532,6 +525,7 @@
                                                                 <constraint firstAttribute="width" constant="90" id="Tkz-wa-vGh"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
+                                                            <color key="tintColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Subscribe">
                                                                 <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
@@ -543,6 +537,7 @@
                                                                 <constraint firstAttribute="height" constant="21" id="9f2-I2-Fpf"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
+                                                            <color key="tintColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Feedback">
                                                                 <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
@@ -557,6 +552,7 @@
                                                                 <constraint firstAttribute="height" constant="21" id="jyg-Zl-SRI"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
+                                                            <color key="tintColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Get Code">
                                                                 <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
@@ -568,6 +564,7 @@
                                                                 <constraint firstAttribute="width" constant="100" id="qb9-q1-C7Q"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
+                                                            <color key="tintColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="End Meeting">
                                                                 <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
@@ -579,6 +576,7 @@
                                                                 <constraint firstAttribute="height" constant="21" id="sbv-rS-6a3"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
+                                                            <color key="tintColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Waiting For Approval"/>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpU-Tc-H88">
@@ -838,7 +836,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Te9-2Y-wTp">
                                         <rect key="frame" x="106" y="528" width="162" height="34"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="162" id="4t4-Z8-6nS"/>
                                         </constraints>
@@ -996,7 +994,7 @@
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5I-IY-zNB">
                                         <rect key="frame" x="106" y="551" width="162" height="40"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ixa-ZZ-FzW"/>
                                         </constraints>
@@ -1448,7 +1446,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4c0-za-Q0w">
                                         <rect key="frame" x="116" y="519" width="162" height="40"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="KV8-JB-fD8"/>
                                             <constraint firstAttribute="width" constant="162" id="f13-5m-Fto"/>
@@ -3135,4 +3133,5 @@
     <resources>
         <image name="checkBoxDisable" width="21" height="21"/>
     </resources>
+    <color key="tintColor" red="0.11764705882352941" green="0.39215686274509803" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
 </document>

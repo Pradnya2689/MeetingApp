@@ -66,16 +66,21 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         if((self.emailTextField.text == "")){
         
         if(empIdTextField.text != "" && empIdTextField.text?.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil){
-            
-            
             UserDefaults.standard.set(empIdTextField.text, forKey: "empID")
             
             ref = FIRDatabase.database().reference()
             addUser()
         
+            if(empIdTextField.text == "0000"){
+                //adminMeet
+                let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "adminMeet") as! AdminMeetingsViewController
+                self.navigationController?.pushViewController(secondViewController, animated: true)
+            }else{
+                let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
+                self.navigationController?.pushViewController(secondViewController, animated: true)
+                
+            }
         
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
-        self.navigationController?.pushViewController(secondViewController, animated: true)
             
             
         }else{
@@ -182,11 +187,17 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
         self.title = "Sign Up"
         if let username = UserDefaults.standard.value(forKey: "empID") as? String{
+            if(username == "0000"){
+                let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "adminMeet") as! AdminMeetingsViewController
+                let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                let nav = UINavigationController(rootViewController: secondViewController)
+                appdelegate.window!.rootViewController = nav
+            }else{
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
             let appdelegate = UIApplication.shared.delegate as! AppDelegate
             let nav = UINavigationController(rootViewController: secondViewController)
             appdelegate.window!.rootViewController = nav
-            
+            }
         }
         registerKeyboardNotifications()
        

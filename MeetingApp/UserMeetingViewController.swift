@@ -28,7 +28,9 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
           
                 
                 label.textAlignment = .center
-                label.text = "Not subscribed"
+            self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
+               // label.text = "You have not subscribed for any meetings"
+                label.text = "Not Subscribed"
                 self.view.addSubview(label)
                 self.view.bringSubview(toFront: label)
                 userTableView.isHidden = true
@@ -43,7 +45,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                
                     
                     label.textAlignment = .center
-                    label.text = "No meetings"
+                self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
+                    label.text = "No Meetings"
                     self.view.addSubview(label)
                     self.view.bringSubview(toFront: label)
                     userTableView.isHidden = true
@@ -106,7 +109,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                                        style: .plain,
                                        target: self,
                                        action: #selector(self.nextView))
-        self.navigationItem.rightBarButtonItem = leftItem
+       // self.navigationItem.rightBarButtonItem = leftItem
         
        //alarmButtonClicked(sender: self)
         
@@ -273,7 +276,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
             if(self.allmeetingName.count == 0){
                  self.label.textAlignment = .center
-                self.label.text = "No meetings"
+                self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
+                self.label.text = "No Meetings"
                 self.view.addSubview(self.label)
                 self.view.bringSubview(toFront: self.label)
                 self.userTableView.isHidden = true

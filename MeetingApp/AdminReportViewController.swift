@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class AdminReportViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+// var ref: FIRDatabaseReference!
     @IBOutlet weak var viewaAllCmtsBtn: UIButton!
     var isCalled : String!
     
@@ -61,7 +61,7 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
     
 
 
-    
+    var InstrID:String!
     
     var attendedArray = [FIRDataSnapshot]()
     var notattendedArray = [FIRDataSnapshot]()
@@ -80,8 +80,8 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             feedbackView.isHidden = true
             attendanceView.isHidden = false
             
-               ref = FIRDatabase.database().reference()
-            let filter = ref.child("Subscriptions").queryOrdered(byChild: "meetingId").queryEqual(toValue: meetingID!)
+               refr = FIRDatabase.database().reference()
+            let filter = refr.child("Subscriptions").queryOrdered(byChild: "meetingId").queryEqual(toValue: meetingID!)
             filter.observe(.value , with: {snapshot in
                 
                 // print(snapshot.value ?? <#default value#>!)
@@ -93,7 +93,8 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                     let meetingID = (item as AnyObject).childSnapshot(forPath: "meetingId").value as! String?
                     let subID = (item as AnyObject).childSnapshot(forPath: "isSubscribed").value as! String?
                     let isattend = (item as AnyObject).childSnapshot(forPath: "isAttended").value as! String!
-            
+                    let empID = (item as AnyObject).childSnapshot(forPath: "empId").value as! String!
+                    if(empID != self.InstrID){
                     if(subID == "1"){
                         
                         if(isattend == "1"){
@@ -103,9 +104,10 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                             self.notattendedArray.append(item as! FIRDataSnapshot)
                         }
                     }
+                    }
                 }
                 Indicator.sharedInstance.stopActivityIndicator()
-                self.totalSubscribedLB.text = "\(totalCount)"
+                self.totalSubscribedLB.text = "\(totalCount - 1)"
                 self.totalAttendedLB.text = "\(self.attendedArray.count)"
                 self.attendanceTableView.reloadData()
                 
@@ -214,11 +216,11 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             self.viewaAllCmtsBtn.isHidden = false
         }
         
-        ref = FIRDatabase.database().reference()
+       // ref = FIRDatabase.database().reference()
         
         if(reportSegmentOutlet.selectedSegmentIndex == 0){
         
-        let filter = ref.child("FeedBacks").queryOrdered(byChild: "meetingID").queryEqual(toValue: meetingID)
+        let filter = refr.child("FeedBacks").queryOrdered(byChild: "meetingID").queryEqual(toValue: meetingID)
         filter.observe(.value , with: {snapshot in
             
            // print(snapshot.value ?? <#default value#>!)
@@ -463,7 +465,7 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             
         }else{
             
-            let filter = ref.child("Subscriptions").queryOrdered(byChild: "meetingId").queryEqual(toValue: meetingID)
+            let filter = refr.child("Subscriptions").queryOrdered(byChild: "meetingId").queryEqual(toValue: meetingID)
             filter.observe(.value , with: {snapshot in
                 
                 // print(snapshot.value ?? <#default value#>!)

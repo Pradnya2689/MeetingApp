@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4C17D9781E5AC3A20090AECF /* System San Francisco Display Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C17D9771E5AC3A20090AECF /* System San Francisco Display Regular.ttf */; };
 		4C17D97A1E5AC4FF0090AECF /* System San Francisco Display Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C17D9791E5AC4FF0090AECF /* System San Francisco Display Bold.ttf */; };
+		4C1C4FC71E6706D600EB3A12 /* 180.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1C4FC61E6706D600EB3A12 /* 180.png */; };
 		4C6AA7701E5EB6B100B49892 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6AA76F1E5EB6B100B49892 /* EventKit.framework */; };
 		4C7A01C31E5736FB005125D9 /* SF UI Font License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4C7A01C21E5736FB005125D9 /* SF UI Font License.rtf */; };
 		4CE8E1E91E55A64000F66A46 /* ViewCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE8E1E81E55A64000F66A46 /* ViewCommentsViewController.swift */; };
@@ -69,6 +70,7 @@
 		16FF6A1CB12624B6B7240624 /* Pods-MeetingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingApp/Pods-MeetingApp.release.xcconfig"; sourceTree = "<group>"; };
 		4C17D9771E5AC3A20090AECF /* System San Francisco Display Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Regular.ttf"; sourceTree = "<group>"; };
 		4C17D9791E5AC4FF0090AECF /* System San Francisco Display Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Bold.ttf"; sourceTree = "<group>"; };
+		4C1C4FC61E6706D600EB3A12 /* 180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 180.png; sourceTree = "<group>"; };
 		4C6AA76F1E5EB6B100B49892 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		4C7A01C21E5736FB005125D9 /* SF UI Font License.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "SF UI Font License.rtf"; sourceTree = "<group>"; };
 		4CE8E1E81E55A64000F66A46 /* ViewCommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCommentsViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				C35516FD1E545CC5005836C3 /* Feedback.swift */,
 				C37F11FB1E4DD55D00581899 /* Meeting.swift */,
 				C30231E01E52E1F00027462F /* Subcription.swift */,
+				4C1C4FC61E6706D600EB3A12 /* 180.png */,
 				C38230A21E5DB05C00DD5697 /* Main.storyboard */,
 				C37D870A1E40976F00D6462A /* Assets.xcassets */,
 				C37D870C1E40976F00D6462A /* LaunchScreen.storyboard */,
@@ -326,7 +329,7 @@
 					C37D86FC1E40976700D6462A = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = A8U8Q2EEBA;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -380,6 +383,7 @@
 				C38230A01E5D749D00DD5697 /* MyriadPro-It.otf in Resources */,
 				C38230A11E5D749D00DD5697 /* MyriadPro-Regular.otf in Resources */,
 				C37D870E1E40976F00D6462A /* LaunchScreen.storyboard in Resources */,
+				4C1C4FC71E6706D600EB3A12 /* 180.png in Resources */,
 				4C17D9781E5AC3A20090AECF /* System San Francisco Display Regular.ttf in Resources */,
 				C35661EE1E4B1A5C00B0D912 /* GoogleService-Info.plist in Resources */,
 				4C17D97A1E5AC4FF0090AECF /* System San Francisco Display Bold.ttf in Resources */,
@@ -644,7 +648,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0ad80a63-77c3-44b1-bc4a-3306646d8c07";
+				PROVISIONING_PROFILE = "0ec6f59c-73ae-4db7-b9f6-934433891f51";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -689,7 +693,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "0ad80a63-77c3-44b1-bc4a-3306646d8c07";
+				PROVISIONING_PROFILE = "0ec6f59c-73ae-4db7-b9f6-934433891f51";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -703,15 +707,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MeetingApp/MeetingApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A8U8Q2EEBA;
 				INFOPLIST_FILE = MeetingApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.feedbackapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0ad80a63-77c3-44b1-bc4a-3306646d8c07";
-				PROVISIONING_PROFILE_SPECIFIER = adhoc_feedback;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -723,15 +727,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MeetingApp/MeetingApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A8U8Q2EEBA;
 				INFOPLIST_FILE = MeetingApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.feedbackapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0ad80a63-77c3-44b1-bc4a-3306646d8c07";
-				PROVISIONING_PROFILE_SPECIFIER = adhoc_feedback;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

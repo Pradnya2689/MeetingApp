@@ -15,20 +15,21 @@ class CommentsViewController: UIViewController, UITextViewDelegate,UIGestureReco
     @IBOutlet weak var commentTV1: UITextView!
     @IBOutlet weak var commentTV2: UITextView!
     @IBOutlet weak var submitBTNComment: UIButton!
+    // var ref: FIRDatabaseReference!
     var empID = UserDefaults.standard.value(forKey: "empID") as! String
     var ansArray = [Int]()
     var meetId : String!
     var isSubscribed: String!
     @IBAction func commentSubmitAction(_ sender: Any) {
-        
+        //ref = FIRDatabase.database().reference()
     //  var meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
         let key = "\(meetId!)\(self.empID)"
         
         let subcribe = Subcription(attendeeId:key,empId:self.empID,isAttended:"1",isSubscribed:isSubscribed,meetingId: meetId!,key:"")
      
-        let sub1 = ref.child("Subscriptions").child(key)
+        let sub1 = refr.child("Subscriptions").child(key)
         sub1.setValue(subcribe.toAnyObject())
-         let sub = ref.child("FeedBacks").childByAutoId()
+         let sub = refr.child("FeedBacks").childByAutoId()
         
         let feedBack = Feedback(comment1: commentTV1.text, comment2: commentTV2.text, contentEffeciency: ansArray[0], encouragedInteraction: ansArray[1], feedbackId: sub.key, learningObjectives: ansArray[2], meetingID: meetId,overallFeedback: ansArray[4], valuableuseOfTime: ansArray[3], key:"",empId:empID)
         

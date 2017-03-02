@@ -20,6 +20,7 @@ class AdminTableViewCell: UITableViewCell {
     @IBOutlet weak var instructorLb: UILabel!
     @IBOutlet weak var venueLb: UILabel!
     @IBOutlet weak var nameLb: UILabel!
+    var instrID:String!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

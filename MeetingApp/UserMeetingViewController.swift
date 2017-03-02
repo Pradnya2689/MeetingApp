@@ -24,6 +24,9 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBAction func userSegmntAction(_ sender: UISegmentedControl) {
       
          if(userSegmentCntrl.selectedSegmentIndex == 1){
+//            fetchMyMeeting {
+//                self.userTableView.reloadData()
+//            }
         if(myMeetingName.count == 0){
           
                 
@@ -33,14 +36,16 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 label.text = "Not Subscribed"
                 self.view.addSubview(label)
                 self.view.bringSubview(toFront: label)
-                userTableView.isHidden = true
-            
+               // userTableView.isHidden = true
+            self.userTableView.reloadData()
+
         }else{
-            userTableView.isHidden = false
+            //userTableView.isHidden = false
             label.removeFromSuperview()
             self.userTableView.reloadData()
         }
          }else{
+           // fetchAllData()
             if(allmeetingName.count == 0){
                
                     
@@ -49,10 +54,11 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     label.text = "No Meetings"
                     self.view.addSubview(label)
                     self.view.bringSubview(toFront: label)
-                    userTableView.isHidden = true
+                    //userTableView.isHidden = true
+                self.userTableView.reloadData()
                
             }else{
-                userTableView.isHidden = false
+               // userTableView.isHidden = false
                 label.removeFromSuperview()
                 self.userTableView.reloadData()
             }
@@ -61,17 +67,16 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         
         if(userSegmentCntrl.selectedSegmentIndex == 1){
             Indicator.sharedInstance.startActivityIndicator()
-            self.fetchMyMeeting(){
-//                self.addMyMeetings {
-//                    self.userTableView.reloadData()
-//                }
+            
+                self.fetchMyMeeting(){
+                   
+                }
                 
-            }
             
             
         }
 //
-        userTableView.reloadData()
+       // userTableView.reloadData()
         //Indicator.sharedInstance.stopActivityIndicator()
     }
     
@@ -81,8 +86,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     func alertClose(_ gesture: UITapGestureRecognizer) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-//    var allmeetingName = [String]()
+
     var myMeetingName :[FIRDataSnapshot]! = [FIRDataSnapshot]()
     
     
@@ -101,7 +105,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      //  ref = FIRDatabase.database().reference()
         
         navigationItem.hidesBackButton = true
         
@@ -112,7 +116,10 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
        // self.navigationItem.rightBarButtonItem = leftItem
         
        //alarmButtonClicked(sender: self)
-        
+        self.fetchMyMeeting(){
+            self.fetchAllData()
+            
+        }
         print("emp id \(empID)")
       
     }
@@ -126,26 +133,9 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewWillAppear(_ animated: Bool) {
         
         self.title = "Meetings"
-        
-        //userSegmentCntrl.selectedSegmentIndex = 0
-        //Indicator.sharedInstance.startActivityIndicator()
-        
-            self.fetchMyMeeting(){
-                self.fetchAllData()
-
-                if(self.myMeetingName.count > 0){
-                    self.userSegmentCntrl.selectedSegmentIndex = 1
-                }else{
-                    self.userSegmentCntrl.selectedSegmentIndex = 0
-                }
-                
-            }
-            
        
-        userTableView.isHidden = false
-        label.removeFromSuperview()
         
-        self.userTableView.reloadData()
+       // self.userTableView.reloadData()
         self.userSegmentCntrl.translatesAutoresizingMaskIntoConstraints = true
         self.userSegmentCntrl.frame = CGRect(x: 5, y: 0, width: screenWidth-10, height: 32)
     }
@@ -153,28 +143,31 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewWillDisappear(_ animated: Bool) {
         
         self.title = ""
+       // ref.removeAllObservers()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(userSegmentCntrl.selectedSegmentIndex == 0){
             return allmeetingName.count
-        }else{
+        }else if(userSegmentCntrl.selectedSegmentIndex == 1){
             return myMeetingName.count
         }
+        return 0
     }
     
     func fetchMyMeeting(finished: @escaping () -> Void)  {
+        
         Indicator.sharedInstance.startActivityIndicator()
         myMeetingName.removeAll()
-       // ref = FIRDatabase.database().reference()
+        // ref = FIRDatabase.database().reference()
         
         meetingIds.removeAllObjects()
         isSubscribed.removeAllObjects()
         
-      //  self.addMyMeetings()
-        let  ref1 = FIRDatabase.database().reference()
-        let filter1 = ref1.child("Subscriptions").queryOrdered(byChild: "empId").queryEqual(toValue: empID)
-        
+        //  self.addMyMeetings()
+       // let  ref1 = FIRDatabase.database().reference()
+        let filter1 = refr.child("Subscriptions").queryOrdered(byChild: "empId").queryEqual(toValue: empID)
+        self.myMeetingName = [FIRDataSnapshot]()
         filter1.observe(.value, with: {snapshot in
             print(snapshot.value ?? "")
             
@@ -191,81 +184,60 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 self.meetingIds.add(meetingID!)
                 self.isSubscribed.add(subID!)
                 if(isattend != "1" ){
-                
-                let  ref2 = FIRDatabase.database().reference()
-                
-                let filter2 = ref2.child("Meetings").queryOrdered(byChild: "meetingID").queryEqual(toValue: meetingID!)
-                
-                filter2.observe(.value, with: {snapshot in
-                    var newItems1 = [FIRDataSnapshot]()
                     
+                 //   let  ref2 = FIRDatabase.database().reference()
+                   
+                    let filter2 = refr.child("Meetings").queryOrdered(byChild: "meetingID").queryEqual(toValue: meetingID!)
                     
-                    for item1 in snapshot.children {
-                        let isexpired = (item1 as AnyObject).childSnapshot(forPath: "isExpired").value as! String?
-                        let instrID = (item1 as AnyObject).childSnapshot(forPath: "minstructorID").value as! String?
-                        if(isexpired != "1" ){
+                    filter2.observe(.value, with: {snapshot in
+                        //var newItems1 = [FIRDataSnapshot]()
                         
-                        print("meeting id ******** \(item1,instrID)")
-                        //if(instrID != self.empID)
-                        //{
-                        self.myMeetingName.append(item1 as! FIRDataSnapshot)
-                        newItems1.append(item1 as! FIRDataSnapshot)
-                        //}
+                        
+                        for item1 in snapshot.children {
+                            let isexpired = (item1 as AnyObject).childSnapshot(forPath: "isExpired").value as! String?
+                            let instrID = (item1 as AnyObject).childSnapshot(forPath: "minstructorID").value as! String?
+                            if(isexpired != "1" ){
+                                
+                                print("meeting id ******** \(item1,instrID)")
+                                //if(instrID != self.empID)
+                                //{
+                                self.myMeetingName.append(item1 as! FIRDataSnapshot)
+                                //newItems1.append(item1 as! FIRDataSnapshot)
+                                //}
+                            }
                         }
-                    }
-                    
-                    Indicator.sharedInstance.stopActivityIndicator()
-                    self.userTableView.reloadData()
-                })
+                        
+                        //Indicator.sharedInstance.stopActivityIndicator()
+                        self.userTableView.reloadData()
+                    })
                 }
             }
             
             Indicator.sharedInstance.stopActivityIndicator()
-           self.userTableView.reloadData()
+            self.userTableView.reloadData()
             finished()
         })
     }
-    func addMyMeetings(finished: @escaping () -> Void){
-        let  ref2 = FIRDatabase.database().reference()
-        
-        let filter2 = ref2.child("Meetings").queryOrdered(byChild: "minstructorID").queryEqual(toValue: empID)
-        
-        filter2.observe(.value, with: {snapshot in
-            var newItems1 = [FIRDataSnapshot]()
-            
-            
-            for item1 in snapshot.children {
-                let isexpired = (item1 as AnyObject).childSnapshot(forPath: "isExpired").value as! String?
-                if(isexpired != "1"){
-                    //  newItems1.append(item as! FIRDataSnapshot)
-                    print("meeting id ******** \(item1)")
-                    self.myMeetingName.append(item1 as! FIRDataSnapshot)
-                    newItems1.append(item1 as! FIRDataSnapshot)
-                }
-            }
-          finished()
-        })
 
-    }
     func fetchAllData(){
-        // myMeetingName.removeAll()
-         allmeetingName.removeAll()
+        
+        allmeetingName.removeAll()
         userTableView.reloadData()
-         //meetingIds.removeAllObjects()
+        //meetingIds.removeAllObjects()
         
-         Indicator.sharedInstance.startActivityIndicator()
-        ref = FIRDatabase.database().reference()
+        Indicator.sharedInstance.startActivityIndicator()
         
-       // var allMeetingDict = NSMutableDictionary()
         
-        let filter = ref.child("Meetings").queryOrdered(byChild: "isExpired").queryEqual(toValue: "0")
+        // var allMeetingDict = NSMutableDictionary()
+        
+        let filter = refr.child("Meetings").queryOrdered(byChild: "isExpired").queryEqual(toValue: "0")
         filter.observe(.value , with: {snapshot in
-             print(snapshot.value!)
-           
+            print(snapshot.value!)
+            
             var newItems = [FIRDataSnapshot]()
             for item in snapshot.children {
-               // let instrID = (item as AnyObject).childSnapshot(forPath: "minstructorID").value as! String?
-               // if(instrID != self.empID){
+                // let instrID = (item as AnyObject).childSnapshot(forPath: "minstructorID").value as! String?
+                // if(instrID != self.empID){
                 if(self.meetingIds.contains((item as AnyObject).childSnapshot(forPath: "meetingID").value as! String!)){
                     
                 }else{
@@ -275,16 +247,15 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 
             }
             Indicator.sharedInstance.stopActivityIndicator()
-          self.allmeetingName = newItems as? [FIRDataSnapshot]
-          self.userTableView.reloadData()
+            self.allmeetingName = newItems as? [FIRDataSnapshot]
+            self.userTableView.reloadData()
             
             if(self.allmeetingName.count == 0){
-                 self.label.textAlignment = .center
-                self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
-                self.label.text = "No Meetings"
+                self.label.textAlignment = .center
+                self.label.text = "No meetings"
                 self.view.addSubview(self.label)
                 self.view.bringSubview(toFront: self.label)
-                self.userTableView.isHidden = true
+               self.userTableView.reloadData()
                 
             }else{
                 self.userTableView.isHidden = false
@@ -328,11 +299,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             }
             var dif = Int(maxcnt)! - Int(cnt)!
             
-            if(dict.childSnapshot(forPath: "meetingType").value as! String? == "1"){
-                if(meetingIds.contains(dict.childSnapshot(forPath: "meetingID").value as! String!)){
-               // cell.subcribeBtn.titleLabel?.text = "Interested"
-                    cell.subcribeBtn.isHidden = true
-                }else{
+            if(dict.childSnapshot(forPath: "meetingType").value as! String! == "1"){
+
                     if(dif > 0){
                          cell.seatAvaLB.text = "\(dif) seats"
                         cell.subcribeBtn.isHidden = false
@@ -342,16 +310,13 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                         cell.subcribeBtn.isHidden = true
                     }
                     
-                    cell.subcribeBtn.titleLabel?.text = "Interest"
+                    cell.subcribeBtn.setTitle("Interest", for: .normal)
                     cell.subcribeBtn.tag = indexPath.row
                     cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
-                }
-            }else{
+                //}
+            }else if(dict.childSnapshot(forPath: "meetingType").value as! String! == "0"){
             
-            if(meetingIds.contains(dict.childSnapshot(forPath: "meetingID").value as! String!)){
-                cell.subcribeBtn.isHidden = true
-              
-            }else{
+
                 if(dif > 0){
                     cell.subcribeBtn.isHidden = false
                     cell.seatAvaLB.text = "\(dif) seats"
@@ -361,10 +326,10 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     cell.seatAvaLB.text = "\(0) seats"
                 }
               
-                cell.subcribeBtn.titleLabel?.text = "Subscribe"
+                cell.subcribeBtn.setTitle("Subscribe", for: .normal)
                 cell.subcribeBtn.tag = indexPath.row
                 cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
-            }
+            //}
             }
             
             
@@ -385,9 +350,10 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
         }else{
             
+            if(myMeetingName.count > 0){
             let dict = myMeetingName[indexPath.row] as FIRDataSnapshot
            
-                let subid = isSubscribed[indexPath.row] as! String
+            let subid = isSubscribed[indexPath.row] as! String
             
             cell.feedbackBtn.isHidden = true
              cell.waitingForApprvBtn.isHidden = true
@@ -408,7 +374,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 cell.meetingCodeBtn.isHidden = true
                 if(subid == "1" ){
                     cell.feedbackBtn.isHidden = false
-                    cell.feedbackBtn.titleLabel?.text = "Feedback"
+                    cell.feedbackBtn.setTitle("Feedback", for: .normal)
                     cell.feedbackBtn.tag = indexPath.row
                     cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
                      cell.waitingForApprvBtn.isHidden = true
@@ -416,12 +382,12 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
                     cell.feedbackBtn.isHidden = true
                     cell.waitingForApprvBtn.isHidden = false
-                     cell.waitingForApprvBtn.titleLabel?.text = "Waiting For Approval"
+                     cell.waitingForApprvBtn.setTitle("Waiting For Approval", for: .normal)
                 }else if(subid == "3"){
                     //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
                     cell.feedbackBtn.isHidden = true
                     cell.waitingForApprvBtn.isHidden = false
-                     cell.waitingForApprvBtn.titleLabel?.text = "Rejected by admin"
+                     cell.waitingForApprvBtn.setTitle("Rejected by admin", for: .normal)
                 }
             }
            
@@ -432,6 +398,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.subcribeBtn.isHidden = true
             cell.seatAvaLB.isHidden = true
           
+        }
         }
         
         
@@ -459,7 +426,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         if(Int(cnt)! <= Int(maxcnt)!){
             let c = Int(cnt)! + 1 as Int
-            let usr = ref.child("Meetings").child((dict.childSnapshot(forPath: "meetingID").value as! String?)!)
+            let usr = refr.child("Meetings").child((dict.childSnapshot(forPath: "meetingID").value as! String?)!)
             // print("key of tbl \(groceryItemRef.key)")
             let meetItem = meetingItem(mname: (dict.childSnapshot(forPath: "mname").value as! String?)!, mdate: (dict.childSnapshot(forPath: "mdate").value as! String?)!, mtimestart: "", mtimeend: (dict.childSnapshot(forPath: "mendtime").value as! String?)!, mvenue: (dict.childSnapshot(forPath: "mvenue").value as! String?)!,mid: (dict.childSnapshot(forPath: "meetingID").value as! String?)!,meetingCode: (dict.childSnapshot(forPath: "meetingCode").value as! String?)!, maxCount: (dict.childSnapshot(forPath: "maxcount").value as! String?)!,currentCount: String(c),isexpired:(dict.childSnapshot(forPath: "isExpired").value as! String?)!,instructName: (dict.childSnapshot(forPath: "mInstuctorName").value as! String?)!,instructempId: (dict.childSnapshot(forPath: "minstructorID").value as! String?)!,meetingType: (dict.childSnapshot(forPath: "meetingType").value as! String?)! ,completed: true, key: "")
             
@@ -506,7 +473,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     
                      let subcribe = Subcription(attendeeId:key,empId:self.empID,isAttended:"0",isSubscribed:"2",meetingId: meetID!,key:"")
                     
-                    let sub = ref.child("Subscriptions").child(key)
+                    let sub = refr.child("Subscriptions").child(key)
                     sub.setValue(subcribe.toAnyObject())
                 }else{
                     
@@ -514,7 +481,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     let key = "\(meetID!)\(self.empID)"
                     print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
                     let subcribe = Subcription(attendeeId:key,empId:self.empID,isAttended:"0",isSubscribed:"1",meetingId: meetID!,key:"")
-                    let sub = ref.child("Subscriptions").child(key)
+                    let sub = refr.child("Subscriptions").child(key)
                     sub.setValue(subcribe.toAnyObject())
                     
                 }
@@ -547,7 +514,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     var meetingCode : String!
     func endcodeAction(sender: UIButton){
          let dict = self.myMeetingName[sender.tag] as FIRDataSnapshot
-        let usr = ref.child("Meetings").child((dict.childSnapshot(forPath: "meetingID").value as! String?)!)
+        let usr = refr.child("Meetings").child((dict.childSnapshot(forPath: "meetingID").value as! String?)!)
         
         let meetItem = meetingItem(mname: (dict.childSnapshot(forPath: "mname").value as! String?)!, mdate: (dict.childSnapshot(forPath: "mdate").value as! String?)!, mtimestart: "", mtimeend: (dict.childSnapshot(forPath: "mendtime").value as! String?)!, mvenue: (dict.childSnapshot(forPath: "mvenue").value as! String?)!,mid: (dict.childSnapshot(forPath: "meetingID").value as! String?)!,meetingCode: (dict.childSnapshot(forPath: "meetingCode").value as! String?)!, maxCount: (dict.childSnapshot(forPath: "maxcount").value as! String?)!,currentCount: (dict.childSnapshot(forPath: "currentCount").value as! String?)!,isexpired:"1",instructName: (dict.childSnapshot(forPath: "mInstuctorName").value as! String?)!,instructempId: (dict.childSnapshot(forPath: "minstructorID").value as! String?)!,meetingType: (dict.childSnapshot(forPath: "meetingType").value as! String?)! ,completed: true, key: "")
         

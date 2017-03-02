@@ -49,10 +49,9 @@ open class Indicator {
 }
 
 
-var ref: FIRDatabaseReference!
-
+var refr: FIRDatabaseReference! = FIRDatabase.database().reference()
 class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDelegate {
-
+    
     @IBOutlet weak var loginScrollView: UIScrollView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var empIdTextField: UITextField!
@@ -68,16 +67,16 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         if(empIdTextField.text != "" && empIdTextField.text?.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil){
             UserDefaults.standard.set(empIdTextField.text, forKey: "empID")
             
-            ref = FIRDatabase.database().reference()
+            
             addUser()
         
             if(empIdTextField.text == "0000"){
                 //adminMeet
                 let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "adminMeet") as! AdminMeetingsViewController
-                self.navigationController?.pushViewController(secondViewController, animated: true)
+                self.navigationController!.pushViewController(secondViewController, animated: true)
             }else{
                 let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
-                self.navigationController?.pushViewController(secondViewController, animated: true)
+                self.navigationController!.pushViewController(secondViewController, animated: true)
                 
             }
         
@@ -93,7 +92,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
                 
                 UserDefaults.standard.set(empIdTextField.text, forKey: "empID")
                 
-                ref = FIRDatabase.database().reference()
+                refr = FIRDatabase.database().reference()
                 // addUser()
                 
                 
@@ -114,7 +113,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
         let meetItem = meetingItem(mname: "ex1", mdate: "234566", mtimestart: "", mtimeend: "", mvenue: "",mid: "2",meetingCode: "1235", maxCount: "89",currentCount: "2",isexpired: "0",instructName: "Kate",instructempId: "107345", meetingType : "0",completed: true, key: "")
         
-        let groceryItemRef = ref.child("Meetings")
+        let groceryItemRef = refr.child("Meetings")
         
         groceryItemRef.childByAutoId().setValue(meetItem.toAnyObject())
         
@@ -127,7 +126,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
         let user = Users.init(deviceToken: deviceToken, empId: self.empIdTextField.text!, isAdmin: "0", deviceType: "0", key: "")
         
-        let usr = ref.child("Users").child(self.empIdTextField.text!)
+        let usr = refr.child("Users").child(self.empIdTextField.text!)
         usr.setValue(user.toAnyObject())
     }
 

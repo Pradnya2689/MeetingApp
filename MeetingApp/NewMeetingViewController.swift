@@ -24,7 +24,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     
     var meetType: String!=""
     
-    var ref: FIRDatabaseReference!
+    var reference: FIRDatabaseReference!
     
     var editMeetingDataArray: FIRDataSnapshot!
     
@@ -39,7 +39,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
     
     @IBOutlet weak var approveBtn: UIButton!
     @IBOutlet weak var selfSubcribeBtn: UIButton!
-    
+     var ref: FIRDatabaseReference!
     var meetID : String!
     
     @IBAction func newMeetingSubmitAction(_ sender: Any) {
@@ -79,7 +79,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             
         }else{
      
-        ref = FIRDatabase.database().reference()
+        //reference = FIRDatabase.database().reference()
         createMeeting()
             
         }
@@ -232,7 +232,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         
           if(isCall == "CellEditBtn"){
           //  let groceryItemRef = ref.child("Meetings").childByAutoId()
-            let usr = ref.child("Meetings").child(meetID)
+            let usr = refr.child("Meetings").child(meetID)
            // print("key of tbl \(groceryItemRef.key)")
             let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: "", mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: meetID,meetingCode: fourUniqueDigits, maxCount: maxLb.text!,currentCount: "",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: meetType ,completed: true, key: "")
             
@@ -254,13 +254,14 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             })
             
           }else{
-        let groceryItemRef = ref.child("Meetings").childByAutoId()
-        let usr = ref.child("Meetings").child(groceryItemRef.key)
+            
+        let groceryItemRef = refr.child("Meetings").childByAutoId()
+        let usr = refr.child("Meetings").child(groceryItemRef.key)
         print("key of tbl \(groceryItemRef.key)")
         let meetItem = meetingItem(mname: nameMeetingLb.text!, mdate: dateLb.text!, mtimestart: "", mtimeend: endTimeLb.text!, mvenue: venueLb.text!,mid: groceryItemRef.key,meetingCode: fourUniqueDigits, maxCount: maxLb.text!,currentCount: "",isexpired: "0",instructName: instructorNameLB.text!,instructempId: instructorIDLb.text!,meetingType: meetType ,completed: true, key: "")
         
         usr.setValue(meetItem.toAnyObject())
-            var alert = UIAlertController(title: "Meeting Added", message: "", preferredStyle: UIAlertControllerStyle.alert)
+           
             
             
             if(meetType == "1"){
@@ -270,8 +271,8 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
               //  print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
                 
                 let subcribe = Subcription(attendeeId:key,empId:instructorIDLb.text!,isAttended:"0",isSubscribed:"2",meetingId: meetID,key:"")
-                
-                let sub = ref.child("Subscriptions").child(key)
+                var ref1 = FIRDatabase.database().reference()
+                let sub = refr.child("Subscriptions").child(key)
                 sub.setValue(subcribe.toAnyObject())
             }else{
                 
@@ -279,7 +280,8 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
                 let key = "\(meetID)\(instructorIDLb.text!)"
                // print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
                 let subcribe = Subcription(attendeeId:key,empId:instructorIDLb.text!,isAttended:"0",isSubscribed:"1",meetingId: meetID,key:"")
-                let sub = ref.child("Subscriptions").child(key)
+                var ref1 = FIRDatabase.database().reference()
+                let sub = refr.child("Subscriptions").child(key)
                 sub.setValue(subcribe.toAnyObject())
                 
             }
@@ -287,6 +289,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
             alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action) -> Void in
             self.navigationController!.popViewController(animated: true)
+               // self.navigationController?.dismiss(animated: true, completion: nil)
             }))
             
              self.present(alert1, animated: true, completion:{
@@ -404,6 +407,7 @@ class NewMeetingViewController: UIViewController,UIGestureRecognizerDelegate,UIT
         registerKeyboardNotifications()
     }
     override func viewWillDisappear(_ animated: Bool) {
+        //ref.removeAllObservers()
         unregisterKeyboardNotifications()
     }
 

@@ -22,15 +22,17 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     
     var meetingsArray : NSMutableDictionary = NSMutableDictionary()
     var meetingDataArray:[FIRDataSnapshot]! = [FIRDataSnapshot]()
-    var ref: FIRDatabaseReference!
-    
+//    var ref: FIRDatabaseReference!
+//    var ref1: FIRDatabaseReference!
     
     @IBAction func reportActionBtn(_ sender: UIButton) {
         let dict = completedmeetingName[sender.tag] as FIRDataSnapshot
         let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
+        let instrID = dict.childSnapshot(forPath: "minstructorID").value as! String!
         
         let ListViewControllerObj = self.storyboard?.instantiateViewController(withIdentifier: "reportReview") as? AdminReportViewController
         ListViewControllerObj?.meetingID = meetID
+        ListViewControllerObj?.InstrID = instrID
         ListViewControllerObj?.isCalled = "Admin"
         self.navigationController?.pushViewController(ListViewControllerObj!, animated: true)
         
@@ -47,53 +49,33 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     @IBAction func approvalAction(_ sender: Any) {
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "approvals") as! ApproveListViewController
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+        self.navigationController!.pushViewController(secondViewController, animated: true)
         
     }
     @IBOutlet weak var adminTableView: UITableView!
-    let label = UILabel(frame: CGRect(x: (screenWidth-350)/2, y: (screenHeight-21)/2, width: 350, height: 21))
+    var label = UILabel(frame: CGRect(x: (screenWidth-350)/2, y: (screenHeight-21)/2, width: 350, height: 21))
     
     @IBAction func adminSegmentAction(_ sender: UISegmentedControl) {
         
+        
         if(adminMeetingSegCntrl.selectedSegmentIndex == 1){
-            if(completedmeetingName.count == 0){
-                label.textAlignment = .center
-                self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
-                label.text = "There are no completed meetings"
-                self.view.addSubview(label)
-                self.view.bringSubview(toFront: label)
-                adminTableView.isHidden = true
-                
-            }else{
-                adminTableView.isHidden = false
-                label.removeFromSuperview()
-                self.adminTableView.reloadData()
-            }
+            //ref.removeAllObservers()
+            fetchOldDAta()
         }else{
-            if(upcommingMeetingName.count == 0){
-                label.textAlignment = .center
-                self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
-                label.text = "There are no upcomming meetings"
-                self.view.addSubview(label)
-                self.view.bringSubview(toFront: label)
-                adminTableView.isHidden = true
-                
-            }else{
-                adminTableView.isHidden = false
-                label.removeFromSuperview()
-                self.adminTableView.reloadData()
-            }
-            
+            //ref1.removeAllObservers()
+            fetchAllData()
         }
         
-        //adminTableView.reloadData()
+       
     }
     
     @IBOutlet weak var adminMeetingSegCntrl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        
+        adminMeetingSegCntrl.selectedSegmentIndex = 0
+        fetchAllData()
+        fetchOldDAta()
 //        upcommingMeetingName = ["Meeting4","Meeting5","Meeting6","Meeting7","Meeting8"]
 //        instructorArray = ["by John Miller","by Kate Smith","by Brain Hamilton","by Henry Pitt","by Daisy Steel"]
 //        dateArray = ["6thFeb 11:00 AM-12:00 PM","6thFeb 3:00 PM-4:30 PM","7thFeb 10:00 PM-12:30 PM","7thFeb 5:00 PM-6:00 PM","8thFeb 5:00 PM-6:00 PM"]
@@ -103,14 +85,6 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
 //        instructorArray1 = ["by Kate Smith","by Daisy Steel","by John Miller"]
 //        dateArray1 = ["3rdFeb 11:00 AM-12:00 PM","3rdFeb 4:00 PM-5:00 PM","2ndFeb 3:00 PM-4:00 PM"]
 //        venueArray1 = ["Jupiter","Saturn","Woody"]
-
-        
-        
-        
-        
-
-        
-        self.adminTableView.reloadData()
         
     }
 
@@ -120,9 +94,9 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        label.frame =  CGRect(x: (screenWidth-350)/2, y: (screenHeight-21)/2, width: 350, height: 21)
         self.title = "Meetings"
-        fetchAllData()
+       
         let leftItem = UIBarButtonItem(title: "Add Meeting",
                                        style: .plain,
                                        target: self,
@@ -136,7 +110,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
+        //ref.removeAllObservers()
         self.title = ""
     }
     
@@ -144,37 +118,62 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "addMeeting") as! NewMeetingViewController
         secondViewController.isCall = "NavigationEditBtn"
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+      //  let nav = UINavigationController.init(rootViewController: secondViewController)
+       // self.navigationController!.present(nav, animated: true, completion: nil)
+        self.navigationController!.pushViewController(secondViewController, animated: true)
     }
-    
-    func fetchAllData(){
-        
+    func fetchOldDAta(){
+        if(adminMeetingSegCntrl.selectedSegmentIndex == 1){
         Indicator.sharedInstance.startActivityIndicator()
-        let date = NSDate()
-        let formatter = DateFormatter()
-        
-        formatter.dateFormat = "MMM dd, yyyy HH:mm"
-        
-        let result = formatter.string(from: date as Date)
-        
-        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())
-        
-        let result1 = formatter.string(from: yesterday!)
-        
-        print(result1)
-        ref = FIRDatabase.database().reference()
-        self.upcommingMeetingName.removeAll()
-       // var upcommingMeetingDict = NSMutableDictionary()
         var newItems1 = [FIRDataSnapshot]()
-        let filter = ref.child("Meetings").queryOrdered(byChild: "isExpired").queryEqual(toValue: "0")
+          
+        //ref1 = FIRDatabase.database().reference()
+        
+        //  var completedMeetingDict = NSMutableDictionary()
+        let filter1 = refr.child("Meetings").queryOrdered(byChild: "isExpired").queryEqual(toValue: "1")
+           
+        filter1.observe(.value, with: {snapshot in
+            for item in snapshot.children {
+                newItems1.append(item as! FIRDataSnapshot)
+            }
+            self.completedmeetingName.removeAll()
+            self.completedmeetingName = [FIRDataSnapshot]()
+            self.completedmeetingName = newItems1
+            print(self.meetingDataArray)
+            Indicator.sharedInstance.stopActivityIndicator()
+            
+            if(self.completedmeetingName.count == 0){
+                self.label.textAlignment = .center
+                self.label.text = "There are no completed meetings"
+                self.view.addSubview(self.label)
+                self.view.bringSubview(toFront: self.label)
+                // self.adminTableView.isHidden = true
+                self.adminTableView.reloadData()
+                
+            }else{
+                // self.adminTableView.isHidden = false
+                self.label.removeFromSuperview()
+                self.adminTableView.reloadData()
+            }
+            
+            //}
+            
+        })
+        }
+    }
+    func fetchAllData(){
+        if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
+        Indicator.sharedInstance.startActivityIndicator()
+
+       
+        self.upcommingMeetingName.removeAll()
+        self.upcommingMeetingName =  [FIRDataSnapshot]()
+         
+        let filter = refr.child("Meetings").queryOrdered(byChild: "isExpired").queryEqual(toValue: "0")
         filter.observe(.value , with: {snapshot in
            var newItems = [FIRDataSnapshot]()
             for item in snapshot.children {
-                //let isexpired = (item as AnyObject).childSnapshot(forPath: "isExpired").value as! String?
-               
-                
-                 newItems.append(item as! FIRDataSnapshot)
-               
+                   newItems.append(item as! FIRDataSnapshot)
                 
             }
             self.upcommingMeetingName = newItems
@@ -196,39 +195,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
                 }
             }
         })
-        self.completedmeetingName.removeAll()
-      //  var completedMeetingDict = NSMutableDictionary()
-        let filter1 = ref.child("Meetings").queryOrdered(byChild: "isExpired").queryEqual(toValue: "1")
-        
-        filter1.observe(.value, with: {snapshot in
-         //   print(snapshot.value)
-            
-            // loop through the children and append them to the new array
-            for item in snapshot.children {
-                newItems1.append(item as! FIRDataSnapshot)
-            }
-            
-            self.completedmeetingName = newItems1 
-            print(self.meetingDataArray)
-            Indicator.sharedInstance.stopActivityIndicator()
-            
-                if(self.completedmeetingName.count == 1){
-                    self.label.textAlignment = .center
-                    self.label.text = "There are no completed meetings"
-                    self.view.addSubview(self.label)
-                    self.view.bringSubview(toFront: self.label)
-                   // self.adminTableView.isHidden = true
-                    self.adminTableView.reloadData()
-                    
-                }else{
-                   // self.adminTableView.isHidden = false
-                    self.label.removeFromSuperview()
-                    self.adminTableView.reloadData()
-                }
-                
-            //}
-            
-        })
+        }
         
     
 }
@@ -285,7 +252,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             cell.editBtn.tag = indexPath.row
             cell.editBtn.addTarget(self, action: #selector(editAction), for: .touchUpInside)
             cell.seatAvabLb.isHidden = false
-            
+            cell.instrID = ""
             var meetType = dict.childSnapshot(forPath: "meetingType").value as! String?
             
             if(meetType == "1"){
@@ -306,7 +273,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             cell.venueLb.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
             cell.reportBtn.tag = indexPath.row
             cell.editBtn.isHidden = true
-            
+            cell.instrID = "\(dict.childSnapshot(forPath: "minstructorID").value as! String)"
             cell.reportBtn.isHidden = false
             cell.approvalBtn.isHidden = true
             //cell.maxCntLb.isHidden = true
@@ -365,7 +332,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             secondViewController.isCall = "CellEditBtn"
            // secondViewController.buttonTag = sender.tag
             secondViewController.editMeetingDataArray = dict
-            self.navigationController?.pushViewController(secondViewController, animated: true)
+            self.navigationController!.pushViewController(secondViewController, animated: true)
         }
         
     }

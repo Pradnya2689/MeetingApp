@@ -31,11 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,FIRMessagingDelegate{
         FIRMessaging.messaging().remoteMessageDelegate = self
 
         }
-        application.registerUserNotificationSettings(settings)
-        application.registerForRemoteNotifications()
+       // application.registerUserNotificationSettings(settings)
+       // application.registerForRemoteNotifications()
     
          FIRApp.configure()
-        
+        UserDefaults.standard.set("", forKey: "token")
         
         var pageController = UIPageControl.appearance()
         pageController.pageIndicatorTintColor = UIColor.lightGray

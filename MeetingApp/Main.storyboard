@@ -109,7 +109,7 @@
                                             <action selector="signINBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ubu-6c-vTu"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Version 1.0.4" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3W-FI-3Nf">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Version 1.0.5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3W-FI-3Nf">
                                         <rect key="frame" x="253" y="554" width="114" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="k2T-2H-rcP"/>
@@ -527,7 +527,7 @@
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
                                                             <color key="tintColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Subscribe">
-                                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="titleColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                         </button>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luq-0E-Jyy">
@@ -536,10 +536,9 @@
                                                                 <constraint firstAttribute="width" constant="90" id="7gL-KO-llM"/>
                                                                 <constraint firstAttribute="height" constant="21" id="9f2-I2-Fpf"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
                                                             <color key="tintColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Feedback">
-                                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="titleColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="reportActionBtn:" destination="JA9-th-MSu" eventType="touchUpInside" id="wjA-zR-uUC"/>
@@ -553,9 +552,7 @@
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
                                                             <color key="tintColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Get Code">
-                                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </state>
+                                                            <state key="normal" title="Get Code"/>
                                                         </button>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ywj-u0-6jI">
                                                             <rect key="frame" x="262" y="124" width="100" height="21"/>
@@ -565,9 +562,7 @@
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
                                                             <color key="tintColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="End Meeting">
-                                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </state>
+                                                            <state key="normal" title="End Meeting"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaS-b1-xd2">
                                                             <rect key="frame" x="199" y="124" width="163" height="21"/>
@@ -3116,7 +3111,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kSj-l2-YTK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xex-cH-dzH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xex-cH-dzH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -107,9 +107,17 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                     }
                 }
                 Indicator.sharedInstance.stopActivityIndicator()
-                self.totalSubscribedLB.text = "\(totalCount - 1)"
-                self.totalAttendedLB.text = "\(self.attendedArray.count)"
-                self.attendanceTableView.reloadData()
+                if(totalCount > 0){
+                    self.totalSubscribedLB.text = "\(totalCount - 1)"
+                    self.totalAttendedLB.text = "\(self.attendedArray.count)"
+                    self.attendanceTableView.reloadData()
+                }else{
+                    self.totalSubscribedLB.text = "0"
+                    self.totalAttendedLB.text = "\(self.attendedArray.count)"
+                    self.attendanceTableView.reloadData()
+                }
+                
+                
                 
             })
         }

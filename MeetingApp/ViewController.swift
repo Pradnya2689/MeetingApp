@@ -58,6 +58,9 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
     
     var deviceToken = ""
     
+    
+    var isCalled : String!=""
+    
     @IBAction func signINBtnAction(_ sender: Any) {
         
         let numberCharacters = NSCharacterSet.decimalDigits.inverted
@@ -72,12 +75,23 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
             if(empIdTextField.text == "0000"){
                 //adminMeet
+                UserDefaults.standard.set("", forKey: "meetID")
                 let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "adminMeet") as! AdminMeetingsViewController
                 self.navigationController!.pushViewController(secondViewController, animated: true)
+            }else if(isCalled == "AdminMeet"){
+                if let  meetingID = UserDefaults.standard.value(forKey: "meetID") as? String{
+                    
+                    if(meetingID.characters.count != 0){
+                let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedBack") as! FeedbackViewController
+                secondViewController.meetingID = meetingID
+                secondViewController.isSubscribed = "1"
+                self.navigationController?.pushViewController(secondViewController, animated: true)
+                    }
+                }
+                
             }else{
                 let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
                 self.navigationController!.pushViewController(secondViewController, animated: true)
-                
             }
         
             
@@ -143,8 +157,10 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         print(deviceToken)
+        
+      navigationItem.hidesBackButton = true
         
         self.loginScrollView.contentInset = UIEdgeInsets.zero
         self.loginScrollView.scrollIndicatorInsets = UIEdgeInsets.zero
@@ -157,6 +173,8 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
         
         signinButton.layer.cornerRadius = 5.0
         signinButton.clipsToBounds = true
+        
+        
         
         
         let keyboardDoneButtonView = UIToolbar.init()
@@ -185,20 +203,44 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDe
     override func viewWillAppear(_ animated: Bool) {
         
         self.title = "Sign Up"
-        if let username = UserDefaults.standard.value(forKey: "empID") as? String{
-            if(username == "0000"){
-                let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "adminMeet") as! AdminMeetingsViewController
-                let appdelegate = UIApplication.shared.delegate as! AppDelegate
-                let nav = UINavigationController(rootViewController: secondViewController)
-                appdelegate.window!.rootViewController = nav
-            }else{
-            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
-            let appdelegate = UIApplication.shared.delegate as! AppDelegate
-            let nav = UINavigationController(rootViewController: secondViewController)
-            appdelegate.window!.rootViewController = nav
-            }
-        }
-        registerKeyboardNotifications()
+        
+        if let  meetingID = UserDefaults.standard.value(forKey: "meetID") as? String{
+
+        if(meetingID.characters.count != 0){
+            
+            print(meetingID)
+            
+        }else{
+            if let username = UserDefaults.standard.value(forKey: "empID") as? String{
+                if(username == "0000"){
+                    let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "adminMeet") as! AdminMeetingsViewController
+                    let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                    let nav = UINavigationController(rootViewController: secondViewController)
+                    appdelegate.window!.rootViewController = nav
+                }else{
+                    let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
+                    let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                    let nav = UINavigationController(rootViewController: secondViewController)
+                    appdelegate.window!.rootViewController = nav
+                }
+            }        }
+            
+                }else{
+            if let username = UserDefaults.standard.value(forKey: "empID") as? String{
+                if(username == "0000"){
+                    let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "adminMeet") as! AdminMeetingsViewController
+                    let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                    let nav = UINavigationController(rootViewController: secondViewController)
+                    appdelegate.window!.rootViewController = nav
+                }else{
+                    let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userMeeting") as! UserMeetingViewController
+                    let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                    let nav = UINavigationController(rootViewController: secondViewController)
+                    appdelegate.window!.rootViewController = nav
+                }
+            }        }
+        
+               registerKeyboardNotifications()
        
     }
     

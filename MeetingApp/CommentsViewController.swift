@@ -36,10 +36,22 @@ class CommentsViewController: UIViewController, UITextViewDelegate,UIGestureReco
        
         sub.setValue(feedBack.toAnyObject())
         
+        if let  meetingID = UserDefaults.standard.value(forKey: "meetID") as? String{
+            
+            if(meetingID.characters.count != 0){
+
+                let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginPage") as! ViewController
+                UserDefaults.standard.set(meetingID, forKey: "meetID")
+                secondViewController.isCalled = "AdminMeet"
+                //secondViewController.meetingID = meetID
+                self.navigationController?.pushViewController(secondViewController, animated: true)            }
+        }else{
+        
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "reportReview") as! AdminReportViewController
         secondViewController.meetingID = meetId
         secondViewController.isCalled = "User"
         self.navigationController?.pushViewController(secondViewController, animated: true)
+        }
         
     }
     override func viewDidLoad() {

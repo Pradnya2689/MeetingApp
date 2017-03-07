@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kSj-l2-YTK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kSj-l2-YTK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,7 +21,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MeetingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginPage" id="BYZ-38-t0r" customClass="ViewController" customModule="MeetingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -319,6 +319,17 @@
                                                                 <action selector="reportActionBtn:" destination="JA9-th-MSu" eventType="touchUpInside" id="ZST-ts-zY3"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZj-1u-a3d">
+                                                            <rect key="frame" x="8" y="124" width="125" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="IcG-Zk-g4f"/>
+                                                                <constraint firstAttribute="width" constant="125" id="pBC-V9-8Ke"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
+                                                            <state key="normal" title="Feedback">
+                                                                <color key="titleColor" red="0.1176470588" green="0.3921568627" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </state>
+                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAz-JO-yWJ">
                                                             <rect key="frame" x="0.0" y="153" width="375" height="1"/>
                                                             <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -333,6 +344,7 @@
                                                     <constraints>
                                                         <constraint firstItem="Ign-3Z-Kth" firstAttribute="leading" secondItem="7RL-9W-Uox" secondAttribute="trailing" constant="2" id="2QD-Es-963"/>
                                                         <constraint firstItem="7RL-9W-Uox" firstAttribute="top" secondItem="lab-2d-Dn5" secondAttribute="bottom" constant="8" id="5n3-is-LfM"/>
+                                                        <constraint firstItem="rZj-1u-a3d" firstAttribute="leading" secondItem="qyY-yB-ql0" secondAttribute="leading" constant="8" id="5vz-Zv-PVJ"/>
                                                         <constraint firstItem="vom-5j-ReH" firstAttribute="top" secondItem="Ign-3Z-Kth" secondAttribute="bottom" constant="8" id="6x8-DR-wxZ"/>
                                                         <constraint firstItem="yjt-Wb-mT0" firstAttribute="top" secondItem="iup-66-CoY" secondAttribute="bottom" constant="8" id="7uf-lV-K8B"/>
                                                         <constraint firstItem="JAz-JO-yWJ" firstAttribute="top" secondItem="CHJ-FD-Ed8" secondAttribute="bottom" constant="8" id="AhF-Ix-UVA"/>
@@ -347,6 +359,7 @@
                                                         <constraint firstItem="lab-2d-Dn5" firstAttribute="leading" secondItem="qyY-yB-ql0" secondAttribute="leading" constant="8" id="JmE-ym-HsP"/>
                                                         <constraint firstItem="iup-66-CoY" firstAttribute="top" secondItem="qyY-yB-ql0" secondAttribute="top" constant="8" id="LHq-bv-Lyu"/>
                                                         <constraint firstItem="L95-W9-UkV" firstAttribute="top" secondItem="iup-66-CoY" secondAttribute="bottom" constant="37" id="MUW-0C-ZXQ"/>
+                                                        <constraint firstItem="JAz-JO-yWJ" firstAttribute="top" secondItem="rZj-1u-a3d" secondAttribute="bottom" constant="8" id="OXz-tB-0BA"/>
                                                         <constraint firstItem="CHJ-FD-Ed8" firstAttribute="leading" secondItem="ChZ-LW-MIo" secondAttribute="trailing" constant="17" id="Pde-o8-08W"/>
                                                         <constraint firstItem="JAz-JO-yWJ" firstAttribute="top" secondItem="ChZ-LW-MIo" secondAttribute="bottom" constant="8" id="Q8d-Xs-yMe"/>
                                                         <constraint firstItem="7RL-9W-Uox" firstAttribute="leading" secondItem="qyY-yB-ql0" secondAttribute="leading" constant="8" id="TV5-7n-Oe6"/>
@@ -357,6 +370,7 @@
                                                         <constraint firstItem="Ign-3Z-Kth" firstAttribute="top" secondItem="yjt-Wb-mT0" secondAttribute="bottom" constant="8" id="aXe-PW-cPq"/>
                                                         <constraint firstItem="xwb-yJ-eWE" firstAttribute="leading" secondItem="qyY-yB-ql0" secondAttribute="leading" constant="8" id="c0i-0M-Zh0"/>
                                                         <constraint firstItem="vom-5j-ReH" firstAttribute="leading" secondItem="xwb-yJ-eWE" secondAttribute="trailing" constant="2" id="cEy-qI-s6y"/>
+                                                        <constraint firstItem="rZj-1u-a3d" firstAttribute="top" secondItem="vom-5j-ReH" secondAttribute="bottom" constant="8" id="cx1-q8-0zO"/>
                                                         <constraint firstItem="lab-2d-Dn5" firstAttribute="top" secondItem="iup-66-CoY" secondAttribute="bottom" constant="8" id="dth-zr-oRA"/>
                                                         <constraint firstItem="JAz-JO-yWJ" firstAttribute="leading" secondItem="qyY-yB-ql0" secondAttribute="leading" id="geq-Tv-8NF"/>
                                                         <constraint firstItem="iup-66-CoY" firstAttribute="leading" secondItem="qyY-yB-ql0" secondAttribute="leading" constant="8" id="gfA-ET-nE7"/>
@@ -378,6 +392,7 @@
                                                     <outlet property="approvalBtn" destination="ChZ-LW-MIo" id="DlA-Fz-W6A"/>
                                                     <outlet property="dateLb" destination="vom-5j-ReH" id="i3U-ph-2yV"/>
                                                     <outlet property="editBtn" destination="6Xt-Ng-jKI" id="X7L-c9-DIm"/>
+                                                    <outlet property="feedBACKBtn" destination="rZj-1u-a3d" id="ltm-hn-kai"/>
                                                     <outlet property="instructorLb" destination="yjt-Wb-mT0" id="fPG-Vn-Xrg"/>
                                                     <outlet property="nameLb" destination="iup-66-CoY" id="8eU-w0-e1I"/>
                                                     <outlet property="reportBtn" destination="CHJ-FD-Ed8" id="8ON-au-WWk"/>

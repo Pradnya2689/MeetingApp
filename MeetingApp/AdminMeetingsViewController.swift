@@ -15,15 +15,89 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     var upcommingMeetingName:[FIRDataSnapshot]! = [FIRDataSnapshot]()
     var instructorArray = [String]()
     var instructorArray1 = [String]()
-    var dateArray = [String]()
+    var name = [String]()
     var dateArray1 = [String]()
     var venueArray = [String]()
     var venueArray1 = [String]()
+    var filteredmeetingName = NSMutableArray()
+    var filterArray = NSArray()
+    var filterArray1 = NSArray()
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    let  searchBar = UISearchBar()
+    
+    var empID = UserDefaults.standard.value(forKey: "empID") as! String
     
     var meetingsArray : NSMutableDictionary = NSMutableDictionary()
     var meetingDataArray:[FIRDataSnapshot]! = [FIRDataSnapshot]()
 //    var ref: FIRDatabaseReference!
 //    var ref1: FIRDatabaseReference!
+    
+    
+    
+    func filterContentsForSearchText(searchText : String , scope : String = "All"){
+        
+        print(searchText)
+        
+        if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
+            
+            filteredmeetingName.removeAllObjects()
+            
+            print(self.upcommingMeetingName)
+            
+            for child in upcommingMeetingName {
+                let dict = child.value as! NSDictionary
+                print(dict)
+                filteredmeetingName.addObjects(from: [dict])
+            }
+            
+            print(filteredmeetingName)
+            
+           let searchPredicate1 = NSPredicate(format: "mInstuctorName CONTAINS[C] %@", searchText)
+            let searchPredicate = NSPredicate(format: "mname CONTAINS[C] %@", searchText)
+
+         //   let  predicate = NSPredicate(format: "mInstuctorName CONTAINS[C] %@ OR mname CONTAINS[C] %@", searchText,searchText)
+            
+            let predicate: NSCompoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [searchPredicate1,searchPredicate])
+            
+            
+            filterArray = (filteredmeetingName as NSArray).filtered(using: predicate) as NSArray
+            print(filterArray)
+            
+             adminTableView.reloadData()
+            
+        }else{
+            
+            print(self.completedmeetingName)
+            
+            filteredmeetingName.removeAllObjects()
+            
+            
+            for child in completedmeetingName {
+                let dict = child.value as! NSDictionary
+                print(dict)
+                filteredmeetingName.addObjects(from: [dict])
+            }
+            
+            print(filteredmeetingName)
+            filterArray1=NSArray()
+             let searchPredicate1 = NSPredicate(format: "mInstuctorName CONTAINS[C] %@", searchText)
+            let searchPredicate = NSPredicate(format: "mname CONTAINS[C] %@", searchText)
+            let pred = NSCompoundPredicate.init(type: .or, subpredicates: [searchPredicate1,searchPredicate])
+            filterArray1 = (filteredmeetingName as NSArray).filtered(using: pred) as NSArray
+            
+            print(filterArray1)
+            
+            adminTableView.reloadData()
+
+        }
+        
+    }
+    
+    
+    
+    
     
     @IBAction func reportActionBtn(_ sender: UIButton) {
         let dict = completedmeetingName[sender.tag] as FIRDataSnapshot
@@ -38,20 +112,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         
     }
     
-    @IBAction func editBtnAction(_ sender: Any) {
-        
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "addMeeting") as! NewMeetingViewController
-        secondViewController.isCall = "CellEditBtn"
-        self.navigationController?.pushViewController(secondViewController, animated: true)
-        
-    }
     
-    @IBAction func approvalAction(_ sender: Any) {
-        
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "approvals") as! ApproveListViewController
-        self.navigationController!.pushViewController(secondViewController, animated: true)
-        
-    }
     @IBOutlet weak var adminTableView: UITableView!
     var label = UILabel(frame: CGRect(x: (screenWidth-350)/2, y: (screenHeight-21)/2, width: 350, height: 21))
     
@@ -76,16 +137,13 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         adminMeetingSegCntrl.selectedSegmentIndex = 0
         fetchAllData()
         fetchOldDAta()
-//        upcommingMeetingName = ["Meeting4","Meeting5","Meeting6","Meeting7","Meeting8"]
-//        instructorArray = ["by John Miller","by Kate Smith","by Brain Hamilton","by Henry Pitt","by Daisy Steel"]
-//        dateArray = ["6thFeb 11:00 AM-12:00 PM","6thFeb 3:00 PM-4:30 PM","7thFeb 10:00 PM-12:30 PM","7thFeb 5:00 PM-6:00 PM","8thFeb 5:00 PM-6:00 PM"]
-//        venueArray = ["Woody","Datsun","Galaxy","Earth","Venus"]
-//        
-//        completedmeetingName = ["Meeting1","Meeting2","Meeting3"]
-//        instructorArray1 = ["by Kate Smith","by Daisy Steel","by John Miller"]
-//        dateArray1 = ["3rdFeb 11:00 AM-12:00 PM","3rdFeb 4:00 PM-5:00 PM","2ndFeb 3:00 PM-4:00 PM"]
-//        venueArray1 = ["Jupiter","Saturn","Woody"]
         
+    
+        self.searchController.searchResultsUpdater = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        self.searchController.searchBar.barTintColor = UIColor.white
+        adminTableView.tableHeaderView = self.searchController.searchBar
     }
 
     override func didReceiveMemoryWarning() {
@@ -201,11 +259,23 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
 }
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
+                return filterArray.count
+            }else{
+                return filterArray1.count
+            }
+        }else  if !searchController.isActive && searchController.searchBar.text == ""{
+        
         if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
             return upcommingMeetingName.count
         }else{
         return completedmeetingName.count
         }
+            
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -224,65 +294,155 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         cell.approvalBtn.clipsToBounds = true
         
         if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
-            let dict = upcommingMeetingName[indexPath.row] as FIRDataSnapshot
             
             
-            var cnt = (dict.childSnapshot(forPath: "currentCount").value as! String?)!
             
-            var maxcnt = (dict.childSnapshot(forPath: "maxcount").value as! String?)!
-            if(cnt == ""){
-                cnt = "0"
-            }
-            var dif = Int(maxcnt)! - Int(cnt)!
-            
-            if(dif > 0 ){
-                cell.seatAvabLb.text = "\(dif) of \(dict.childSnapshot(forPath: "maxcount").value as! String) seats remaining"
-
-            }else{
-                cell.seatAvabLb.text = "No seats remaining"
-
-            }
-            
-            cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
-            cell.instructorLb.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
-            cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
-            cell.venueLb.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
-                       cell.editBtn.isHidden = false
-            cell.reportBtn.isHidden = true
-            cell.editBtn.tag = indexPath.row
-            cell.editBtn.addTarget(self, action: #selector(editAction), for: .touchUpInside)
-            cell.seatAvabLb.isHidden = false
-            cell.instrID = ""
-            var meetType = dict.childSnapshot(forPath: "meetingType").value as! String?
-            
-            if(meetType == "1"){
+            if searchController.isActive && searchController.searchBar.text != "" {
+                let dict = filterArray[indexPath.row] as! NSDictionary
                 
-                cell.approvalBtn.isHidden = false
-                cell.approvalBtn.tag = indexPath.row
-                cell.approvalBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
-            }else{
-                cell.approvalBtn.isHidden = true
+                
+                var cnt = dict.value(forKey: "currentCount") as! String
+                var maxcnt = dict.value(forKey: "maxcount") as! String
+                if(cnt == ""){
+                    cnt = "0"
+                }
+                var dif = Int(maxcnt)! - Int(cnt)!
+                
+                if(dif > 0 ){
+                    cell.seatAvabLb.text = "\(dif) of \(maxcnt) seats remaining"
+                    
+                }else{
+                    cell.seatAvabLb.text = "No seats remaining"
+                    
+                }
+                cell.nameLb.text = dict.value(forKey: "mname") as! String?
+                cell.instructorLb.text = dict.value(forKey: "mInstuctorName")as! String?
+                cell.dateLb.text = "\(dict.value(forKey: "mdate")as! String) - \(dict.value(forKey: "mendtime")as! String)"
+                cell.venueLb.text = dict.value(forKey: "mvenue")as! String?
+                cell.editBtn.isHidden = false
+                cell.reportBtn.isHidden = true
+                cell.editBtn.tag = indexPath.row
+                cell.editBtn.addTarget(self, action: #selector(editAction), for: .touchUpInside)
+                cell.seatAvabLb.isHidden = false
+                cell.instrID = ""
+                var meetType = dict.value(forKey: "meetingType") as! String
+                
+                if(meetType == "1"){
+                    
+                    cell.approvalBtn.isHidden = false
+                    cell.approvalBtn.tag = indexPath.row
+                    cell.approvalBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+                }else{
+                    cell.approvalBtn.isHidden = true
+                }
+                
+                
+                
+                cell.feedBACKBtn.isHidden = false
+                cell.feedBACKBtn.tag = indexPath.row
+                cell.feedBACKBtn.addTarget(self, action: #selector(feedBackAction), for: .touchUpInside)
+                
+            } else {
+                 let dict = upcommingMeetingName[indexPath.row] as FIRDataSnapshot
+                
+                var cnt = (dict.childSnapshot(forPath: "currentCount").value as! String?)!
+                
+                var maxcnt = (dict.childSnapshot(forPath: "maxcount").value as! String?)!
+                if(cnt == ""){
+                    cnt = "0"
+                }
+                var dif = Int(maxcnt)! - Int(cnt)!
+                
+                if(dif > 0 ){
+                    cell.seatAvabLb.text = "\(dif) of \(dict.childSnapshot(forPath: "maxcount").value as! String) seats remaining"
+                    
+                }else{
+                    cell.seatAvabLb.text = "No seats remaining"
+                    
+                }
+                
+                cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
+                cell.instructorLb.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
+                cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
+                cell.venueLb.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
+                cell.editBtn.isHidden = false
+                cell.reportBtn.isHidden = true
+                cell.editBtn.tag = indexPath.row
+                cell.editBtn.addTarget(self, action: #selector(editAction), for: .touchUpInside)
+                cell.seatAvabLb.isHidden = false
+                cell.instrID = ""
+                var meetType = dict.childSnapshot(forPath: "meetingType").value as! String?
+                
+                if(meetType == "1"){
+                    
+                    cell.approvalBtn.isHidden = false
+                    cell.approvalBtn.tag = indexPath.row
+                    cell.approvalBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+                }else{
+                    cell.approvalBtn.isHidden = true
+                }
+                
+                
+                
+                cell.feedBACKBtn.isHidden = false
+                cell.feedBACKBtn.tag = indexPath.row
+                cell.feedBACKBtn.addTarget(self, action: #selector(feedBackAction), for: .touchUpInside)
             }
+            
             
         }else{
-             let dict = completedmeetingName[indexPath.row] as FIRDataSnapshot
             
-            cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
-            cell.instructorLb.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
-            cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
-            cell.venueLb.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
-            cell.reportBtn.tag = indexPath.row
-            cell.editBtn.isHidden = true
-            cell.instrID = "\(dict.childSnapshot(forPath: "minstructorID").value as! String)"
-            cell.reportBtn.isHidden = false
-            cell.approvalBtn.isHidden = true
-            //cell.maxCntLb.isHidden = true
-            cell.seatAvabLb.isHidden = true
+            
+            if searchController.isActive && searchController.searchBar.text != "" {
+                
+                
+                let dict = filterArray1[indexPath.row] as! NSDictionary
+                
+                cell.nameLb.text = dict.value(forKey: "mname") as! String?
+                cell.instructorLb.text = dict.value(forKey: "mInstuctorName")as! String?
+                cell.dateLb.text = "\(dict.value(forKey: "mdate")as! String) - \(dict.value(forKey: "mendtime")as! String)"
+                cell.venueLb.text = dict.value(forKey: "mvenue")as! String?
+                cell.reportBtn.tag = indexPath.row
+                cell.editBtn.isHidden = true
+                cell.instrID = dict.value(forKey: "minstructorID")as! String?
+                cell.reportBtn.isHidden = false
+                cell.approvalBtn.isHidden = true
+                //cell.maxCntLb.isHidden = true
+                cell.seatAvabLb.isHidden = true
+                cell.feedBACKBtn.isHidden = true
+                
+            } else if !searchController.isActive && searchController.searchBar.text == ""{
+                let dict = completedmeetingName[indexPath.row] as FIRDataSnapshot
+                
+                cell.nameLb.text = dict.childSnapshot(forPath: "mname").value as! String?
+                cell.instructorLb.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
+                cell.dateLb.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
+                cell.venueLb.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
+                cell.reportBtn.tag = indexPath.row
+                cell.editBtn.isHidden = true
+                cell.instrID = "\(dict.childSnapshot(forPath: "minstructorID").value as! String)"
+                cell.reportBtn.isHidden = false
+                cell.approvalBtn.isHidden = true
+                //cell.maxCntLb.isHidden = true
+                cell.seatAvabLb.isHidden = true
+                cell.feedBACKBtn.isHidden = true
+            }
+            
+            
+            
+            
+            
+            
+            
+      
         }
 
         
         return cell
     }
+    
+    
+    
     func subcribeAction(sender: UIButton){
         
         print(sender.tag)
@@ -307,6 +467,8 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             print("\(dict.childSnapshot(forPath: "meetingID").value as! String?)")
         }
     }
+    
+    
     
     
 //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -338,6 +500,24 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     }
     
     
+    func feedBackAction(sender: UIButton){
+        
+        print(sender.tag)
+        
+        if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
+            let dict = upcommingMeetingName[sender.tag] as FIRDataSnapshot
+            
+            let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginPage") as! ViewController
+            UserDefaults.standard.set(meetID, forKey: "meetID")
+            secondViewController.isCalled = "AdminMeet"
+            //secondViewController.meetingID = meetID
+            self.navigationController?.pushViewController(secondViewController, animated: true)
+
+        }
+        
+    }
+    
     
     /*
     // MARK: - Navigation
@@ -349,4 +529,13 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     }
     */
 
+}
+
+
+extension AdminMeetingsViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        
+        filterContentsForSearchText(searchText: searchController.searchBar.text!)
+    }
 }

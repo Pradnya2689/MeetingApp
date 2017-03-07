@@ -9,10 +9,10 @@
 import UIKit
 import CoreData
 import  Firebase
-
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,FIRMessagingDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate,FIRMessagingDelegate,UNUserNotificationCenterDelegate{
 
     var window: UIWindow?
 
@@ -31,12 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,FIRMessagingDelegate{
         FIRMessaging.messaging().remoteMessageDelegate = self
 
         }
-       // application.registerUserNotificationSettings(settings)
+        application.registerUserNotificationSettings(settings)
        // application.registerForRemoteNotifications()
-    
+    //application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: types, categories: nil))
          FIRApp.configure()
         UserDefaults.standard.set("", forKey: "token")
         
+   
         var pageController = UIPageControl.appearance()
         pageController.pageIndicatorTintColor = UIColor.lightGray
         pageController.currentPageIndicatorTintColor = UIColor.black
@@ -63,8 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,FIRMessagingDelegate{
         
 //        
 //        if #available(iOS 10.0, *) {
-//            let authOptions:  = [.alert, .badge, .sound]
-//            UIUserNotificationType.current().requestAuthorization(
+//            let authOptions:UNAuthorizationOptions = [.alert, .badge, .sound]
+//            UNUserNotificationCenter.current().requestAuthorization(
 //                options: authOptions,
 //                completionHandler: {_, _ in })
 //            
@@ -78,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,FIRMessagingDelegate{
 //                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
 //            application.registerUserNotificationSettings(settings)
 //        }
-        
+//        
       //  application.registerForRemoteNotifications()
       //  AppDelegate.swift
         

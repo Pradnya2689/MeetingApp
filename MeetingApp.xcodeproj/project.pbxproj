@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4C17D9781E5AC3A20090AECF /* System San Francisco Display Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C17D9771E5AC3A20090AECF /* System San Francisco Display Regular.ttf */; };
 		4C17D97A1E5AC4FF0090AECF /* System San Francisco Display Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C17D9791E5AC4FF0090AECF /* System San Francisco Display Bold.ttf */; };
+		4C1C35EC1E69951B003E05ED /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C35EB1E69951B003E05ED /* LocalNotificationHelper.swift */; };
 		4C1C4FC71E6706D600EB3A12 /* 180.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1C4FC61E6706D600EB3A12 /* 180.png */; };
 		4C6AA7701E5EB6B100B49892 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6AA76F1E5EB6B100B49892 /* EventKit.framework */; };
 		4C7A01C31E5736FB005125D9 /* SF UI Font License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4C7A01C21E5736FB005125D9 /* SF UI Font License.rtf */; };
@@ -70,6 +71,7 @@
 		16FF6A1CB12624B6B7240624 /* Pods-MeetingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetingApp/Pods-MeetingApp.release.xcconfig"; sourceTree = "<group>"; };
 		4C17D9771E5AC3A20090AECF /* System San Francisco Display Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Regular.ttf"; sourceTree = "<group>"; };
 		4C17D9791E5AC4FF0090AECF /* System San Francisco Display Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Bold.ttf"; sourceTree = "<group>"; };
+		4C1C35EB1E69951B003E05ED /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		4C1C4FC61E6706D600EB3A12 /* 180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 180.png; sourceTree = "<group>"; };
 		4C6AA76F1E5EB6B100B49892 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		4C7A01C21E5736FB005125D9 /* SF UI Font License.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "SF UI Font License.rtf"; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				C382309D1E5D741A00DD5697 /* MyriadPro-It.otf */,
 				C382309E1E5D741A00DD5697 /* MyriadPro-Regular.otf */,
 				C32677FB1E654F570051F699 /* MainViewCmmtViewController.swift */,
+				4C1C35EB1E69951B003E05ED /* LocalNotificationHelper.swift */,
 			);
 			path = MeetingApp;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				C37D87011E40976F00D6462A /* AppDelegate.swift in Sources */,
 				C3580D0C1E449B5E0067AA1A /* CommentsViewController.swift in Sources */,
 				C3A027A71E4341090012D39E /* EmployeeNoTableViewCell.swift in Sources */,
+				4C1C35EC1E69951B003E05ED /* LocalNotificationHelper.swift in Sources */,
 				C37D87091E40976F00D6462A /* MeetingApp.xcdatamodeld in Sources */,
 				C3D556941E41F737002A09FC /* NewMeetingViewController.swift in Sources */,
 				C32677FC1E654F570051F699 /* MainViewCmmtViewController.swift in Sources */,

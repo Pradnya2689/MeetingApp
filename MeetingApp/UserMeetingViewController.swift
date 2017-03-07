@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import EventKit
-
+import UserNotifications
 
 class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
 
@@ -485,14 +485,28 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                     sub.setValue(subcribe.toAnyObject())
                     
                 }
+                let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
                 let meetname = dict.childSnapshot(forPath: "mname").value as! String
                 let starttime = dict.childSnapshot(forPath: "mdate").value as! String
                 let endtime = dict.childSnapshot(forPath: "mendtime").value as! String
-                
                 self.alarmButtonClicked(startTime: starttime, endTime: endtime, titleOfMeeting: meetname)
-               
-               self.updateCount(sender: sender.tag)
-                
+               // let local:LocalNotificationHelper!=LocalNotificationHelper.init()
+//                if(LocalNotificationHelper().checkNotificationExists(taskTypeId:meetID!)){
+//                    
+//                }else{
+//                    let taskTypeId:String = "C"
+//                    let secondsDelay:Int = 120 // Seconds delay from current date for notification
+//                    
+//                    // Add the secondsDelay to the current system date and time for the notification fireDate
+//                    let calendar = Calendar.current;
+//                    // (Previous code goes here)
+//                    
+//                    // What's the last day of a 90-day warranty that starts today?
+//                   let date = calendar.date(byAdding: .day, value: 90, to: Date())  // 90 days from now
+//                   // let date = calendar.dateByAddingUnit(.Second, value: secondsDelay, toDate: NSDate(), options: [])
+//                      LocalNotificationHelper().scheduleLocal(taskTypeId: meetID!, alertDate: date! as NSDate)
+//                }
+             
                 
             }
             
@@ -660,7 +674,6 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             if success{
                  //self.addAlarmToReminder()
                 let calendars = self.eventStore.calendars(for: EKEntityType.event)
-                
                 
                 for calendar in calendars {
                     print(calendars)

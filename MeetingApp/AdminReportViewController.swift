@@ -220,7 +220,7 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
         
         if(reportSegmentOutlet.selectedSegmentIndex == 0){
         
-        let filter = refr.child("FeedBacks").queryOrdered(byChild: "meetingID").queryEqual(toValue: meetingID)
+        let filter = refr.child("FeedBacks").queryOrdered(byChild: "meetingID").queryEqual(toValue: meetingID!)
         filter.observe(.value , with: {snapshot in
             
            // print(snapshot.value ?? <#default value#>!)
@@ -263,8 +263,6 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
             }
             
             var newItems = [FIRDataSnapshot]()
-            
-            // loop through the children and append them to the new array
             for  item in snapshot.children {
                
                 self.contentEffTotalCount = self.contentEffTotalCount + ((item as AnyObject).childSnapshot(forPath: "contentEffeciency").value as! Int?)!

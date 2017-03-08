@@ -344,13 +344,13 @@
 					};
 					C37D87131E40977100D6462A = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = A8U8Q2EEBA;
+						DevelopmentTeam = L9Q4J2MT8T;
 						ProvisioningStyle = Automatic;
 						TestTargetID = C37D86FC1E40976700D6462A;
 					};
 					C37D871E1E40977100D6462A = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = A8U8Q2EEBA;
+						DevelopmentTeam = L9Q4J2MT8T;
 						ProvisioningStyle = Automatic;
 						TestTargetID = C37D86FC1E40976700D6462A;
 					};
@@ -632,7 +632,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = A8U8Q2EEBA;
+				DEVELOPMENT_TEAM = L9Q4J2MT8T;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -684,7 +684,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = A8U8Q2EEBA;
+				DEVELOPMENT_TEAM = L9Q4J2MT8T;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

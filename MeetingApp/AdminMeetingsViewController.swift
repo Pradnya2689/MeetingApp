@@ -142,7 +142,8 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         self.searchController.searchResultsUpdater = self
         self.searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
-        self.searchController.searchBar.barTintColor = UIColor.white
+        //self.searchController.searchBar.barTintColor = UIColor.clear
+        self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
         adminTableView.tableHeaderView = self.searchController.searchBar
     }
 

@@ -107,9 +107,17 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                     }
                 }
                 Indicator.sharedInstance.stopActivityIndicator()
-                self.totalSubscribedLB.text = "\(totalCount - 1)"
-                self.totalAttendedLB.text = "\(self.attendedArray.count)"
-                self.attendanceTableView.reloadData()
+                if(totalCount > 0){
+                    self.totalSubscribedLB.text = "\(self.attendedArray.count+self.notattendedArray.count)"
+                    self.totalAttendedLB.text = "\(self.attendedArray.count)"
+                    self.attendanceTableView.reloadData()
+                }else{
+                    self.totalSubscribedLB.text = "0"
+                    self.totalAttendedLB.text = "\(self.attendedArray.count)"
+                    self.attendanceTableView.reloadData()
+                }
+                
+                
                 
             })
         }
@@ -517,6 +525,8 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "attendance", for: indexPath) as! EmployeeNoTableViewCell
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         let dict = notattendedArray[indexPath.row] as FIRDataSnapshot
         let cnt = (dict.childSnapshot(forPath: "empId").value as! String?)!

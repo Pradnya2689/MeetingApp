@@ -19,6 +19,12 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     var empID = UserDefaults.standard.value(forKey: "empID") as! String
     @IBOutlet weak var userTableView: UITableView!
     
+    var filteredmeetingName = NSMutableArray()
+    var filterArray = NSArray()
+    var filterArray1 = NSArray()
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
     let label = UILabel(frame: CGRect(x: (screenWidth-350)/2, y: (screenHeight-21)/2, width: 350, height: 21))
     
     @IBAction func userSegmntAction(_ sender: UISegmentedControl) {
@@ -74,6 +80,66 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
 
     }
     
+    
+    func filterContentsForSearchText(searchText : String , scope : String = "All"){
+        
+        print(searchText)
+        
+        if(userSegmentCntrl.selectedSegmentIndex == 0){
+            
+            filteredmeetingName.removeAllObjects()
+            
+            print(self.allmeetingName)
+            
+            for child in allmeetingName {
+                let dict = child.value as! NSDictionary
+                print(dict)
+                filteredmeetingName.addObjects(from: [dict])
+            }
+            
+            print(filteredmeetingName)
+            
+            let searchPredicate1 = NSPredicate(format: "mInstuctorName CONTAINS[C] %@", searchText)
+            let searchPredicate = NSPredicate(format: "mname CONTAINS[C] %@", searchText)
+            
+            //   let  predicate = NSPredicate(format: "mInstuctorName CONTAINS[C] %@ OR mname CONTAINS[C] %@", searchText,searchText)
+            
+            let predicate: NSCompoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [searchPredicate1,searchPredicate])
+            
+            
+            filterArray = (filteredmeetingName as NSArray).filtered(using: predicate) as NSArray
+            print(filterArray)
+            
+            userTableView.reloadData()
+            
+        }else{
+            
+            print(self.myMeetingName)
+            
+            filteredmeetingName.removeAllObjects()
+            
+            
+            for child in myMeetingName {
+                let dict = child.value as! NSDictionary
+                print(dict)
+                filteredmeetingName.addObjects(from: [dict])
+            }
+            
+            print(filteredmeetingName)
+            filterArray1=NSArray()
+            let searchPredicate1 = NSPredicate(format: "mInstuctorName CONTAINS[C] %@", searchText)
+            let searchPredicate = NSPredicate(format: "mname CONTAINS[C] %@", searchText)
+            let pred = NSCompoundPredicate.init(type: .or, subpredicates: [searchPredicate1,searchPredicate])
+            filterArray1 = (filteredmeetingName as NSArray).filtered(using: pred) as NSArray
+            
+            print(filterArray1)
+            
+            userTableView.reloadData()
+            
+        }
+        
+    }
+    
     var alertText: UITextField!
     
    
@@ -115,6 +181,13 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
         }
         print("emp id \(empID)")
+        
+        
+        self.searchController.searchResultsUpdater = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+        userTableView.tableHeaderView = self.searchController.searchBar
       
     }
     
@@ -128,7 +201,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         
         self.title = "Meetings"
        
-        
+        userSegmentCntrl.selectedSegmentIndex = 0
        // self.userTableView.reloadData()
         self.userSegmentCntrl.translatesAutoresizingMaskIntoConstraints = true
         self.userSegmentCntrl.frame = CGRect(x: 5, y: 0, width: screenWidth-10, height: 32)
@@ -141,10 +214,28 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(userSegmentCntrl.selectedSegmentIndex == 0){
-            return allmeetingName.count
-        }else if(userSegmentCntrl.selectedSegmentIndex == 1){
-            return myMeetingName.count
+//        if(userSegmentCntrl.selectedSegmentIndex == 0){
+//            return allmeetingName.count
+//        }else if(userSegmentCntrl.selectedSegmentIndex == 1){
+//            return myMeetingName.count
+//        }
+//        return 0
+        
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            if(userSegmentCntrl.selectedSegmentIndex == 0){
+                return filterArray.count
+            }else{
+                return filterArray1.count
+            }
+        }else  if !searchController.isActive && searchController.searchBar.text == ""{
+            
+            if(userSegmentCntrl.selectedSegmentIndex == 0){
+                return allmeetingName.count
+            }else{
+                return myMeetingName.count
+            }
+            
         }
         return 0
     }
@@ -281,118 +372,293 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         cell.endMeetingBtn.layer.cornerRadius = 5.0
         cell.endMeetingBtn.clipsToBounds = true
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
       
         if(userSegmentCntrl.selectedSegmentIndex == 0){
-            cell.subcribeBtn.isHidden = true
-            let dict = allmeetingName[indexPath.row] as FIRDataSnapshot
-            var cnt = (dict.childSnapshot(forPath: "currentCount").value as! String?)!
             
-            var maxcnt = (dict.childSnapshot(forPath: "maxcount").value as! String?)!
-            if(cnt == ""){
-                cnt = "0"
-            }
-            var dif = Int(maxcnt)! - Int(cnt)!
             
-            if(dict.childSnapshot(forPath: "meetingType").value as! String! == "1"){
-
+            if searchController.isActive && searchController.searchBar.text != "" {
+                cell.subcribeBtn.isHidden = true
+                let dict = filterArray[indexPath.row] as! NSDictionary
+                var cnt = dict.value(forKey: "currentCount") as! String
+                
+                var maxcnt = dict.value(forKey: "maxcount") as! String
+                if(cnt == ""){
+                    cnt = "0"
+                }
+                var dif = Int(maxcnt)! - Int(cnt)!
+                
+                if(dict.value(forKey: "meetingType") as! String == "1"){
+                    
                     if(dif > 0){
-                         cell.seatAvaLB.text = "\(dif) seats"
+                        cell.seatAvaLB.text = "\(dif) seats"
                         cell.subcribeBtn.isHidden = false
-                     
+                        
                     }else{
-                         cell.seatAvaLB.text = "\(0) seats"
+                        cell.seatAvaLB.text = "\(0) seats"
                         cell.subcribeBtn.isHidden = true
                     }
                     
                     cell.subcribeBtn.setTitle("Interest", for: .normal)
                     cell.subcribeBtn.tag = indexPath.row
                     cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
-                //}
-            }else if(dict.childSnapshot(forPath: "meetingType").value as! String! == "0"){
-            
-
-                if(dif > 0){
-                    cell.subcribeBtn.isHidden = false
-                    cell.seatAvaLB.text = "\(dif) seats"
-                 
-                }else{
-                    cell.subcribeBtn.isHidden = true
-                    cell.seatAvaLB.text = "\(0) seats"
+                    //}
+                }else if(dict.value(forKey: "meetingType") as! String == "0"){
+                    
+                    
+                    if(dif > 0){
+                        cell.subcribeBtn.isHidden = false
+                        cell.seatAvaLB.text = "\(dif) seats"
+                        
+                    }else{
+                        cell.subcribeBtn.isHidden = true
+                        cell.seatAvaLB.text = "\(0) seats"
+                    }
+                    
+                    cell.subcribeBtn.setTitle("Subscribe", for: .normal)
+                    cell.subcribeBtn.tag = indexPath.row
+                    cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+                    //}
                 }
-              
-                cell.subcribeBtn.setTitle("Subscribe", for: .normal)
-                cell.subcribeBtn.tag = indexPath.row
-                cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
-            //}
+                
+                
+                cell.userNameLB.text = dict.value(forKey: "mname") as! String
+                cell.instructLB.text = dict.value(forKey: "mInstuctorName") as! String
+                cell.dateLB.text = "\(dict.value(forKey: "mdate") as! String) - \(dict.value(forKey: "mendtime") as! String)"
+                cell.venueLB.text = "\(dict.value(forKey: "mvenue") as! String)"
+                
+                
+                cell.feedbackBtn.isHidden = true
+                cell.meetingCodeBtn.isHidden = true
+                cell.seatAvaLB.isHidden = false
+                //cell.seatsLabel.isHidden = false
+                cell.endMeetingBtn.isHidden = true
+                cell.waitingForApprvBtn.isHidden = true
+                
+            } else {
+                cell.subcribeBtn.isHidden = true
+                let dict = allmeetingName[indexPath.row] as FIRDataSnapshot
+                var cnt = (dict.childSnapshot(forPath: "currentCount").value as! String?)!
+                
+                var maxcnt = (dict.childSnapshot(forPath: "maxcount").value as! String?)!
+                if(cnt == ""){
+                    cnt = "0"
+                }
+                var dif = Int(maxcnt)! - Int(cnt)!
+                
+                if(dict.childSnapshot(forPath: "meetingType").value as! String! == "1"){
+                    
+                    if(dif > 0){
+                        cell.seatAvaLB.text = "\(dif) seats"
+                        cell.subcribeBtn.isHidden = false
+                        
+                    }else{
+                        cell.seatAvaLB.text = "\(0) seats"
+                        cell.subcribeBtn.isHidden = true
+                    }
+                    
+                    cell.subcribeBtn.setTitle("Interest", for: .normal)
+                    cell.subcribeBtn.tag = indexPath.row
+                    cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+                    //}
+                }else if(dict.childSnapshot(forPath: "meetingType").value as! String! == "0"){
+                    
+                    
+                    if(dif > 0){
+                        cell.subcribeBtn.isHidden = false
+                        cell.seatAvaLB.text = "\(dif) seats"
+                        
+                    }else{
+                        cell.subcribeBtn.isHidden = true
+                        cell.seatAvaLB.text = "\(0) seats"
+                    }
+                    
+                    cell.subcribeBtn.setTitle("Subscribe", for: .normal)
+                    cell.subcribeBtn.tag = indexPath.row
+                    cell.subcribeBtn.addTarget(self, action: #selector(subcribeAction), for: .touchUpInside)
+                    //}
+                }
+                
+                
+                cell.userNameLB.text = dict.childSnapshot(forPath: "mname").value as! String?
+                cell.instructLB.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
+                cell.dateLB.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
+                cell.venueLB.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
+                
+                
+                
+                cell.feedbackBtn.isHidden = true
+                cell.meetingCodeBtn.isHidden = true
+                cell.seatAvaLB.isHidden = false
+                //cell.seatsLabel.isHidden = false
+                cell.endMeetingBtn.isHidden = true
+                cell.waitingForApprvBtn.isHidden = true
             }
             
-            
-            cell.userNameLB.text = dict.childSnapshot(forPath: "mname").value as! String?
-            cell.instructLB.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
-            cell.dateLB.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
-            cell.venueLB.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
-            
-            
-           
-            cell.feedbackBtn.isHidden = true
-            cell.meetingCodeBtn.isHidden = true
-            cell.seatAvaLB.isHidden = false
-            //cell.seatsLabel.isHidden = false
-            cell.endMeetingBtn.isHidden = true
-            cell.waitingForApprvBtn.isHidden = true
             
             
         }else{
             
-            if(myMeetingName.count > 0){
-            let dict = myMeetingName[indexPath.row] as FIRDataSnapshot
-           
-            let subid = isSubscribed[indexPath.row] as! String
             
-            cell.feedbackBtn.isHidden = true
-             cell.waitingForApprvBtn.isHidden = true
-            
+            if searchController.isActive && searchController.searchBar.text != "" {
+                
+                if(filterArray1.count > 0){
+                     let dict = filterArray1[indexPath.row] as! NSDictionary
+                    
+                    let subid = isSubscribed[indexPath.row] as! String
+                    
+                    cell.feedbackBtn.isHidden = true
+                    cell.waitingForApprvBtn.isHidden = true
+                    
+                    
+                    let instrID = dict.value(forKey: "minstructorID") as! String?
+                    if(instrID! == self.empID){
+                        cell.endMeetingBtn.isHidden = false
+                        cell.meetingCodeBtn.isHidden = false
+                        cell.endMeetingBtn.tag = indexPath.row
+                        cell.endMeetingBtn.addTarget(self, action: #selector(endcodeAction), for: .touchUpInside)
+                        cell.feedbackBtn.isHidden = true
+                        cell.meetingCodeBtn.tag = indexPath.row
+                        cell.meetingCodeBtn.addTarget(self, action: #selector(codeAction), for: .touchUpInside)
+                    }else if(instrID! != self.empID){
+                        //cell.feedbackBtn.isHidden = false
+                        cell.endMeetingBtn.isHidden = true
+                        cell.meetingCodeBtn.isHidden = true
+                        if(subid == "1" ){
+                            cell.feedbackBtn.isHidden = false
+                            cell.feedbackBtn.setTitle("Feedback", for: .normal)
+                            cell.feedbackBtn.tag = indexPath.row
+                            cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
+                            cell.waitingForApprvBtn.isHidden = true
+                        }else if(subid == "2"){
+                            //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
+                            cell.feedbackBtn.isHidden = true
+                            cell.waitingForApprvBtn.isHidden = false
+                            cell.waitingForApprvBtn.setTitle("Waiting For Approval", for: .normal)
+                        }else if(subid == "3"){
+                            //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
+                            cell.feedbackBtn.isHidden = true
+                            cell.waitingForApprvBtn.isHidden = false
+                            cell.waitingForApprvBtn.setTitle("Rejected by admin", for: .normal)
+                        }
+                    }
+                    
+                    cell.userNameLB.text = dict.value(forKey: "mname") as! String
+                    cell.instructLB.text = "\(dict.value(forKey: "mInstuctorName") as! String)"
+                    cell.dateLB.text = "\(dict.value(forKey: "mdate") as! String) - \(dict.value(forKey: "mendtime") as! String)"
+                    cell.venueLB.text = "\(dict.value(forKey: "mvenue") as! String)"
+                    cell.subcribeBtn.isHidden = true
+                    cell.seatAvaLB.isHidden = true
+                    
+                }
 
-            let instrID = dict.childSnapshot(forPath: "minstructorID").value as? String
-            if(instrID! == self.empID){
-                cell.endMeetingBtn.isHidden = false
-                cell.meetingCodeBtn.isHidden = false
-                cell.endMeetingBtn.tag = indexPath.row
-                cell.endMeetingBtn.addTarget(self, action: #selector(endcodeAction), for: .touchUpInside)
-                cell.feedbackBtn.isHidden = true
-                cell.meetingCodeBtn.tag = indexPath.row
-                cell.meetingCodeBtn.addTarget(self, action: #selector(codeAction), for: .touchUpInside)
-            }else if(instrID! != self.empID){
-                //cell.feedbackBtn.isHidden = false
-                cell.endMeetingBtn.isHidden = true
-                cell.meetingCodeBtn.isHidden = true
-                if(subid == "1" ){
-                    cell.feedbackBtn.isHidden = false
-                    cell.feedbackBtn.setTitle("Feedback", for: .normal)
-                    cell.feedbackBtn.tag = indexPath.row
-                    cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
-                     cell.waitingForApprvBtn.isHidden = true
-                }else if(subid == "2"){
-                    //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
+                
+            } else if !searchController.isActive && searchController.searchBar.text == ""{
+                if(myMeetingName.count > 0){
+                    let dict = myMeetingName[indexPath.row] as FIRDataSnapshot
+                    
+                    let subid = isSubscribed[indexPath.row] as! String
+                    
                     cell.feedbackBtn.isHidden = true
-                    cell.waitingForApprvBtn.isHidden = false
-                     cell.waitingForApprvBtn.setTitle("Waiting For Approval", for: .normal)
-                }else if(subid == "3"){
-                    //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
-                    cell.feedbackBtn.isHidden = true
-                    cell.waitingForApprvBtn.isHidden = false
-                     cell.waitingForApprvBtn.setTitle("Rejected by admin", for: .normal)
+                    cell.waitingForApprvBtn.isHidden = true
+                    
+                    
+                    let instrID = dict.childSnapshot(forPath: "minstructorID").value as? String
+                    if(instrID! == self.empID){
+                        cell.endMeetingBtn.isHidden = false
+                        cell.meetingCodeBtn.isHidden = false
+                        cell.endMeetingBtn.tag = indexPath.row
+                        cell.endMeetingBtn.addTarget(self, action: #selector(endcodeAction), for: .touchUpInside)
+                        cell.feedbackBtn.isHidden = true
+                        cell.meetingCodeBtn.tag = indexPath.row
+                        cell.meetingCodeBtn.addTarget(self, action: #selector(codeAction), for: .touchUpInside)
+                    }else if(instrID! != self.empID){
+                        //cell.feedbackBtn.isHidden = false
+                        cell.endMeetingBtn.isHidden = true
+                        cell.meetingCodeBtn.isHidden = true
+                        if(subid == "1" ){
+                            cell.feedbackBtn.isHidden = false
+                            cell.feedbackBtn.setTitle("Feedback", for: .normal)
+                            cell.feedbackBtn.tag = indexPath.row
+                            cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
+                            cell.waitingForApprvBtn.isHidden = true
+                        }else if(subid == "2"){
+                            //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
+                            cell.feedbackBtn.isHidden = true
+                            cell.waitingForApprvBtn.isHidden = false
+                            cell.waitingForApprvBtn.setTitle("Waiting For Approval", for: .normal)
+                        }else if(subid == "3"){
+                            //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
+                            cell.feedbackBtn.isHidden = true
+                            cell.waitingForApprvBtn.isHidden = false
+                            cell.waitingForApprvBtn.setTitle("Rejected by admin", for: .normal)
+                        }
+                    }
+                    
+                    cell.userNameLB.text = dict.childSnapshot(forPath: "mname").value as! String?
+                    cell.instructLB.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
+                    cell.dateLB.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
+                    cell.venueLB.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
+                    cell.subcribeBtn.isHidden = true
+                    cell.seatAvaLB.isHidden = true
+                    
                 }
             }
-           
-            cell.userNameLB.text = dict.childSnapshot(forPath: "mname").value as! String?
-            cell.instructLB.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
-            cell.dateLB.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
-            cell.venueLB.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
-            cell.subcribeBtn.isHidden = true
-            cell.seatAvaLB.isHidden = true
-          
-        }
+            
+            
+  
+            
+            
+//            if(myMeetingName.count > 0){
+//            let dict = myMeetingName[indexPath.row] as FIRDataSnapshot
+//           
+//            let subid = isSubscribed[indexPath.row] as! String
+//            
+//            cell.feedbackBtn.isHidden = true
+//             cell.waitingForApprvBtn.isHidden = true
+//            
+//
+//            let instrID = dict.childSnapshot(forPath: "minstructorID").value as? String
+//            if(instrID! == self.empID){
+//                cell.endMeetingBtn.isHidden = false
+//                cell.meetingCodeBtn.isHidden = false
+//                cell.endMeetingBtn.tag = indexPath.row
+//                cell.endMeetingBtn.addTarget(self, action: #selector(endcodeAction), for: .touchUpInside)
+//                cell.feedbackBtn.isHidden = true
+//                cell.meetingCodeBtn.tag = indexPath.row
+//                cell.meetingCodeBtn.addTarget(self, action: #selector(codeAction), for: .touchUpInside)
+//            }else if(instrID! != self.empID){
+//                //cell.feedbackBtn.isHidden = false
+//                cell.endMeetingBtn.isHidden = true
+//                cell.meetingCodeBtn.isHidden = true
+//                if(subid == "1" ){
+//                    cell.feedbackBtn.isHidden = false
+//                    cell.feedbackBtn.setTitle("Feedback", for: .normal)
+//                    cell.feedbackBtn.tag = indexPath.row
+//                    cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
+//                     cell.waitingForApprvBtn.isHidden = true
+//                }else if(subid == "2"){
+//                    //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
+//                    cell.feedbackBtn.isHidden = true
+//                    cell.waitingForApprvBtn.isHidden = false
+//                     cell.waitingForApprvBtn.setTitle("Waiting For Approval", for: .normal)
+//                }else if(subid == "3"){
+//                    //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
+//                    cell.feedbackBtn.isHidden = true
+//                    cell.waitingForApprvBtn.isHidden = false
+//                     cell.waitingForApprvBtn.setTitle("Rejected by admin", for: .normal)
+//                }
+//            }
+//           
+//            cell.userNameLB.text = dict.childSnapshot(forPath: "mname").value as! String?
+//            cell.instructLB.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
+//            cell.dateLB.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
+//            cell.venueLB.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
+//            cell.subcribeBtn.isHidden = true
+//            cell.seatAvaLB.isHidden = true
+//          
+//        }
         }
         
         
@@ -757,4 +1023,12 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     */
 
+}
+
+extension UserMeetingViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        
+        filterContentsForSearchText(searchText: searchController.searchBar.text!)
+    }
 }

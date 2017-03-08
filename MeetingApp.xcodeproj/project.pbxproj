@@ -711,7 +711,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MeetingApp/MeetingApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
 				DEVELOPMENT_TEAM = A8U8Q2EEBA;
 				INFOPLIST_FILE = MeetingApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -732,7 +732,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MeetingApp/MeetingApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
 				DEVELOPMENT_TEAM = A8U8Q2EEBA;
 				INFOPLIST_FILE = MeetingApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

@@ -90,7 +90,7 @@ class AdminReportViewController: UIViewController,UITableViewDelegate,UITableVie
                 print(totalCount)
                
                 for item in snapshot.children {
-                    let meetingID = (item as AnyObject).childSnapshot(forPath: "meetingId").value as! String?
+                    let meetingID = (item as AnyObject).childSnapshot(forPath: "meetingId").value as! String
                     let subID = (item as AnyObject).childSnapshot(forPath: "isSubscribed").value as! String?
                     let isattend = (item as AnyObject).childSnapshot(forPath: "isAttended").value as! String!
                     let empID = (item as AnyObject).childSnapshot(forPath: "empId").value as! String!

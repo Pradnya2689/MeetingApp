@@ -9,7 +9,7 @@
 import UIKit
 import  Firebase
 
-class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
     
     var completedmeetingName:[FIRDataSnapshot]! = [FIRDataSnapshot]()
     var upcommingMeetingName:[FIRDataSnapshot]! = [FIRDataSnapshot]()
@@ -33,14 +33,42 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
     var meetingDataArray:[FIRDataSnapshot]! = [FIRDataSnapshot]()
 //    var ref: FIRDatabaseReference!
 //    var ref1: FIRDatabaseReference!
-    
-    
-    
+    @available(iOS 2.0, *)
+      func searchBarCancelButtonClicked(_ searchBar: UISearchBar) // called when cancel button pressed
+    {
+       // searchController.isActive = false
+//        if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
+//        for child in upcommingMeetingName {
+//            let dict = child.value as! NSDictionary
+//            print(dict)
+//            filteredmeetingName.addObjects(from: [dict])
+//        }
+//        filterArray = (filteredmeetingName as NSArray)
+//        }else{
+//            for child in completedmeetingName {
+//                let dict = child.value as! NSDictionary
+//                print(dict)
+//                filteredmeetingName.addObjects(from: [dict])
+//            }
+//            filterArray1 = (filteredmeetingName as NSArray)
+//        }
+    }
+   
     func filterContentsForSearchText(searchText : String , scope : String = "All"){
         
         print(searchText)
         
         if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
+            
+           if(searchText == ""){
+            filteredmeetingName.removeAllObjects()
+            for child in upcommingMeetingName {
+                let dict = child.value as! NSDictionary
+                print(dict)
+                filteredmeetingName.addObjects(from: [dict])
+            }
+            filterArray = (filteredmeetingName as NSArray)
+            }else{
             
             filteredmeetingName.removeAllObjects()
             
@@ -61,14 +89,23 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             
             let predicate: NSCompoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [searchPredicate1,searchPredicate])
             
-            
+            filterArray=NSArray()
             filterArray = (filteredmeetingName as NSArray).filtered(using: predicate) as NSArray
-            print(filterArray)
             
+            print(filterArray)
+            }
              adminTableView.reloadData()
             
         }else{
-            
+            if(searchText == ""){
+                filteredmeetingName.removeAllObjects()
+                for child in completedmeetingName {
+                    let dict = child.value as! NSDictionary
+                    print(dict)
+                    filteredmeetingName.addObjects(from: [dict])
+                }
+                filterArray1 = (filteredmeetingName as NSArray)
+            }else{
             print(self.completedmeetingName)
             
             filteredmeetingName.removeAllObjects()
@@ -88,7 +125,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             filterArray1 = (filteredmeetingName as NSArray).filtered(using: pred) as NSArray
             
             print(filterArray1)
-            
+            }
             adminTableView.reloadData()
 
         }
@@ -138,7 +175,8 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         fetchAllData()
         fetchOldDAta()
         
-    
+        self.searchController.searchBar.delegate = self
+        // self.searchController.datas
         self.searchController.searchResultsUpdater = self
         self.searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
@@ -224,7 +262,8 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
         Indicator.sharedInstance.startActivityIndicator()
 
-       
+       //filterArray = NSArray()
+            filteredmeetingName.removeAllObjects()
         self.upcommingMeetingName.removeAll()
         self.upcommingMeetingName =  [FIRDataSnapshot]()
          
@@ -236,6 +275,13 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
                 
             }
             self.upcommingMeetingName = newItems
+//            for child in self.upcommingMeetingName {
+//                let dict = child.value as! NSDictionary
+//                print(dict)
+//                self.filteredmeetingName.addObjects(from: [dict])
+//            }
+//
+//             self.filterArray = self.filteredmeetingName as NSArray
             print(self.meetingDataArray)
             Indicator.sharedInstance.stopActivityIndicator()
             if(self.adminMeetingSegCntrl.selectedSegmentIndex == 0){
@@ -261,7 +307,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if searchController.isActive && searchController.searchBar.text != "" {
+        if searchController.isActive  {
             if(adminMeetingSegCntrl.selectedSegmentIndex == 0){
                 return filterArray.count
             }else{
@@ -298,7 +344,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             
             
             
-            if searchController.isActive && searchController.searchBar.text != "" {
+            if searchController.isActive {
                 let dict = filterArray[indexPath.row] as! NSDictionary
                 
                 
@@ -388,13 +434,15 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
                 cell.feedBACKBtn.isHidden = false
                 cell.feedBACKBtn.tag = indexPath.row
                 cell.feedBACKBtn.addTarget(self, action: #selector(feedBackAction), for: .touchUpInside)
+                
+                
             }
             
             
         }else{
             
             
-            if searchController.isActive && searchController.searchBar.text != "" {
+            if searchController.isActive {
                 
                 
                 let dict = filterArray1[indexPath.row] as! NSDictionary
@@ -536,7 +584,9 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
 extension AdminMeetingsViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         
-        
+       
         filterContentsForSearchText(searchText: searchController.searchBar.text!)
+        
     }
+    
 }

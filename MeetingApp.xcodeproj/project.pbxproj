@@ -344,13 +344,13 @@
 					};
 					C37D87131E40977100D6462A = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = A8U8Q2EEBA;
+						DevelopmentTeam = L9Q4J2MT8T;
 						ProvisioningStyle = Automatic;
 						TestTargetID = C37D86FC1E40976700D6462A;
 					};
 					C37D871E1E40977100D6462A = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = A8U8Q2EEBA;
+						DevelopmentTeam = L9Q4J2MT8T;
 						ProvisioningStyle = Automatic;
 						TestTargetID = C37D86FC1E40976700D6462A;
 					};
@@ -628,11 +628,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = A8U8Q2EEBA;
+				DEVELOPMENT_TEAM = L9Q4J2MT8T;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -652,7 +652,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0ec6f59c-73ae-4db7-b9f6-934433891f51";
+				PROVISIONING_PROFILE = "ab67e1e0-167a-4304-8f08-7ea51cd76ce5";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -680,11 +680,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = A8U8Q2EEBA;
+				DEVELOPMENT_TEAM = L9Q4J2MT8T;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -697,7 +697,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "0ec6f59c-73ae-4db7-b9f6-934433891f51";
+				PROVISIONING_PROFILE = "ab67e1e0-167a-4304-8f08-7ea51cd76ce5";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -710,7 +710,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MeetingApp/MeetingApp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A8U8Q2EEBA;
 				INFOPLIST_FILE = MeetingApp/Info.plist;
@@ -731,7 +731,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MeetingApp/MeetingApp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ingram Micro Distribution GmbH (A8U8Q2EEBA)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A8U8Q2EEBA;
 				INFOPLIST_FILE = MeetingApp/Info.plist;

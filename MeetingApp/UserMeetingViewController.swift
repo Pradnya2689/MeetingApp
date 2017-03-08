@@ -86,12 +86,41 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         //Indicator.sharedInstance.stopActivityIndicator()
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) // called when cancel button pressed
+    {
+        // searchController.isActive = false
+        if(userSegmentCntrl.selectedSegmentIndex == 0){
+            for child in allmeetingName {
+                let dict = child.value as! NSDictionary
+                print(dict)
+                filteredmeetingName.addObjects(from: [dict])
+            }
+            filterArray = (filteredmeetingName as NSArray)
+        }else{
+            for child in myMeetingName {
+                let dict = child.value as! NSDictionary
+                print(dict)
+                filteredmeetingName.addObjects(from: [dict])
+            }
+            filterArray1 = (filteredmeetingName as NSArray)
+        }
+    }
     
     func filterContentsForSearchText(searchText : String , scope : String = "All"){
         
         print(searchText)
         
         if(userSegmentCntrl.selectedSegmentIndex == 0){
+            
+            if(searchText == ""){
+                filteredmeetingName.removeAllObjects()
+                for child in allmeetingName {
+                    let dict = child.value as! NSDictionary
+                    print(dict)
+                    filteredmeetingName.addObjects(from: [dict])
+                }
+                filterArray = (filteredmeetingName as NSArray)
+            }else{
             
             filteredmeetingName.removeAllObjects()
             
@@ -112,13 +141,23 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
             let predicate: NSCompoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [searchPredicate1,searchPredicate])
             
-            
+            filterArray=NSArray()
             filterArray = (filteredmeetingName as NSArray).filtered(using: predicate) as NSArray
             print(filterArray)
-            
+            }
             userTableView.reloadData()
             
         }else{
+            
+            if(searchText == ""){
+                filteredmeetingName.removeAllObjects()
+                for child in myMeetingName {
+                    let dict = child.value as! NSDictionary
+                    print(dict)
+                    filteredmeetingName.addObjects(from: [dict])
+                }
+                filterArray1 = (filteredmeetingName as NSArray)
+            }else{
             
             print(self.myMeetingName)
             
@@ -139,7 +178,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             filterArray1 = (filteredmeetingName as NSArray).filtered(using: pred) as NSArray
             
             print(filterArray1)
-            
+            }
             userTableView.reloadData()
             
         }
@@ -228,7 +267,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
 //        return 0
         
         
-        if searchController.isActive && searchController.searchBar.text != "" {
+        if searchController.isActive {
             if(userSegmentCntrl.selectedSegmentIndex == 0){
                 return filterArray.count
             }else{
@@ -384,7 +423,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         if(userSegmentCntrl.selectedSegmentIndex == 0){
             
             
-            if searchController.isActive && searchController.searchBar.text != "" {
+            if searchController.isActive  {
                 cell.subcribeBtn.isHidden = true
                 let dict = filterArray[indexPath.row] as! NSDictionary
                 var cnt = dict.value(forKey: "currentCount") as! String
@@ -507,7 +546,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         }else{
             
             
-            if searchController.isActive && searchController.searchBar.text != "" {
+            if searchController.isActive {
                 
                 if(filterArray1.count > 0){
                      let dict = filterArray1[indexPath.row] as! NSDictionary

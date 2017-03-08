@@ -34,9 +34,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
 //                self.userTableView.reloadData()
 //            }
         if(myMeetingName.count == 0){
-          
-                
-                label.textAlignment = .center
+               label.textAlignment = .center
             self.label.font = UIFont(name: "MyriadPro-Regular", size: 17.0)
                // label.text = "You have not subscribed for any meetings"
                 label.text = "Not Subscribed"
@@ -78,12 +76,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                    
                 }
             
-            
-            
         }
-//
-       // userTableView.reloadData()
-        //Indicator.sharedInstance.stopActivityIndicator()
+
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) // called when cancel button pressed

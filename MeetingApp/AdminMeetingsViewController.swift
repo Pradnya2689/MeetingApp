@@ -164,6 +164,33 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             fetchAllData()
         }
         
+        if(self.adminMeetingSegCntrl.selectedSegmentIndex == 0){
+            if(self.upcommingMeetingName.count > 0){
+                self.searchController.searchBar.isHidden = false
+                self.searchController.searchResultsUpdater = self
+                self.searchController.dimsBackgroundDuringPresentation = false
+                self.definesPresentationContext = true
+                self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                self.adminTableView.tableHeaderView = self.searchController.searchBar
+            }else{
+                self.searchController.searchBar.isHidden = true
+            }
+        }else{
+            if(self.completedmeetingName.count > 0){
+                self.searchController.searchBar.isHidden = false
+                self.searchController.searchResultsUpdater = self
+                self.searchController.dimsBackgroundDuringPresentation = false
+                self.definesPresentationContext = true
+                self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                self.adminTableView.tableHeaderView = self.searchController.searchBar
+            }else{
+                //self.userTableView.contentOffset = CGPoint(x: 0, y: 44)
+                self.searchController.searchBar.isHidden = true
+                
+            }
+            
+        }
+        
        
     }
     
@@ -175,14 +202,14 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         fetchAllData()
         fetchOldDAta()
         
-        self.searchController.searchBar.delegate = self
-        // self.searchController.datas
-        self.searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        //self.searchController.searchBar.barTintColor = UIColor.clear
-        self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
-        adminTableView.tableHeaderView = self.searchController.searchBar
+//        self.searchController.searchBar.delegate = self
+//        // self.searchController.datas
+//        self.searchController.searchResultsUpdater = self
+//        self.searchController.dimsBackgroundDuringPresentation = false
+//        definesPresentationContext = true
+//        //self.searchController.searchBar.barTintColor = UIColor.clear
+//        self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+//        adminTableView.tableHeaderView = self.searchController.searchBar
     }
 
     override func didReceiveMemoryWarning() {
@@ -201,7 +228,7 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
         self.navigationItem.rightBarButtonItem = leftItem
         
         self.adminMeetingSegCntrl.translatesAutoresizingMaskIntoConstraints = true
-        self.adminMeetingSegCntrl.frame = CGRect(x: 5, y: 0, width: screenWidth-10, height: 32)
+        self.adminMeetingSegCntrl.frame = CGRect(x: 5, y: 10, width: screenWidth-10, height: 32)
         
        
     }
@@ -238,6 +265,33 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             self.completedmeetingName = newItems1
             print(self.meetingDataArray)
             Indicator.sharedInstance.stopActivityIndicator()
+            
+            if(self.adminMeetingSegCntrl.selectedSegmentIndex == 0){
+                if(self.upcommingMeetingName.count > 0){
+                    self.searchController.searchBar.isHidden = false
+                    self.searchController.searchResultsUpdater = self
+                    self.searchController.dimsBackgroundDuringPresentation = false
+                    self.definesPresentationContext = true
+                    self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                    self.adminTableView.tableHeaderView = self.searchController.searchBar
+                }else{
+                    self.searchController.searchBar.isHidden = true
+                }
+            }else{
+                if(self.completedmeetingName.count > 0){
+                    self.searchController.searchBar.isHidden = false
+                    self.searchController.searchResultsUpdater = self
+                    self.searchController.dimsBackgroundDuringPresentation = false
+                    self.definesPresentationContext = true
+                    self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                    self.adminTableView.tableHeaderView = self.searchController.searchBar
+                }else{
+                    //self.userTableView.contentOffset = CGPoint(x: 0, y: 44)
+                    self.searchController.searchBar.isHidden = true
+                    
+                }
+                
+            }
             
             if(self.completedmeetingName.count == 0){
                 self.label.textAlignment = .center
@@ -284,6 +338,34 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
 //             self.filterArray = self.filteredmeetingName as NSArray
             print(self.meetingDataArray)
             Indicator.sharedInstance.stopActivityIndicator()
+            
+            if(self.adminMeetingSegCntrl.selectedSegmentIndex == 0){
+                if(self.upcommingMeetingName.count > 0){
+                    self.searchController.searchBar.isHidden = false
+                    self.searchController.searchResultsUpdater = self
+                    self.searchController.dimsBackgroundDuringPresentation = false
+                    self.definesPresentationContext = true
+                    self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                    self.adminTableView.tableHeaderView = self.searchController.searchBar
+                }else{
+                    self.searchController.searchBar.isHidden = true
+                }
+            }else{
+                if(self.completedmeetingName.count > 0){
+                    self.searchController.searchBar.isHidden = false
+                    self.searchController.searchResultsUpdater = self
+                    self.searchController.dimsBackgroundDuringPresentation = false
+                    self.definesPresentationContext = true
+                    self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                    self.adminTableView.tableHeaderView = self.searchController.searchBar
+                }else{
+                    //self.userTableView.contentOffset = CGPoint(x: 0, y: 44)
+                    self.searchController.searchBar.isHidden = true
+                    
+                }
+                
+            }
+            
             if(self.adminMeetingSegCntrl.selectedSegmentIndex == 0){
                 if(self.upcommingMeetingName.count == 0){
                     self.label.textAlignment = .center
@@ -390,6 +472,8 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
                 cell.feedBACKBtn.addTarget(self, action: #selector(feedBackAction), for: .touchUpInside)
                 
             } else {
+                
+                if(upcommingMeetingName.count > 0){
                  let dict = upcommingMeetingName[indexPath.row] as FIRDataSnapshot
                 
                 var cnt = (dict.childSnapshot(forPath: "currentCount").value as! String?)!
@@ -434,7 +518,15 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
                 cell.feedBACKBtn.isHidden = false
                 cell.feedBACKBtn.tag = indexPath.row
                 cell.feedBACKBtn.addTarget(self, action: #selector(feedBackAction), for: .touchUpInside)
-                
+                }else{
+                    
+                        self.label.textAlignment = .center
+                        self.label.text = "There are no upcomming meetings"
+                        self.view.addSubview(self.label)
+                        self.view.bringSubview(toFront: self.label)
+                        self.adminTableView.reloadData()
+                   
+                }
                 
             }
             

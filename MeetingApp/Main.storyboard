@@ -109,7 +109,7 @@
                                             <action selector="signINBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ubu-6c-vTu"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Version 1.0.6" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3W-FI-3Nf">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Version 1.0.7" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3W-FI-3Nf">
                                         <rect key="frame" x="253" y="554" width="114" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="k2T-2H-rcP"/>
@@ -3129,7 +3129,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kSj-l2-YTK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xex-cH-dzH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xex-cH-dzH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

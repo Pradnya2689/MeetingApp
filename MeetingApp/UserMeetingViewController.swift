@@ -77,6 +77,34 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 }
             
         }
+        
+        if(self.userSegmentCntrl.selectedSegmentIndex == 0){
+            if(self.allmeetingName.count > 0){
+                self.searchController.searchBar.isHidden = false
+                self.searchController.searchResultsUpdater = self
+                self.searchController.dimsBackgroundDuringPresentation = false
+                self.definesPresentationContext = true
+                self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                self.userTableView.tableHeaderView = self.searchController.searchBar
+            }else{
+                self.searchController.searchBar.isHidden = true
+            }
+        }else{
+            if(self.myMeetingName.count > 0){
+                self.searchController.searchBar.isHidden = false
+                self.searchController.searchResultsUpdater = self
+                self.searchController.dimsBackgroundDuringPresentation = false
+                self.definesPresentationContext = true
+                self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                self.userTableView.tableHeaderView = self.searchController.searchBar
+            }else{
+                //self.userTableView.contentOffset = CGPoint(x: 0, y: 44)
+                self.searchController.searchBar.isHidden = true
+                
+            }
+            
+        }
+        
 
     }
     
@@ -222,12 +250,6 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         print("emp id \(empID)")
         
         
-        self.searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
-        userTableView.tableHeaderView = self.searchController.searchBar
-      
     }
     
     func nextView(){
@@ -243,7 +265,33 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
         userSegmentCntrl.selectedSegmentIndex = 0
        // self.userTableView.reloadData()
         self.userSegmentCntrl.translatesAutoresizingMaskIntoConstraints = true
-        self.userSegmentCntrl.frame = CGRect(x: 5, y: 0, width: screenWidth-10, height: 32)
+        self.userSegmentCntrl.frame = CGRect(x: 5, y: 10, width: screenWidth-10, height: 32)
+        
+//        if(self.userSegmentCntrl.selectedSegmentIndex == 0){
+//            if(self.allmeetingName.count > 0){
+//                self.searchController.searchBar.isHidden = false
+//                self.searchController.searchResultsUpdater = self
+//                self.searchController.dimsBackgroundDuringPresentation = false
+//                self.definesPresentationContext = true
+//                self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+//                self.userTableView.tableHeaderView = self.searchController.searchBar
+//            }else{
+//                self.searchController.searchBar.isHidden = true
+//            }
+//        }else{
+//            if(self.myMeetingName.count > 0){
+//                self.searchController.searchBar.isHidden = false
+//                self.searchController.searchResultsUpdater = self
+//                self.searchController.dimsBackgroundDuringPresentation = false
+//                self.definesPresentationContext = true
+//                self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+//                self.userTableView.tableHeaderView = self.searchController.searchBar
+//            }else{
+//                self.searchController.searchBar.isHidden = true
+//            }
+//            
+//        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -253,13 +301,6 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if(userSegmentCntrl.selectedSegmentIndex == 0){
-//            return allmeetingName.count
-//        }else if(userSegmentCntrl.selectedSegmentIndex == 1){
-//            return myMeetingName.count
-//        }
-//        return 0
-        
         
         if searchController.isActive {
             if(userSegmentCntrl.selectedSegmentIndex == 0){
@@ -332,6 +373,30 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                         }
                         
                         //Indicator.sharedInstance.stopActivityIndicator()
+                        if(self.userSegmentCntrl.selectedSegmentIndex == 0){
+                            if(self.allmeetingName.count > 0){
+                                self.searchController.searchBar.isHidden = false
+                                self.searchController.searchResultsUpdater = self
+                                self.searchController.dimsBackgroundDuringPresentation = false
+                                self.definesPresentationContext = true
+                                self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                                self.userTableView.tableHeaderView = self.searchController.searchBar
+                            }else{
+                                self.searchController.searchBar.isHidden = true
+                            }
+                        }else{
+                            if(self.myMeetingName.count > 0){
+                                self.searchController.searchBar.isHidden = false
+                                self.searchController.searchResultsUpdater = self
+                                self.searchController.dimsBackgroundDuringPresentation = false
+                                self.definesPresentationContext = true
+                                self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                                self.userTableView.tableHeaderView = self.searchController.searchBar
+                            }else{
+                                self.searchController.searchBar.isHidden = true
+                            }
+                            
+                        }
                         self.userTableView.reloadData()
                     })
                 }
@@ -339,6 +404,30 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
             Indicator.sharedInstance.stopActivityIndicator()
             self.userTableView.reloadData()
+//                    if(self.userSegmentCntrl.selectedSegmentIndex == 0){
+//                        if(self.allmeetingName.count > 0){
+//                            self.searchController.searchBar.isHidden = false
+//                            self.searchController.searchResultsUpdater = self
+//                            self.searchController.dimsBackgroundDuringPresentation = false
+//                            self.definesPresentationContext = true
+//                            self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+//                            self.userTableView.tableHeaderView = self.searchController.searchBar
+//                        }else{
+//                            self.searchController.searchBar.isHidden = true
+//                        }
+//                    }else{
+//                        if(self.myMeetingName.count > 0){
+//                            self.searchController.searchBar.isHidden = false
+//                            self.searchController.searchResultsUpdater = self
+//                            self.searchController.dimsBackgroundDuringPresentation = false
+//                            self.definesPresentationContext = true
+//                            self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+//                            self.userTableView.tableHeaderView = self.searchController.searchBar
+//                        }else{
+//                            self.searchController.searchBar.isHidden = true
+//                        }
+//                        
+//                    }
             finished()
         })
     }
@@ -386,6 +475,31 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 self.label.removeFromSuperview()
                 self.userTableView.reloadData()
             }
+            
+                    if(self.userSegmentCntrl.selectedSegmentIndex == 0){
+                        if(self.allmeetingName.count > 0){
+                            self.searchController.searchBar.isHidden = false
+                            self.searchController.searchResultsUpdater = self
+                            self.searchController.dimsBackgroundDuringPresentation = false
+                            self.definesPresentationContext = true
+                            self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                            self.userTableView.tableHeaderView = self.searchController.searchBar
+                        }else{
+                            self.searchController.searchBar.isHidden = true
+                        }
+                    }else{
+                        if(self.myMeetingName.count > 0){
+                            self.searchController.searchBar.isHidden = false
+                            self.searchController.searchResultsUpdater = self
+                            self.searchController.dimsBackgroundDuringPresentation = false
+                            self.definesPresentationContext = true
+                            self.searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                            self.userTableView.tableHeaderView = self.searchController.searchBar
+                        }else{
+                            self.searchController.searchBar.isHidden = true
+                        }
+                        
+                    }
         })
         
         
@@ -476,6 +590,8 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 cell.waitingForApprvBtn.isHidden = true
                 
             } else {
+                
+                if(allmeetingName.count > 0){
                 cell.subcribeBtn.isHidden = true
                 let dict = allmeetingName[indexPath.row] as FIRDataSnapshot
                 var cnt = (dict.childSnapshot(forPath: "currentCount").value as! String?)!
@@ -533,8 +649,14 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 //cell.seatsLabel.isHidden = false
                 cell.endMeetingBtn.isHidden = true
                 cell.waitingForApprvBtn.isHidden = true
+                }else{
+                    self.label.textAlignment = .center
+                    self.label.text = "No meetings"
+                    self.view.addSubview(self.label)
+                    self.view.bringSubview(toFront: self.label)
+                    self.userTableView.reloadData()
+                }
             }
-            
             
             
         }else{
@@ -647,58 +769,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
             
   
-            
-            
-//            if(myMeetingName.count > 0){
-//            let dict = myMeetingName[indexPath.row] as FIRDataSnapshot
-//           
-//            let subid = isSubscribed[indexPath.row] as! String
-//            
-//            cell.feedbackBtn.isHidden = true
-//             cell.waitingForApprvBtn.isHidden = true
-//            
-//
-//            let instrID = dict.childSnapshot(forPath: "minstructorID").value as? String
-//            if(instrID! == self.empID){
-//                cell.endMeetingBtn.isHidden = false
-//                cell.meetingCodeBtn.isHidden = false
-//                cell.endMeetingBtn.tag = indexPath.row
-//                cell.endMeetingBtn.addTarget(self, action: #selector(endcodeAction), for: .touchUpInside)
-//                cell.feedbackBtn.isHidden = true
-//                cell.meetingCodeBtn.tag = indexPath.row
-//                cell.meetingCodeBtn.addTarget(self, action: #selector(codeAction), for: .touchUpInside)
-//            }else if(instrID! != self.empID){
-//                //cell.feedbackBtn.isHidden = false
-//                cell.endMeetingBtn.isHidden = true
-//                cell.meetingCodeBtn.isHidden = true
-//                if(subid == "1" ){
-//                    cell.feedbackBtn.isHidden = false
-//                    cell.feedbackBtn.setTitle("Feedback", for: .normal)
-//                    cell.feedbackBtn.tag = indexPath.row
-//                    cell.feedbackBtn.addTarget(self, action: #selector(feedbackAction), for: .touchUpInside)
-//                     cell.waitingForApprvBtn.isHidden = true
-//                }else if(subid == "2"){
-//                    //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
-//                    cell.feedbackBtn.isHidden = true
-//                    cell.waitingForApprvBtn.isHidden = false
-//                     cell.waitingForApprvBtn.setTitle("Waiting For Approval", for: .normal)
-//                }else if(subid == "3"){
-//                    //cell.feedbackBtn.titleLabel?.text = "Waiting For Approval"
-//                    cell.feedbackBtn.isHidden = true
-//                    cell.waitingForApprvBtn.isHidden = false
-//                     cell.waitingForApprvBtn.setTitle("Rejected by admin", for: .normal)
-//                }
-//            }
-//           
-//            cell.userNameLB.text = dict.childSnapshot(forPath: "mname").value as! String?
-//            cell.instructLB.text = "\(dict.childSnapshot(forPath: "mInstuctorName").value as! String)"
-//            cell.dateLB.text = "\(dict.childSnapshot(forPath: "mdate").value as! String) - \(dict.childSnapshot(forPath: "mendtime").value as! String)"
-//            cell.venueLB.text = "\(dict.childSnapshot(forPath: "mvenue").value as! String)"
-//            cell.subcribeBtn.isHidden = true
-//            cell.seatAvaLB.isHidden = true
-//          
-//        }
-        }
+    }
         
         
         
@@ -901,35 +972,6 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                 
                 
             }
-            
-//            if(self.meetingCode != ""){
-//            
-//            let dict = self.myMeetingName[sender.tag] as FIRDataSnapshot
-//            let meetID = dict.childSnapshot(forPath: "meetingID").value as! String?
-//            let alrttxt = self.alertText.text
-//             let meetingCode = dict.childSnapshot(forPath: "meetingCode").value as! String?
-//                let subid = self.isSubscribed[sender.tag] as! String
-//                if(alrttxt == meetingCode){
-//                    let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedBack") as! FeedbackViewController
-//                    secondViewController.meetingID = meetID
-//                    secondViewController.isSubscribed = subid
-//                    self.navigationController?.pushViewController(secondViewController, animated: true)
-//                }else{
-//                    self.dismiss(animated: false, completion: nil)
-//                     let alert = UIAlertController(title: "Invalid Meeting code", message: "", preferredStyle: UIAlertControllerStyle.alert)
-//                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
-//                        (action) -> Void in
-//                        
-//                    }))
-//                    self.present(alert, animated: true, completion: nil)
-//                    
-//                }
-//            
-//                
-//            }else{
-//                
-//                self.showAlert(Message: "Enter Meeting Code")
-//            }
             
         }))
         

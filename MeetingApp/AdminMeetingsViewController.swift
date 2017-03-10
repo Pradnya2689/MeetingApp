@@ -93,6 +93,16 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             filterArray = (filteredmeetingName as NSArray).filtered(using: predicate) as NSArray
             
             print(filterArray)
+            
+            if(filterArray.count == 0){
+                self.label.textAlignment = .center
+                self.label.text = "No meetings"
+                self.view.addSubview(self.label)
+                self.view.bringSubview(toFront: self.label)
+            }else{
+                self.label.removeFromSuperview()
+            }
+            
             }
              adminTableView.reloadData()
             
@@ -125,6 +135,15 @@ class AdminMeetingsViewController: UIViewController,UITableViewDelegate,UITableV
             filterArray1 = (filteredmeetingName as NSArray).filtered(using: pred) as NSArray
             
             print(filterArray1)
+                
+                if(filterArray1.count == 0){
+                    self.label.textAlignment = .center
+                    self.label.text = "No meetings"
+                    self.view.addSubview(self.label)
+                    self.view.bringSubview(toFront: self.label)
+                }else{
+                    self.label.removeFromSuperview()
+                }
             }
             adminTableView.reloadData()
 

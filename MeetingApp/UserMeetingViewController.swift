@@ -166,6 +166,15 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             filterArray=NSArray()
             filterArray = (filteredmeetingName as NSArray).filtered(using: predicate) as NSArray
             print(filterArray)
+                
+                if(filterArray.count == 0){
+                    self.label.textAlignment = .center
+                    self.label.text = "No meetings"
+                    self.view.addSubview(self.label)
+                    self.view.bringSubview(toFront: self.label)
+                }else{
+                    self.label.removeFromSuperview()
+                }
             }
             userTableView.reloadData()
             
@@ -200,6 +209,15 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             filterArray1 = (filteredmeetingName as NSArray).filtered(using: pred) as NSArray
             
             print(filterArray1)
+                
+                if(filterArray1.count == 0){
+                    self.label.textAlignment = .center
+                    self.label.text = "No meetings"
+                    self.view.addSubview(self.label)
+                    self.view.bringSubview(toFront: self.label)
+                }else{
+                    self.label.removeFromSuperview()
+                }
             }
             userTableView.reloadData()
             
@@ -830,6 +848,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
             
             UIAlertAction in
             
+            Indicator.sharedInstance.startActivityIndicator()
             print(sender.tag)
             print(self.empID)
             
@@ -1047,11 +1066,12 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                    
                     do {
                         try self.eventStore.save(event, span: EKSpan.thisEvent, commit: true)
-                        
+                        Indicator.sharedInstance.stopActivityIndicator()
                     }
                         
                     catch let error {
                         print("Event failed with error \(error.localizedDescription)")
+                        Indicator.sharedInstance.stopActivityIndicator()
                     }
                 
                     }
@@ -1060,6 +1080,7 @@ class UserMeetingViewController: UIViewController,UITableViewDelegate,UITableVie
                
             }else{
                 print("The app is not permitted to access reminders, make sure to grant permission in the settings and try again")
+                Indicator.sharedInstance.stopActivityIndicator()
             }
         })
         
